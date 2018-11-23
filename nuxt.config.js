@@ -5,8 +5,10 @@ const getFileNames = directory =>
   fs.readdirSync(`./${directory}`).map(file => `~/${directory}/${file}`)
 
 module.exports = {
-  mode: 'spa',
-
+  // mode: 'spa',
+  generate: {
+    routes: ['/', '/dicks']
+  },
   /*
   ** Headers of the page
   */

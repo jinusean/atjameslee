@@ -2,21 +2,6 @@
   <el-aside>
     <div class="jcl-sidebar">
       <jcl-avatar/>
-
-      <ul
-        v-scroll-spy-active
-        v-scroll-spy-link
-        class="sections-list">
-        <li
-          v-for="(section, index) in sections"
-          :index="`${index}`"
-          :key="index"
-          class="sections-list-item">
-          <a 
-            slot="title" 
-            href="#">{{ section }}</a>
-        </li>
-      </ul>
     </div>
   </el-aside>
 </template>

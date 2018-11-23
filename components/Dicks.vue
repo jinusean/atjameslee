@@ -1,6 +1,7 @@
 <template>
   <div class="dicks">
     <div
+      v-show="isMounted"
       v-for="i in counts"
       :ref="`dick-${i}`"
       :key="i"
@@ -86,6 +87,10 @@ export default {
   height: 100%;
   width: 100%;
   $size: 36px;
+
+  .dick-wrapper {
+    position: absolute;
+  }
 
   .dick {
     position: relative;
