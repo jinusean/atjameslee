@@ -1,7 +1,5 @@
 <template>
-  <div class="full-screen">
-    <dicks/>
-  </div>
+  <dicks/>
 </template>
 <script>
 import Dicks from '~/components/Dicks'

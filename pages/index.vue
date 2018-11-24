@@ -1,9 +1,7 @@
 <template>
-  <div class="full-screen">
-    <div class="main-wrapper">
-      <div class="main-content">
-        <h1>Hey Loser</h1>
-      </div>
+  <div class="main-wrapper">
+    <div class="main-content">
+      <h1>Hey Loser</h1>
     </div>
   </div>
 </template>

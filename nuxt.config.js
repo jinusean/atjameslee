@@ -7,7 +7,7 @@ const getFileNames = directory =>
 module.exports = {
   // mode: 'spa',
   generate: {
-    routes: ['/', '/dicks']
+    routes: ['/', '/dicks', '/eyes']
   },
   /*
   ** Headers of the page

@@ -1,117 +1,48 @@
 <template>
-  <div
-    class="warp"
-    @mousemove="handleMousemove">
-    <!--<div-->
-    <!--ref="eye"-->
-    <!--class="eye">-->
-    <!--<div-->
-    <!--ref="pupil"-->
-    <!--class="pupil"/>-->
-    <!--</div>-->
+  <div class="eyes-wrapper">
 
-    <div class="joe"/>
+    <div class="photo">
+      <div class="eyes">
+        <eye/><eye/>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
+import Eye from '~/components/Eye.vue'
+
 export default {
-  data() {
-    const max = 100
-    const counts = []
-    for (let i = 0; i < max; i++) {
-      counts.push(i)
-    }
-
-    return {
-      counts
-    }
-  },
-
-  methods: {
-    handleMousemove({ x, y }) {
-      console.log(this.$refs)
-      this.counts.forEach(num => {
-        setTimeout(() => {
-          const color = this.getRandomColor()
-          const style = this.$refs[`dick${num}`][0].style
-          style.top = y + 'px'
-          style.left = x + 'px'
-          this.$refs[`ball1-${num}`][0].style.background = color
-          this.$refs[`ball2-${num}`][0].style.background = color
-          this.$refs[`shaft${num}`][0].style.background = color
-        }, 100 * num)
-      })
-
-      // const { top, left } = this.getEyeCenter()
-      // const radius = this.getEyeRadius()
-      // const slope = this.getSlope(x, y, left, top)
-      // console.log(slope)
-      // const pupil = this.$refs.pupil.style
-      // // pupil.top = this.getNewY(top, slope, radius) + 'px'
-      // // pupil.left = this.getNewX(left, slope, radius) + 'px'
-      // pupil.top = y + 'px'
-      // pupil.left = x + 'px'
-    },
-    getEyeRadius() {
-      return this.$refs.eye.getBoundingClientRect().height / 2
-    },
-    getEyeCenter() {
-      const {
-        top,
-        left,
-        height,
-        width
-      } = this.$refs.eye.getBoundingClientRect()
-
-      return {
-        top: top + height / 2,
-        left: left + width / 2
-      }
-    },
-    getSlope(x1, y1, x2, y2) {
-      return (y1 - y2) / (x1 - x2)
-    },
-    getNewX(x, m, d) {
-      let result = 1 + Math.pow(m, 2)
-      result = Math.sqrt(result)
-      result = d / result
-      return result + x
-    },
-    getNewY(y, m, d) {
-      let result = 1 + Math.pow(m, 2)
-      result = Math.sqrt(result)
-      result = (d * m) / result
-      return result + y
-    }
-  }
+  components: { Eye }
 }
 </script>
-<style lang="scss">
-html,
-body {
-  cursor: none;
-}
 
-.warp {
+<style lang="scss">
+.eyes-wrapper {
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
-  .eye {
+  .photo {
     position: relative;
-    border: 1px solid black;
-    border-radius: 50%;
-    height: 25vh;
-    width: 25vh;
+    height: 300px;
+    width: 200px;
+    background-size: contain;
+    background: url('/images/james.jpg') no-repeat center center;
+    background-size: 100% 100%;
 
-    .pupil {
-      position: fixed;
-      height: 16px;
-      width: 16px;
-      background: black;
-      margin-left: -8px;
-      margin-top: -8px;
+    .eyes {
+      position: absolute;
+      width: 100%;
+      top: 138px;
+      display: flex;
+      justify-content: center;
+
+      > * {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
     }
   }
 }

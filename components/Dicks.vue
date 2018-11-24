@@ -1,8 +1,8 @@
 <template>
   <div class="dicks">
     <div
-      v-show="isMounted"
       v-for="i in counts"
+      v-show="isMounted"
       :ref="`dick-${i}`"
       :key="i"
       class="dick-wrapper">
@@ -35,6 +35,11 @@ export default {
       default: 100
     }
   },
+  data() {
+    return {
+      isMounted: false
+    }
+  },
   computed: {
     counts() {
       const counts = []
@@ -48,6 +53,7 @@ export default {
   mounted() {
     this.makeDicks()
     setInterval(this.makeDicks, this.interval * (this.counts.length + 1))
+    this.isMounted = true
   },
   methods: {
     makeDicks() {
