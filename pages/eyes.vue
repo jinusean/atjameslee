@@ -35,7 +35,7 @@ export default {
     .eyes {
       position: absolute;
       width: 100%;
-      top: 138px;
+      top: 46%;
       display: flex;
       justify-content: center;
 

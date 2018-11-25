@@ -8,24 +8,28 @@
   </div>
 </template>
 <script>
+const watchedEvents = ['mousemove', 'touchmove']
 export default {
   mounted() {
-    document.body.addEventListener('mousemove', this.handleMouseMove)
+    watchedEvents.forEach(event =>
+      document.body.addEventListener(event, this.handleMove)
+    )
   },
   beforeDestroy() {
-    document.body.removeEventListener('mousemove', this.handleMouseMove)
+    watchedEvents.forEach(event =>
+      document.body.removeEventListener(event, this.handleMove)
+    )
   },
   methods: {
-    handleMouseMove(event) {
+    handleMove(event) {
       const center = this.getEyeCenter()
-      const eyeRadius = this.getEyeRadius()
-      const pupilRadius = this.getPupilRadius()
+      const radius = this.getEyeRadius() - this.getPupilRadius()
       const { x, y } = event
       const point = { x, y }
 
-      const newPoint = this.getIsInCircle(center, point, eyeRadius)
+      const newPoint = this.getIsInCircle(center, point, radius)
         ? point
-        : this.getCircumferencePoint(center, point, eyeRadius - pupilRadius)
+        : this.getCircumferencePoint(center, point, radius)
 
       this.setPupilPosition(newPoint)
     },
@@ -45,7 +49,7 @@ export default {
       let x = radius * Math.cos(theta)
       let y = radius * Math.sin(theta)
 
-      if (point.x < center.x) {
+      if (point.x <= center.x) {
         x *= -1
         y *= -1
       }
@@ -77,6 +81,11 @@ export default {
     getIsInCircle(center, point, radius) {
       return radius >= this.getDistance(center, point)
     },
+    getIsInEllipsis(center, point, xRadius, yRadius) {
+      const xSide = Math.pow(center.x - point.x, 2) / Math.pow(xRadius, 2)
+      const ySide = Math.pow(center.y - point.y, 2) / Math.pow(yRadius, 2)
+      return xSide + ySide <= 1
+    },
     getDistance(point1, point2) {
       const { x: x1, y: y1 } = point1
       const { x, y } = point2
@@ -90,7 +99,7 @@ export default {
 </script>
 <style lang="scss">
 .eye {
-  $size: 32px;
+  $size: 24px;
 
   position: relative;
   border: 1px solid black;
