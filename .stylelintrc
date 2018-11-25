@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-prettier"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order"
+  ],
+  "rules": {
+    "no-empty-source": null,
+    "prettier/prettier": true
+  }
+}

@@ -1,11 +1,9 @@
 import pkg from './package'
 import fs from 'fs'
 
-const getFileNames = directory =>
-  fs.readdirSync(`./${directory}`).map(file => `~/${directory}/${file}`)
-
 module.exports = {
   // mode: 'spa',
+  srcDirectory: 'src/',
   generate: {
     routes: ['/', '/dicks', '/eyes']
   },
@@ -31,7 +29,6 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    ...getFileNames('assets/css'),
     '~/assets/scss/styles.scss',
     'vue2-animate/dist/vue2-animate.min.css',
     'bootstrap-css-only/css/bootstrap.css',
