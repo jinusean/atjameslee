@@ -10,7 +10,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:css": "stylelint 'src/**/*.vue' --fix --formatter verbose",
+    "lint:css": "stylelint 'src/**/*.{vue,scss}' --fix --formatter verbose",
     "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
     "fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss,vue}' ",
     "precommit": "npm run lint"
