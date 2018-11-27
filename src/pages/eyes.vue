@@ -20,28 +20,27 @@ export default {
 <style lang="scss">
 .eyes-wrapper {
   display: flex;
-  height: 100%;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 
   .photo {
     position: relative;
-    height: 300px;
     width: 200px;
-    background-size: contain;
+    height: 300px;
     background: url('/images/james.jpg') no-repeat center center;
     background-size: 100% 100%;
 
     .eyes {
       position: absolute;
-      width: 100%;
       top: 46%;
       display: flex;
       justify-content: center;
+      width: 100%;
 
       > * {
-        margin-left: 20px;
         margin-right: 20px;
+        margin-left: 20px;
       }
     }
   }

@@ -1,11 +1,7 @@
 <template>
-  <div
-    ref="eye"
-    class="eye">
-    <div
-      ref="pupil"
-      class="pupil"/>
-  </div>
+  <div ref="eye" 
+class="eye"><div ref="pupil" 
+class="pupil" /></div>
 </template>
 <script>
 const watchedEvents = ['mousemove', 'touchmove']
@@ -23,11 +19,11 @@ export default {
   methods: {
     handleMove(event) {
       const center = this.getEyeCenter()
-      const radius = this.getEyeRadius() - this.getPupilRadius()
+      const radius = this.getRadius()
       const { x, y } = event
       const point = { x, y }
 
-      const newPoint = this.getIsInCircle(center, point, radius)
+      const newPoint = this.getIsInEllipsis(center, point, radius)
         ? point
         : this.getCircumferencePoint(center, point, radius)
 
@@ -35,9 +31,9 @@ export default {
     },
     setPupilPosition({ x, y }) {
       const { style } = this.$refs.pupil
-      style.position = 'fixed'
-      style.top = y + 'px'
-      style.left = x + 'px'
+      const { top, left } = this.$refs.eye.getBoundingClientRect()
+      style.top = y - top + 'px'
+      style.left = x - left + 'px'
     },
     getCircumferencePoint(center, point, radius) {
       let theta = 0
@@ -46,8 +42,8 @@ export default {
       if (diffX !== 0) {
         theta = Math.atan(diffY / diffX)
       }
-      let x = radius * Math.cos(theta)
-      let y = radius * Math.sin(theta)
+      let x = radius.x * Math.cos(theta)
+      let y = radius.y * Math.sin(theta)
 
       if (point.x <= center.x) {
         x *= -1
@@ -59,11 +55,27 @@ export default {
 
       return { x, y }
     },
+    getRadius() {
+      const eyeRadius = this.getEyeRadius()
+      const pupilRadius = this.getPupilRadius()
+      return {
+        x: eyeRadius.x - pupilRadius.x,
+        y: eyeRadius.y - pupilRadius.y
+      }
+    },
     getPupilRadius() {
-      return this.$refs.pupil.getBoundingClientRect().height / 2
+      const { width, height } = this.$refs.pupil.getBoundingClientRect()
+      return {
+        x: width / 2,
+        y: height / 2
+      }
     },
     getEyeRadius() {
-      return this.$refs.eye.getBoundingClientRect().height / 2
+      const { width, height } = this.$refs.eye.getBoundingClientRect()
+      return {
+        x: width / 2,
+        y: height / 2
+      }
     },
     getEyeCenter() {
       const {
@@ -81,9 +93,9 @@ export default {
     getIsInCircle(center, point, radius) {
       return radius >= this.getDistance(center, point)
     },
-    getIsInEllipsis(center, point, xRadius, yRadius) {
-      const xSide = Math.pow(center.x - point.x, 2) / Math.pow(xRadius, 2)
-      const ySide = Math.pow(center.y - point.y, 2) / Math.pow(yRadius, 2)
+    getIsInEllipsis(center, point, radius) {
+      const xSide = Math.pow(center.x - point.x, 2) / Math.pow(radius.x, 2)
+      const ySide = Math.pow(center.y - point.y, 2) / Math.pow(radius.y, 2)
       return xSide + ySide <= 1
     },
     getDistance(point1, point2) {
@@ -99,27 +111,26 @@ export default {
 </script>
 <style lang="scss">
 .eye {
-  $size: 24px;
-
+  $size: 30px;
   position: relative;
+  height: $size;
+  width: $size * 0.8;
+  background: white;
   border: 1px solid black;
   border-radius: 50%;
-  height: $size;
-  width: $size;
-  background: white;
 
   .pupil {
-    $pupil-size: $size / 3;
+    $pupil-size: 33%;
 
     position: absolute;
-    height: $pupil-size;
-    width: $pupil-size;
     top: 50%;
     left: 50%;
-    border-radius: 50%;
-    background: black;
-    margin-left: -$pupil-size / 2;
+    width: $pupil-size;
+    height: $pupil-size;
     margin-top: -$pupil-size / 2;
+    margin-left: -$pupil-size / 2;
+    background: black;
+    border-radius: 50%;
   }
 }
 </style>

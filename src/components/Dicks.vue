@@ -90,8 +90,8 @@ export default {
 </script>
 <style lang="scss">
 .dicks {
-  height: 100%;
   width: 100%;
+  height: 100%;
   $size: 36px;
 
   .dick-wrapper {
@@ -108,19 +108,19 @@ export default {
 
     .balls {
       .ball {
+        width: $size;
+        height: $size;
         background: black;
         border-radius: 100%;
-        height: $size;
-        width: $size;
       }
     }
     .shaft {
-      background: black;
-      margin-left: -$size / 2;
-      height: $size / 1.4;
       width: $size * 5;
-      border-bottom-right-radius: 50%;
+      height: $size / 1.4;
+      margin-left: -$size / 2;
+      background: black;
       border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
     }
   }
 }

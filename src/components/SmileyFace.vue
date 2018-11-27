@@ -1,79 +1,55 @@
 <template>
   <div class="smiley-face">
     <div class="eyes">
-      <div class="eyes__left"/>
-      <div class="eyes__right"/>
+      <div class="eye" />
+      <div class="eye" />
     </div>
-    <div class="mouth">
-      <div class="corner"/>
-      <div class="corner right"/>
-    </div>
+    <div class="mouth" />
   </div>
 </template>
+<script>
+export default {
+  name: 'SmileyFace'
+}
+</script>
 <style lang="scss">
 .smiley-face {
-  display: block;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   width: 300px;
   height: 300px;
-  border-radius: 150px;
-  background: yellow;
-  /*background: -webkit-gradient(*/
-    /*linear,*/
-    /*left top,*/
-    /*left bottom,*/
-    /*from(#fffe8d),*/
-    /*to(#f6d23e)*/
-  /*);*/
-  /*background: -moz-linear-gradient(top, #fffe8d, #f6d23e);*/
+  background: #ffcc11;
+  border-radius: 50%;
   box-shadow: inset 0px -14px 14px rgba(0, 0, 0, 0.3),
     0px 2px 20px rgba(0, 0, 0, 0.6);
 
   .eyes {
-    position: absolute;
-    width: 50px;
-    height: 80px;
-    background: #222;
-    border-radius: 100px/160px;
-    top: 40px;
-    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 22%;
+    margin-top: 10%;
 
-    .eyes__right {
-      right: 75px;
-    }
-
-    .eyes__left {
-      left: 75px;
+    .eye {
+      width: 18%;
+      background: #222;
+      border-radius: 62.5%;
+      margin: 0 5%;
+      /*box-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);*/
     }
   }
 
   .mouth {
-    width: 200px;
-    height: 70px;
+    width: 40%;
+    height: 15%;
+    background: rgba(0, 0, 0, 0);
     border: 10px solid #222;
     border-top: 0;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 0 0 120px 120px / 0 0 90px 90px;
-    position: absolute;
-    bottom: 50px;
-    left: 38px;
-    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
-
-    .corner {
-      width: 10px;
-      height: 30px;
-      background: #222;
-      border-radius: 100px/160px;
-      position: absolute;
-      top: -12px;
-      left: -12px;
-      transform: rotate(65deg);
-    }
-
-    .corner.right {
-      left: 202px;
-      transform: rotate(-65deg);
-    }
+    border-radius: 0 0 100% 100% / 0 0 200% 200%;
+    margin-bottom: 10%;
   }
 }
 </style>

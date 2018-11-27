@@ -29,12 +29,12 @@ export default {
 </script>
 <style lang="scss">
 .jcl-sidebar {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: fixed;
-  width: inherit;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
   height: 100%;
   overflow-y: auto;
   border-right: 1px solid lightgrey;
@@ -44,18 +44,16 @@ export default {
   }
 
   .sections-list {
-    border: 0;
+    display: block;
     padding: 0;
+
     list-style: none;
 
+    border: 0;
     .sections-list-item {
-      text-align: center;
-      font-weight: bold;
       margin-bottom: 1rem;
-
-      &.active a {
-        color: blue;
-      }
+      font-weight: bold;
+      text-align: center;
 
       a {
         color: inherit;
@@ -65,6 +63,9 @@ export default {
         }
       }
 
+      &.active a {
+        color: blue;
+      }
       &:hover,
       &:focus {
         background: none;

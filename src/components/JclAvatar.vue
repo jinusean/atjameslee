@@ -12,14 +12,44 @@ export default {
 $size: 128px;
 
 .jcl-avatar {
-  display: inline-block;
-  height: $size;
   width: $size;
-  line-height: $size;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  height: $size;
   font-size: $size / 2;
-  text-align: center;
-  border-radius: 50%;
-  background: grey;
+  line-height: $size;
   color: white;
+  text-align: center;
+
+
+
+
+
+
+
+
+  display: inline-block;
+
+
+
+
+
+  background: grey;
+  border-radius: 50%;
 }
 </style>

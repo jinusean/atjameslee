@@ -3,7 +3,7 @@ import fs from 'fs'
 
 module.exports = {
   // mode: 'spa',
-  srcDirectory: 'src/',
+  srcDir: 'src/',
   generate: {
     routes: ['/', '/dicks', '/eyes']
   },
