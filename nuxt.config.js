@@ -1,18 +1,16 @@
 import pkg from './package'
 import fs from 'fs'
 
-const getFileNames = directory =>
-  fs.readdirSync(`./${directory}`).map(file => `~/${directory}/${file}`)
-
 module.exports = {
   srcDirectory: 'src/',
   // mode: 'spa',
+  srcDir: 'src/',
   generate: {
     routes: ['/', '/dicks', '/eyes']
   },
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: pkg.name,
     meta: [
@@ -24,15 +22,14 @@ module.exports = {
   },
 
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: [
-    ...getFileNames('assets/css'),
     '~/assets/scss/styles.scss',
     'vue2-animate/dist/vue2-animate.min.css',
     'bootstrap-css-only/css/bootstrap.css',
@@ -40,23 +37,23 @@ module.exports = {
   ],
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: ['~/plugins/index.js'],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // ['nuxt-sass-resources-loader',[]]
   ],
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     extend(config, { isClient }) {
       if (isClient) {
         config.devtool = '#source-map'
