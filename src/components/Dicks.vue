@@ -1,24 +1,19 @@
 <template>
   <div class="dicks">
-    <div
-      v-for="i in counts"
-      v-show="isMounted"
-      :ref="`dick-${i}`"
-      :key="i"
-      class="dick-wrapper"
-    >
+    <div v-for="i in counts"
+         v-show="isMounted"
+         :ref="`dick-${i}`"
+         :key="i"
+         class="dick-wrapper">
       <div class="dick">
         <div class="balls">
-          <div 
-            :ref="`ball1-${i}`" 
-            class="ball ball-1" />
-          <div 
-            :ref="`ball2-${i}`" 
-            class="ball ball-2" />
+          <div :ref="`ball1-${i}`" 
+               class="ball ball-1" />
+          <div :ref="`ball2-${i}`" 
+               class="ball ball-2" />
         </div>
-        <div 
-          :ref="`shaft-${i}`" 
-          class="shaft" />
+        <div :ref="`shaft-${i}`" 
+             class="shaft" />
       </div>
     </div>
   </div>

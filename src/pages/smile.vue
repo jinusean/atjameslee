@@ -10,9 +10,9 @@ export default {
 <style lang="scss">
 .smiley-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%;
+  justify-content: center;
   width: 100%;
+  height: 100%;
 }
 </style>

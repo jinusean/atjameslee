@@ -1,7 +1,7 @@
 <template>
-  <div 
-    ref="eye"
-    class="eye"><div ref="pupil"/>
+  <div ref="eye"
+       class="eye">
+    <div ref="pupil"/>
   </div>
 </template>
 <script>
@@ -113,9 +113,10 @@ export default {
 <style lang="scss">
 .eye {
   $size: 30px;
+
   position: relative;
-  height: $size;
   width: $size * 0.8;
+  height: $size;
   background: white;
   border: 1px solid black;
   border-radius: 50%;

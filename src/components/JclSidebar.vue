@@ -1,7 +1,20 @@
 <template>
-  <el-aside>
-    <div class="jcl-sidebar"><jcl-avatar /></div>
-  </el-aside>
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li 
+          v-for="section in sections"
+          :key="section">
+          <nuxt-link 
+            :to="section === 'about' ? '/' : section"
+            :class="getLinkClass(section)"
+            class="section-link">
+            {{ section }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 </template>
 <script>
 import JclAvatar from './JclAvatar'
@@ -11,62 +24,48 @@ export default {
   components: { JclAvatar },
   computed: {
     sections() {
-      return [
-        'Home',
-        'About',
-        'Services',
-        'Skills',
-        'Experience',
-        'Education',
-        'Projects',
-        'Contact'
-      ]
+      return ['about', 'components', 'projects', 'education', 'contact']
+    }
+  },
+  methods: {
+    getLinkClass(section) {
+      let { path } = this.$route
+      path = path.substr(1, path.length).split('/')[0]
+
+      if (section === 'about') {
+        return !path ? 'active' : ''
+      }
+
+      return path.includes(section) ? 'active' : ''
     }
   }
 }
 </script>
 <style lang="scss">
-.jcl-sidebar {
-  position: fixed;
+.sidebar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: inherit;
-  height: 100%;
-  overflow-y: auto;
-  border-right: 1px solid lightgrey;
+  width: 200px;
+  background: floralwhite;
 
-  > *:not(:last-child) {
-    margin-bottom: 1rem;
-  }
+  nav {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
 
-  .sections-list {
-    display: block;
-    padding: 0;
-
-    list-style: none;
-
-    border: 0;
-    .sections-list-item {
-      margin-bottom: 1rem;
-      font-weight: bold;
+    ul {
+      padding: 0;
+      margin: 0;
+      font-size: 1.2em;
       text-align: center;
+      list-style: none;
 
-      a {
-        color: inherit;
+      li {
+        margin-bottom: 1em;
 
-        &:hover {
-          color: lightblue;
+        .section-link {
+          text-transform: capitalize;
         }
-      }
-
-      &.active a {
-        color: blue;
-      }
-      &:hover,
-      &:focus {
-        background: none;
       }
     }
   }

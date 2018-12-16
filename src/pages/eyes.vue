@@ -1,7 +1,9 @@
 <template>
-  <div class="eyes-wrapper">
-    <div class="photo">
-      <div class="eyes"><eye /> <eye /></div>
+  <div class="full-screen">
+    <div class="eyes-wrapper">
+      <div class="photo">
+        <div class="eyes"><eye /> <eye /></div>
+      </div>
     </div>
   </div>
 </template>

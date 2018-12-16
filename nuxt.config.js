@@ -3,10 +3,13 @@ import fs from 'fs'
 
 module.exports = {
   srcDirectory: 'src/',
-  // mode: 'spa',
+  mode: 'spa',
   srcDir: 'src/',
   generate: {
     routes: ['/', '/dicks', '/eyes']
+  },
+  router: {
+    // linkExactActiveClass: 'active'
   },
   /*
    ** Headers of the page
@@ -30,9 +33,10 @@ module.exports = {
    ** Global CSS
    */
   css: [
+    'normalize.css',
+    '~/assets/scss/main.scss',
     '~/assets/scss/styles.scss',
     'vue2-animate/dist/vue2-animate.min.css',
-    'bootstrap-css-only/css/bootstrap.css',
     'element-ui/lib/theme-chalk/index.css'
   ],
 
@@ -45,7 +49,10 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
-    // ['nuxt-sass-resources-loader',[]]
+    [
+      'nuxt-sass-resources-loader',
+      ['~/assets/scss/variables.scss', '~/assets/bootstrap/variables.scss']
+    ]
   ],
   /*
    ** Build configuration

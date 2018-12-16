@@ -10,16 +10,13 @@ export default {
 $size: 128px;
 
 .jcl-avatar {
+  display: inline-block;
   width: $size;
-
   height: $size;
   font-size: $size / 2;
   line-height: $size;
   color: white;
   text-align: center;
-
-  display: inline-block;
-
   background: grey;
   border-radius: 50%;
 }
