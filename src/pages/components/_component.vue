@@ -7,8 +7,8 @@
         {{ componentName }}
       </h1>
       <div slot="body">
-        <!--<component :is="component"/>-->
-        <react-photo-uploader/>
+        <component :is="component"/>
+        <!--<react-photo-uploader/>-->
       </div>
     </modal>
   </div>
@@ -16,12 +16,8 @@
 
 <script>
 import modal from '../../components/modal/modal.vue'
-// import { ReactInVue } from 'vuera'
+import { ReactInVue } from 'vuera'
 import ReactPhotoUploader from 'react-photo-uploader'
-
-// const components = {
-//   'react-photo-uploader': ReactInVue(ReactPhotoUploader)
-// }
 
 export default {
   name: 'ComponentModal',
@@ -34,10 +30,14 @@ export default {
   computed: {
     componentName() {
       return this.$route.params.component
+    },
+    component() {
+      return (
+        {
+          'react-photo-uploader': ReactInVue(ReactPhotoUploader)
+        }[this.componentName] || ReactInVue(ReactPhotoUploader)
+      )
     }
-    // component() {
-    //   return components[this.componentName] || ReactInVue(ReactPhotoUploader)
-    // }
   },
   mounted() {
     this.showModal = true

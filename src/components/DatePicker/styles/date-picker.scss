@@ -8,10 +8,10 @@
   }
 
   .icon-calendar {
-    display: inline-block;
     position: absolute;
     top: 6px;
     left: 3px;
+    display: inline-block;
     width: 15px;
     height: 15px;
     color: rgba($brand-text-color, 0.5);
@@ -21,16 +21,16 @@
 
   // Not used?
   .date-picker-mobile {
-    &:before {
-      background: $brand-white-color;
+    &::before {
+      position: absolute;
+      right: 1px;
+      bottom: 1px;
+      z-index: 9999;
+      display: inline-block;
       width: 99%;
       height: 2px;
       content: "";
-      display: inline-block;
-      position: absolute;
-      bottom: 1px;
-      z-index: 9999;
-      right: 1px;
+      background: $brand-white-color;
       @media #{$small-only} {
         background: transparent;
       }
@@ -38,9 +38,9 @@
 
     @media #{$small-only} {
       position: absolute;
+      top: -174px;
       left: 0;
       z-index: 9998;
-      top: -174px;
       padding: 0;
     }
 
@@ -53,9 +53,9 @@
         @include transition($base-transition);
         @media #{$small-only} {
           height: 45px;
+          padding-left: 12px;
           border-color: transparent;
           @include border-radius(0);
-          padding-left: 12px;
         }
         &:focus {
           @media #{$small-only} {

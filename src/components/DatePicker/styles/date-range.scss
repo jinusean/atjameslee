@@ -1,14 +1,14 @@
 .date-range {
+  z-index: 9998 !important;
+  box-sizing: border-box;
   width: 520px;
+  margin-top: -3px;
+  line-height: 20px;
+  color: rgb(72, 87, 106);
+  background: #fff;
   border: 1px solid rgba($brand-primary-color, 0.6);
   border-radius: 0 0 $border-radius-base $border-radius-base;
-  margin-top: -3px;
   box-shadow: $pop-box-shadow;
-  box-sizing: border-box;
-  background: #fff;
-  color: rgb(72, 87, 106);
-  line-height: 20px;
-  z-index: 9998 !important;
 
   .date-range__content {
     height: inherit;
@@ -16,14 +16,14 @@
     .date-range__footer {
       display: flex;
       justify-content: space-between;
+      padding: 0 16px 16px;
       text-align: right;
       background-color: #fff;
-      padding: 0 16px 16px;
 
       button {
         &.btn-cancel {
-          color: rgb(72, 87, 106);
           font-weight: 600;
+          color: rgb(72, 87, 106);
 
           &:hover {
             color: black;
@@ -36,10 +36,10 @@
   @media #{$small-only} {
     position: fixed !important;
     top: 0 !important;
-    height: 100%;
-    overflow-y: auto;
     width: 100%;
     min-width: 100%;
+    height: 100%;
+    overflow-y: auto;
     border: 0;
 
     .date-range__content {
@@ -57,8 +57,8 @@
 .zoom-in-top-enter-active,
 .zoom-in-top-leave-active {
   opacity: 1;
-  transform: scaleY(1);
   transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  transform: scaleY(1);
   transform-origin: center top;
 }
 

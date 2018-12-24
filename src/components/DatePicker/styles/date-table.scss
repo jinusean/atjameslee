@@ -1,21 +1,21 @@
 .date-table {
-  table-layout: fixed;
   width: 100%;
-  font-size: 12px;
   min-width: 224px;
+  font-size: 12px;
+  table-layout: fixed;
   user-select: none;
 
   th {
     padding: 5px;
-    text-align: center;
-    color: rgb(131, 145, 165);
     font-weight: 500;
+    color: rgb(131, 145, 165);
+    text-align: center;
   }
 
   td {
+    box-sizing: border-box;
     width: 32px;
     height: 32px;
-    box-sizing: border-box;
     text-align: center;
     cursor: pointer;
 
@@ -40,13 +40,13 @@
       position: relative;
       color: #20a0ff;
 
-      &:before {
-        content: " ";
+      &::before {
         position: absolute;
         top: 0;
         right: 0;
         width: 0;
         height: 0;
+        content: " ";
         border-top: 0.5em solid #20a0ff;
         border-left: .5em solid transparent;
       }
@@ -55,14 +55,14 @@
     &.current:not(.disabled),
     &.start-date,
     &.end-date {
-      background-color: #20a0ff !important;
       color: #fff;
+      background-color: #20a0ff !important;
     }
 
     &.disabled {
+      color: #ccc;
       background-color: $table-bg-accent;
       opacity: 1;
-      color: #ccc;
     }
   }
 }

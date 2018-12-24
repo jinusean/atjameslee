@@ -10,7 +10,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "stylelint": "stylelint 'src/**/*.{vue,scss}' --fix --formatter verbose",
+    "slint": "stylelint 'src/**/*.{vue,scss}' --fix --formatter verbose",
     "precommit": "npm run lint"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "react-dom": "^16.6.3",
     "react-photo-uploader": "^0.6.9",
     "stylelint": "^9.8.0",
+    "vue-date-input": "^1.0.0",
     "vue-scrollto": "^2.13.0",
     "vue2-animate": "^2.1.0",
     "vue2-scrollspy": "^2.3.1",

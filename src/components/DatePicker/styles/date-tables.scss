@@ -1,12 +1,12 @@
 .date-tables {
   .date-tables__panel {
-    float: left;
     position: relative;
-    min-width: 224px;
-    width: 50%;
-    margin: 0;
-    padding: 16px;
     box-sizing: border-box;
+    float: left;
+    width: 50%;
+    min-width: 224px;
+    padding: 16px;
+    margin: 0;
 
     &.is-right {
       .date-tables__panel__header {
@@ -18,8 +18,8 @@
         }
 
         div {
-          margin-left: 50px;
           margin-right: 50px;
+          margin-left: 50px;
         }
       }
     }
@@ -34,34 +34,34 @@
 
     .date-tables__panel__header {
       position: relative;
-      text-align: center;
       height: 28px;
+      text-align: center;
 
       button {
-        margin-left: 6px;
         float: left;
+        margin-left: 6px;
 
         @media #{$small-only} {
+          position: relative;
+          top: -6px;
+          left: -4px;
           padding: 8px;
           margin-left: 0;
-          position: relative;
-          left: -4px;
-          top: -6px;
         }
       }
 
       div {
-        font-size: 14px;
         margin-right: 50px;
+        font-size: 14px;
       }
 
       .date-tables__icon-btn {
+        margin-top: 3px;
         font-size: 12px;
         color: rgb(151, 168, 190);
-        border: 0;
-        background: transparent;
         cursor: pointer;
-        margin-top: 3px;
+        background: transparent;
+        border: 0;
 
         &:hover {
           color: #20a0ff;
@@ -71,7 +71,7 @@
         &.el-icon-d-arrow-right,
         &.el-icon-arrow-left,
         &.el-icon-arrow-right {
-          &:before {
+          &::before {
             font-size: 8px;
           }
         }
@@ -84,8 +84,8 @@
       width: 100%;
 
       &.is-left {
-        border-bottom: $border-default;
         border-right: $none-value;
+        border-bottom: $border-default;
       }
     }
   }

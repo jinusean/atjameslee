@@ -66,9 +66,9 @@ export default {
 </script>
 <style lang="scss">
 .icon-date {
-  font: normal normal normal 14px/1 FontAwesome !important;
   right: initial;
-  &:before {
+  font: normal normal normal 14px/1 FontAwesome !important;
+  &::before {
     content: '\f133';
   }
 }
