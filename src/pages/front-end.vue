@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import components from '~/utils/components'
-import ComponentCard from '../components/ComponentCard'
+import components from '~/utils/components.yaml'
+import ComponentCard from '../components/font-end/ComponentCard.vue'
+
 export default {
-  name: 'ComponentsPage',
+  name: 'FrontEndPage',
   components: { ComponentCard },
   computed: {
     components() {
@@ -22,4 +23,7 @@ export default {
 }
 </script>
 <style lang="scss">
+.component-card {
+  margin-bottom: 1.5em;
+}
 </style>

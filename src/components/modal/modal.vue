@@ -39,7 +39,7 @@ export default {
   name: 'Modal',
   methods: {
     handleMaskClick(event) {
-      if (!event.target.contains(this.$refs.modalWrapper)) {
+      if (this.$refs.modalWrapper.contains(event.target)) {
         return
       }
       this.$emit('close')

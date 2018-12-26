@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
   z-index: 9998;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +17,7 @@
 .modal-wrapper {
   min-width: 300px;
   padding: 20px 30px;
-  margin: 0 auto;
+  margin: auto;
   font-family: Helvetica, Arial, sans-serif;
   background-color: #fff;
   border-radius: 2px;
@@ -24,7 +25,7 @@
   transition: all .3s ease;
 }
 
-.modal-header h3 {
+.modal-header > * {
   margin-top: 0;
   color: #42b983;
 }

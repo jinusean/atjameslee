@@ -1,7 +1,7 @@
 <template>
   <div class="component-card">
     <nuxt-link
-      :to="`/components/${component.id}`"
+      :to="`front-end/${component.id}`"
       class="component-card__content">
 
       <div class="component-card__preview">
@@ -9,9 +9,9 @@
       </div>
 
       <div class="component-card__info">
-        <h3>{{ component.title }}</h3>
+        <h3 class="component-card__title">{{ title }}</h3>
         <h4>{{ component.subtitle }}</h4>
-        <p> {{ component.info }} </p>
+        <p v-html="component.info"/>
       </div>
 
     </nuxt-link>
@@ -41,15 +41,22 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    title() {
+      return this.component.id.split('-').join(' ')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+$component-card-radius: 0.5em;
+
 .component-card {
   display: flex;
   border: $border;
-  border-radius: 0.5em;
+  border-radius: $component-card-radius;
 
   .component-card__content {
     display: grid;
@@ -60,17 +67,17 @@ export default {
 
     .component-card__preview {
       width: 16em;
-      height: 16em;
 
       img {
         max-width: 100%;
-        max-height: 100%;
+        max-height: 16em;
       }
     }
 
-    .component__info {
-      h3 {
+    .component-card__info {
+      .component-card__title {
         margin: 0 0 0.5em 0;
+        text-transform: capitalize;
       }
       h4 {
         margin: 0;
@@ -78,9 +85,15 @@ export default {
     }
   }
 
+  .component-card__content:hover {
+    color: inherit;
+  }
+
   .component-card__links {
     padding: 1em 0.75em;
     background: $gray-200;
+    border-top-right-radius: $component-card-radius;
+    border-bottom-right-radius: $component-card-radius;
     a {
       display: block;
       margin-bottom: 1em;
@@ -93,6 +106,15 @@ export default {
           opacity: 0.5;
         }
       }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .component-card {
+    .component-card__content {
+      grid-template-rows: auto 1fr;
+      grid-template-columns: auto;
     }
   }
 }

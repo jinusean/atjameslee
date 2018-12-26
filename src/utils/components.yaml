@@ -1,0 +1,15 @@
+- id: 'vue-date-input'
+  subtitle: "Input or pick a date range"
+  info: "A quick & dirty hack on element-ui's date-picker component. <br>Logic changed as little as possible from element-ui source code.<br>Fully accessible."
+  gitlab: true
+  npm: true
+- id: 'react-photo-uploader'
+  subtitle: 'Upload, drop, and take a photo'
+  info: 'First attempt at creating a react component. <br>Users can upload a file, drag & drop a file, or take a new picture with the camera. Imported to this Vue project using Vuera.'
+  gitlab: true
+  npm: true
+- id: 'vuex-actions-states'
+  subtitle: 'Nuxt-module state manager for vuex actions'
+  info: "Keep track of your vuex-actions with the <b>$actions</b> plugin. Eliminates the need for 'isFetching' boolean trackers site-wide."
+  gitlab: true
+  npm: true

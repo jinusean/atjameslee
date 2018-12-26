@@ -36,8 +36,7 @@ module.exports = {
     'normalize.css',
     '~/assets/scss/main.scss',
     '~/assets/scss/styles.scss',
-    'vue2-animate/dist/vue2-animate.min.css',
-    'element-ui/lib/theme-chalk/index.css'
+    'vue2-animate/dist/vue2-animate.min.css'
   ],
 
   /*
@@ -49,6 +48,7 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
+    ['vuex-actions-states'],
     [
       'nuxt-sass-resources-loader',
       ['~/assets/scss/variables.scss', '~/assets/bootstrap/variables.scss']
@@ -65,6 +65,11 @@ module.exports = {
       if (isClient) {
         config.devtool = '#source-map'
       }
+
+      config.module.rules.push({
+        test: /\.y?(a)ml$/,
+        use: ['json-loader', 'yaml-loader']
+      })
     }
   }
 }

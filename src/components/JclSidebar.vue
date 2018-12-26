@@ -6,7 +6,7 @@
           v-for="section in sections"
           :key="section">
           <nuxt-link 
-            :to="section === 'about' ? '/' : section"
+            :to="section === 'about' ? '/' : `/${section}`"
             :class="getLinkClass(section)"
             class="section-link">
             {{ section }}
@@ -24,7 +24,7 @@ export default {
   components: { JclAvatar },
   computed: {
     sections() {
-      return ['about', 'components', 'projects', 'education', 'contact']
+      return ['about', 'front-end', 'projects', 'education', 'contact']
     }
   },
   methods: {
