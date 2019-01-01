@@ -1,12 +1,19 @@
 // src/store/index.js
+import projects from '../utils/projects.yaml'
 
 export const state = () => ({
-  foo: ''
+  projects
 })
 
 export const mutations = {
   setFoo(state, foo) {
     state.foo = foo
+  }
+}
+
+export const getters = {
+  getProject(state) {
+    return projectId => state.projects.find(project => project.id === projectId)
   }
 }
 
@@ -29,4 +36,3 @@ export const actions = {
     // Will not be called
   }
 }
-

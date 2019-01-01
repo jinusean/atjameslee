@@ -48,6 +48,7 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
+    ['@nuxtjs/markdownit'],
     ['vuex-actions-states'],
     [
       'nuxt-sass-resources-loader',
@@ -71,5 +72,13 @@ module.exports = {
         use: ['json-loader', 'yaml-loader']
       })
     }
+  },
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: [
+      'markdown-it-attrs'
+    ]
   }
 }

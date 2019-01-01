@@ -1,2 +1,77 @@
+- id: beauty-quotient
+  description: Facial recognition technology + the golden ratio
+  name: Beauty Quotient
+  owner: Personal Project
+  type: Node Development
+  link: https://gitlab.com/jinusean/beauty-quotient
+  images:
+    banner: beauty-quotient.png
+
+- id: import-genius
+  name: Import Genius
+  description: Find New Opportunities in Global Trade
+  owner: Code-Ninja
+  type: Full-stack Development
+  link: http://importgenius.com
+  images:
+    logo: import-genius-logo.png
+
 - id: tagalong
-  title: tagalong.ph
+  description: Philippines' first aggregated news site for multiple languages
+  name: tagalong.ph
+  owner: Personal Project
+  type: Full-Stack Development
+  link: https://tagalong.ph/
+  images:
+    banner: tagalong.png
+
+- id: bittionaire
+  description: Become a bitcoin billionaire
+  name: Bittionaire
+  owner: Personal Project
+  type: Full-Stack Development
+  link: https://gitlab.com/jinusean/bittionaire
+  images:
+    banner: bittionaire.png
+  tags:
+    - Node
+    - Electron
+    - Nuxt
+    - Vue
+    - NeDB
+    - Chartjs
+    - Multithreading
+
+- id: swaychat
+  name: SwayChat
+  description: Talk to your customers in real-time
+  owner: Code-Ninja
+  type: Full-stack Development
+  link: https://swaychat.com/
+  images:
+    logo: swaychat-logo.png
+  tags:
+    - Node
+    - nuxt
+    - vue
+    - firebase
+    - stripe
+
+- id: mooketplace
+  name: Mooketplace
+  description: Online trading expert
+  owner: Linken Labs Ltd.
+  type: Full-Stack Development
+  link: https://gitlab.com/jinusean/mooketplace-api
+  images:
+    banner: mooketplace.jpg
+    logo: mooketplace-logo.jpg
+  tags:
+    - c#
+    - AngularJS
+    - .net
+    - MySql
+    - AWS
+    - Jira
+    - TortoiseSVN
+

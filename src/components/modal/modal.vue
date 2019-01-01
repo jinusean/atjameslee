@@ -1,7 +1,9 @@
 <template>
   <transition name="modal">
-    <div 
-      class="modal-mask" 
+    <div
+      v-if="isOpen"
+      class="modal-mask"
+      @keydown.esc="$emit('toggle', false)"
       @click="handleMaskClick">
       <div 
         ref="modalWrapper" 
@@ -25,7 +27,7 @@
           <slot name="footer">
             <button
               class="modal-default-button"
-              @click="$emit('close')">
+              @click="$emit('toggle', false)">
               OK
             </button>
           </slot>
@@ -37,12 +39,38 @@
 <script>
 export default {
   name: 'Modal',
+  model: {
+    prop: 'isOpen',
+    event: 'toggle'
+  },
+  props: {
+    isOpen: {
+      type: Boolean,
+      default: true
+    },
+    bodyClass: {
+      type: String,
+      default: 'body-modal-open'
+    }
+  },
+  watch: {
+    isOpen: {
+      immediate: true,
+      handler(isOpen) {
+        const method = isOpen ? 'add' : 'remove'
+        document.body.classList[method](this.bodyClass)
+      }
+    }
+  },
+  beforeDestroy() {
+    document.body.classList.remove(this.bodyClass)
+  },
   methods: {
     handleMaskClick(event) {
       if (this.$refs.modalWrapper.contains(event.target)) {
         return
       }
-      this.$emit('close')
+      this.$emit('toggle', false)
     }
   }
 }

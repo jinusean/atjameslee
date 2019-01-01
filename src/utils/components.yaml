@@ -1,6 +1,11 @@
 - id: 'vue-date-input'
   subtitle: "Input or pick a date range"
-  info: "A quick & dirty hack on element-ui's date-picker component. <br>Logic changed as little as possible from element-ui source code.<br>Fully accessible."
+  info: "Inspired by element-ui's date-picker component.<br>Fully accessible and fully-responsive."
+  gitlab: true
+  npm: true
+- id: 'eslint-plugin-jinusean'
+  subtitle: 'min-attributes-per-line'
+  info: "An answer to eslint-config-vue's max-attribute-per-line rule"
   gitlab: true
   npm: true
 - id: 'react-photo-uploader'

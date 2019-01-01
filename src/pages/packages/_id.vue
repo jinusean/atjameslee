@@ -1,19 +1,14 @@
 <template>
   <div>
-    <modal
-      v-show="showModal"
-      @close="handleClose">
+    <modal 
+      v-model="showModal" 
+      @toggle="handleClose">
       <h1 slot="header">
         {{ componentName }}
       </h1>
-      <div 
+      <component 
         slot="body" 
-        class="modal-body">
-        <component 
-          :is="component.component" 
-          v-bind="component.attrs"/>
-
-      </div>
+        :is="component"/>
     </modal>
   </div>
 </template>
@@ -22,9 +17,9 @@
 import modal from '../../components/modal/modal.vue'
 import { ReactInVue } from 'vuera'
 import ReactPhotoUploader from 'react-photo-uploader'
-import VueDateInput from 'vue-date-input'
-import 'vue-date-input/dist/styles.css'
 import VuexActionsStatesModalBody from '../../components/font-end/VuexActionsStatesModalBody.vue'
+import EslintPluginJinuseanModalBody from '../../components/font-end/EslintPluginJinuseanModalBody.vue'
+import VueDateInputModalBody from '../../components/font-end/VueDateInputModalBody.vue'
 
 export default {
   name: 'ComponentModal',
@@ -40,18 +35,10 @@ export default {
     },
     component() {
       return {
-        'react-photo-uploader': {
-          component: ReactInVue(ReactPhotoUploader)
-        },
-        'vue-date-input': {
-          component: VueDateInput,
-          attrs: {
-            value: [new Date(), new Date()]
-          }
-        },
-        'vuex-actions-states': {
-          component: VuexActionsStatesModalBody
-        }
+        'react-photo-uploader': ReactInVue(ReactPhotoUploader),
+        'vue-date-input': VueDateInputModalBody,
+        'vuex-actions-states': VuexActionsStatesModalBody,
+        'eslint-plugin-jinusean': EslintPluginJinuseanModalBody
       }[this.componentName]
     }
   },
@@ -65,7 +52,7 @@ export default {
 
       // Probably should use transitions...
       setTimeout(() => {
-        this.$router.push('/front-end')
+        this.$router.push('/packages')
       }, MODAL_TRANSITION_DELAY)
     }
   }

@@ -24,7 +24,7 @@ export default {
   components: { JclAvatar },
   computed: {
     sections() {
-      return ['about', 'front-end', 'projects', 'education', 'contact']
+      return ['about', 'experiences', 'packages', 'projects', 'contact']
     }
   },
   methods: {
@@ -43,21 +43,33 @@ export default {
 </script>
 <style lang="scss">
 .sidebar {
-  display: flex;
+  position: relative;
   width: 200px;
-  background: floralwhite;
+
+  /* height: 100vh; */
 
   nav {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
+    position: sticky;
+    top: 12em;
+
+    /* bottom: 0; */
+
+    /* left: 0; */
+
+    /* display: flex; */
+
+    /* flex-direction: column; */
+
+    /* justify-content: center; */
+
+    /* width: inherit; */
 
     ul {
       padding: 0;
       margin: 0;
       font-size: 1.2em;
-      text-align: center;
+
+      /* text-align: center; */
       list-style: none;
 
       li {
@@ -68,6 +80,13 @@ export default {
         }
       }
     }
+  }
+}
+</style>
+<style lang="scss">
+@include media-breakpoint-down(sm) {
+  .sidebar {
+    display: none;
   }
 }
 </style>

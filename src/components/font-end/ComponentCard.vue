@@ -1,11 +1,11 @@
 <template>
   <div class="component-card">
     <nuxt-link
-      :to="`front-end/${component.id}`"
+      :to="`/packages/${component.id}`"
       class="component-card__content">
 
       <div class="component-card__preview">
-        <img :src="`/images/${component.id}.png`">
+        <img :src="`/images/${component.id}.png`"/>
       </div>
 
       <div class="component-card__info">
@@ -21,13 +21,13 @@
         v-if="component.gitlab"
         :href="`https://gitlab.com/jinusean/${component.id}`"
         target="_blank">
-        <img src="/icons/gitlab.png">
+        <img src="/logos/gitlab.png">
       </a>
       <a
         v-if="component.npm"
         :href="`https://www.npmjs.com/package/${component.id}`"
         target="_blank">
-        <img src="/icons/npm.png">
+        <img src="/logos/npm.png">
       </a>
     </div>
   </div>
@@ -55,6 +55,8 @@ $component-card-radius: 0.5em;
 
 .component-card {
   display: flex;
+  height: 12em;
+  overflow: hidden;
   border: $border;
   border-radius: $component-card-radius;
 
@@ -69,8 +71,9 @@ $component-card-radius: 0.5em;
       width: 16em;
 
       img {
+        width: 100%;
         max-width: 100%;
-        max-height: 16em;
+        max-height: 100%;
       }
     }
 
@@ -94,6 +97,7 @@ $component-card-radius: 0.5em;
     background: $gray-200;
     border-top-right-radius: $component-card-radius;
     border-bottom-right-radius: $component-card-radius;
+
     a {
       display: block;
       margin-bottom: 1em;
