@@ -22,24 +22,23 @@ export default {
 .jcl-layout {
   display: grid;
   grid-template-areas: 'sidebar main';
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 200px 1fr;
   width: 1100px;
   max-width: 100%;
   min-height: 100vh;
   margin: auto;
-
-  > * {
-    /* box-sizing: border-box; */
-
-    /* height: 100vh; */
-  }
+  overflow: hidden;
 
   .jcl-sidebar {
     grid-area: sidebar;
+    width: 200px;
   }
 
   .jcl-main {
     grid-area: main;
+    box-sizing: border-box;
+    width: 900px;
+    max-width: 100%;
     padding: 2em;
 
     h1 {
@@ -52,6 +51,7 @@ export default {
   .jcl-layout {
     grid-template-areas: 'main';
     grid-template-columns: 100%;
+
     /* display: block; */
     overflow: hidden;
   }

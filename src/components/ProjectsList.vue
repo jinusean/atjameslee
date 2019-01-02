@@ -61,7 +61,6 @@ export default {
 
 <style lang="scss">
 ul.projects__list {
-
   /* margin: 0; */
 
   /* width: 800px; */

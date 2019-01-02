@@ -21,6 +21,13 @@ a {
   }
 }
 
+blockquote {
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: 0.2em solid $primary-color;
+  font-style: italic;
+}
+
 figure {
   margin: 0;
 

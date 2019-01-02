@@ -44,7 +44,7 @@ export default {
 <style lang="scss">
 .sidebar {
   position: relative;
-  width: 200px;
+  width: 100%;
 
   /* height: 100vh; */
 

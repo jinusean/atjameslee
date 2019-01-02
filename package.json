@@ -28,6 +28,7 @@
     "stylelint": "^9.8.0",
     "vue-date-input": "^1.0.3",
     "vue-progressive-image": "^3.2.0",
+    "vue-scroll-reveal": "^1.0.11",
     "vue-scrollto": "^2.13.0",
     "vue2-animate": "^2.1.0",
     "vue2-scrollspy": "^2.3.1",

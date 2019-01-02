@@ -32,7 +32,7 @@
   type: Full-Stack Development
   link: https://gitlab.com/jinusean/bittionaire
   images:
-    banner: bittionaire.png
+    banner: bittionaire-banner.jpg
   tags:
     - Node
     - Electron

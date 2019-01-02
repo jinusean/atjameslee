@@ -58,7 +58,6 @@ export default {
 
 <style lang="scss" scoped>
 .imac-container {
-
   /* height: 500px; */
 
   /* width: 600px; */
