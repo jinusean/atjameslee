@@ -2,7 +2,7 @@
   <div class="smiley-wrapper"><smiley-face /></div>
 </template>
 <script>
-import SmileyFace from '../components/SmileyFace'
+import SmileyFace from '../components/misc/SmileyFace'
 export default {
   components: { SmileyFace }
 }

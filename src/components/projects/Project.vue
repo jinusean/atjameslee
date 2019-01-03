@@ -2,15 +2,20 @@
   <div v-if="project">
     <section :class="`project project__${projectId}`">
 
-      <figure class="project__image">
-        <img
-          ref="banner"
-          :src="`/images/${project.images.banner}`">
-      </figure>
+      <div 
+        ref="header" 
+        class="project__header">
+        <figure class="project__banner">
+          <img
+            ref="banner"
+            :src="`/images/${project.images.banner}`">
+        </figure>
 
-      <h1
-        ref="heading"
-        class="project__title">{{ project.name }}</h1>
+        <h1
+          ref="title"
+          class="project__title">{{ project.name }}</h1>
+      </div>
+
 
       <TagsList
         :tags="project.tags"
@@ -57,7 +62,7 @@ export default {
     }
     this.article = (await import(`../../articles/projects/${
       this.projectId
-      }.md`)).default
+    }.md`)).default
   }
 }
 </script>
@@ -79,4 +84,3 @@ export default {
   }
 }
 </style>
-

@@ -18,13 +18,12 @@ export default {
     bannerEl() {
       return this.$children[0].$refs.banner
     },
-    headingEl() {
-      return this.$children[0].$refs.heading
+    titleEl() {
+      return this.$children[0].$refs.title
     }
   },
   mounted() {
     document.addEventListener('scroll', this.handleScroll)
-    this.bannerEl.parentElement.style.overflow = 'hidden'
     this.bannerEl.style.transformOrigin = 'center bottom'
   },
   beforeDestroy() {
@@ -34,28 +33,19 @@ export default {
     handleScroll({ target }) {
       if (!this.isTicking) {
         window.requestAnimationFrame(() => {
-          const { scrollTop, scrollHeight } = document.documentElement
-          const scale = 1 + (2 * scrollTop) / scrollHeight
-          this.bannerEl.style.transform = `scale(${scale})`
-
-          const { top, height } = this.bannerEl.getBoundingClientRect()
-          const topBuffer = top + window.scrollY
-
-          console.log(topBuffer)
-          console.log(top, height)
-
-          // const maxPosition =
-          //   Math.floor(height - this.headingEl.getBoundingClientRect().height) -
-          //   1
-          // this.headingEl.style.top = newPosition + 'px'
-          //
-          // const newPosition = Math.min(scrollTop, maxPosition)
-
+          this.evaluateParallax()
           this.isTicking = false
         })
       }
 
       this.isTicking = true
+    },
+    evaluateParallax() {
+      const { scrollTop, scrollHeight } = document.documentElement
+      const scale = scrollTop / scrollHeight
+      this.bannerEl.style.transform = `scale(${1 + 2 * scale})`
+      this.titleEl.style.marginTop = scrollTop + 'px'
+      this.titleEl.style.transform = `scale(${1 + 8 * scale})`
     }
   }
 }
@@ -66,21 +56,33 @@ export default {
 .project.project__bittionaire {
   position: relative;
 
-  .project__title {
-    position: absolute;
-    top: 0;
-    /*left: 50%;*/
-    /// margin-left: -25%;
-    width: 100%;
-    padding: 1em 0;
-    margin: 0;
-    font-size: 4em;
-    font-style: italic;
-    font-weight: 800;
-    color: white;
-    text-align: center;
-    background: rgba(255, 0, 0, 0.75);
-    //transform: skew(-10deg);
+  .project__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .project__banner {
+      transform-origin: center bottom;
+
+      img {
+        display: block;
+      }
+    }
+
+    .project__title {
+      position: absolute;
+      width: 100%;
+      padding: 1em 0;
+      margin: 0;
+      font-size: 4em;
+      font-style: italic;
+      font-weight: 800;
+      color: white;
+      text-align: center;
+      background: rgba(255, 0, 0, 0.75);
+    }
   }
 
   .img-event-loop {
@@ -96,6 +98,10 @@ export default {
     .img-event-loop {
       width: 100%;
       margin: auto;
+    }
+
+    .project__header {
+      margin: (-$layout-padding) (-$layout-padding) 0 (-$layout-padding);
     }
   }
 }

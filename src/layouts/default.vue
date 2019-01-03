@@ -27,19 +27,17 @@ export default {
   max-width: 100%;
   min-height: 100vh;
   margin: auto;
-  overflow: hidden;
 
   .jcl-sidebar {
     grid-area: sidebar;
     width: 200px;
+    padding: $layout-padding;
   }
 
   .jcl-main {
     grid-area: main;
-    box-sizing: border-box;
-    width: 900px;
-    max-width: 100%;
-    padding: 2em;
+    width: 100%;
+    padding: $layout-padding;
 
     h1 {
       text-transform: uppercase;

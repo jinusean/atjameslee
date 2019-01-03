@@ -143,14 +143,14 @@ export default {
 .experiences {
   position: relative;
 
-  //.timeline {
-  //  position: absolute;
-  //  top: 0.5em;
-  //  bottom: 0.5em;
-  //  z-index: -1;
-  //  width: calc(8em - 1px);
-  //  border-right: 1px solid lightgrey;
-  //}
+  .timeline {
+  position: absolute;
+  top: 0.5em;
+  bottom: 0.5em;
+  z-index: -1;
+  width: calc(8em - 1px);
+  border-right: 1px solid lightgrey;
+  }
 }
 
 .experiences__list .experiences__list-item .experience {

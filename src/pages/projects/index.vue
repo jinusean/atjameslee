@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import ProjectCard from '../../components/ProjectCard.vue'
-import ProjectsList from '../../components/ProjectsList.vue'
+import ProjectCard from '../../components/projects/ProjectCard.vue'
+import ProjectsList from '../../components/projects/ProjectsList.vue'
 
 export default {
   components: {

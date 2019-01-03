@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import Eye from '~/components/Eye.vue'
+import Eye from '~/components/misc/Eye.vue'
 
 export default {
   name: 'Eye',

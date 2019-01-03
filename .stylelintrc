@@ -15,6 +15,7 @@
     }],
     "font-family-no-missing-generic-family-keyword" : null,
     "no-empty-source": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "block-no-empty": null
   }
 }

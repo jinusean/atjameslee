@@ -1,9 +1,22 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
 html,
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: $primary-color;
-
 }
 
 a {
@@ -22,10 +35,10 @@ a {
 }
 
 blockquote {
-  margin-left: 1em;
   padding-left: 1em;
-  border-left: 0.2em solid $primary-color;
+  margin-left: 1em;
   font-style: italic;
+  border-left: 0.2em solid $primary-color;
 }
 
 figure {

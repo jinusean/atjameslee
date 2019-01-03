@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import MacImg from './MacImg'
-import MonitorImg from './MonitorImg'
+import MacImg from '../images/MacImg'
+import MonitorImg from '../images/MonitorImg'
 
 export default {
   name: 'ProjectsList',
