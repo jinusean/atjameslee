@@ -84,21 +84,12 @@ export default {
       background: rgba(255, 0, 0, 0.75);
     }
   }
-
-  .img-event-loop {
-    width: 50%;
-    margin: auto;
-  }
 }
 </style>
 
 <style lang="scss">
 @include media-breakpoint-down(sm) {
   .project.project__bittionaire {
-    .img-event-loop {
-      width: 100%;
-      margin: auto;
-    }
 
     .project__header {
       margin: (-$layout-padding) (-$layout-padding) 0 (-$layout-padding);

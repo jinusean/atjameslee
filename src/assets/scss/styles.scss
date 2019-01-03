@@ -10,3 +10,19 @@
   padding-left: 1.2em;
   list-style: disc;
 }
+
+.hr-star {
+  position: relative;
+  border: none;
+  margin: 2em 0;
+  height: 1em;
+
+  &::after {
+
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 2em;
+    content: "⋇⋇⋇";
+  }
+}

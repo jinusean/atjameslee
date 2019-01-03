@@ -41,6 +41,7 @@
     - NeDB
     - Chartjs
     - Multithreading
+    - WebSockets
 
 - id: swaychat
   name: SwayChat

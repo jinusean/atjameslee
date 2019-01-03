@@ -22,8 +22,14 @@
         class="project__tags"/>
 
       <article
+        v-if="article"
         class="project__article"
         v-html="article"/>
+      <p
+        class="coming-soon"
+        v-else>
+        COMING SOON!
+      </p>
     </section>
 
     <nuxt-link
@@ -60,9 +66,13 @@ export default {
         message: 'Project not found: ' + projectId
       })
     }
-    this.article = (await import(`../../articles/projects/${
-      this.projectId
-    }.md`)).default
+    try {
+      this.article = (await import(`../../articles/projects/${
+        this.projectId
+        }.md`)).default
+    } catch (error) {
+      console.warn(error)
+    }
   }
 }
 </script>
@@ -79,8 +89,29 @@ export default {
     line-height: 1.5;
   }
 
+  // img captions
+  em {
+    font-size: 0.8em;
+    font-style: normal;
+  }
+
   img {
+    display: block;
+    width: 100%;
     max-width: 100%;
+    margin: auto;
+  }
+
+  .project__footer {
+    margin-top: 4em;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .img-md {
+    // p tag
+    width: 75%;
+    margin: auto;
   }
 }
 </style>
