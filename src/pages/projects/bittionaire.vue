@@ -30,7 +30,7 @@ export default {
     document.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
-    handleScroll({ target }) {
+    handleScroll() {
       if (!this.isTicking) {
         window.requestAnimationFrame(() => {
           this.evaluateParallax()
@@ -41,10 +41,14 @@ export default {
       this.isTicking = true
     },
     evaluateParallax() {
-      const { scrollTop, scrollHeight } = document.documentElement
+      const { scrollTop, scrollHeight } =
+        document.scrollingElement || document.documentElement
+      if (scrollTop < 0) { // lol safari
+        return
+      }
       const scale = scrollTop / scrollHeight
       this.bannerEl.style.transform = `scale(${1 + 2 * scale})`
-      this.titleEl.style.marginTop = scrollTop + 'px'
+      this.titleEl.style.marginTop = scrollTop / 2 + 'px'
       this.titleEl.style.transform = `scale(${1 + 8 * scale})`
     }
   }
@@ -53,7 +57,7 @@ export default {
 
 
 <style lang="scss">
-.project.project__bittionaire {
+.project.project-bittionaire {
   position: relative;
 
   .project__header {
@@ -89,8 +93,7 @@ export default {
 
 <style lang="scss">
 @include media-breakpoint-down(sm) {
-  .project.project__bittionaire {
-
+  .project.project-bittionaire {
     .project__header {
       margin: (-$layout-padding) (-$layout-padding) 0 (-$layout-padding);
     }

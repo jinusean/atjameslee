@@ -17,16 +17,27 @@
     logo: import-genius-logo.png
 
 - id: tagalong
-  description: Philippines' first aggregated news site for multiple languages
+  description: Philippines' first aggregated news site for in English, Tagalog, and Cebuano
   name: tagalong.ph
   owner: Personal Project
   type: Full-Stack Development
   link: https://tagalong.ph/
   images:
-    banner: tagalong.png
-
+    banner: tagalong-banner.png
+    site: tagalong.png
+  tags:
+    - Nuxt
+    - Vue
+    - MongoDB Atlas
+    - Mongoose
+    - Express
+    - AWS Lambda
+    - Serverless
+    - Jest
+    - Netlify
+    - Cloudinary
 - id: bittionaire
-  description: Become a bitcoin billionaire
+  description: Become a Bitcoin billionaire
   name: Bittionaire
   owner: Personal Project
   type: Full-Stack Development
@@ -50,6 +61,7 @@
   type: Full-stack Development
   link: https://swaychat.com/
   images:
+    banner: swaychat-logo-text.png
     logo: swaychat-logo.png
   tags:
     - Node

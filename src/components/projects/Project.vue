@@ -1,6 +1,6 @@
 <template>
   <div v-if="project">
-    <section :class="`project project__${projectId}`">
+    <section :class="`project project-${projectId}`">
 
       <div 
         ref="header" 
@@ -26,8 +26,8 @@
         class="project__article"
         v-html="article"/>
       <p
-        class="coming-soon"
-        v-else>
+        v-else
+        class="project__article-coming-soon">
         COMING SOON!
       </p>
     </section>
@@ -69,7 +69,7 @@ export default {
     try {
       this.article = (await import(`../../articles/projects/${
         this.projectId
-        }.md`)).default
+      }.md`)).default
     } catch (error) {
       console.warn(error)
     }
@@ -112,6 +112,18 @@ export default {
     // p tag
     width: 75%;
     margin: auto;
+  }
+}
+</style>
+
+<style lang="scss">
+.project.project-tagalong {
+  .project__banner {
+
+    img {
+      height: 8em;
+      width: auto;
+    }
   }
 }
 </style>
