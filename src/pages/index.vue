@@ -1,6 +1,10 @@
 <template>
-  <section>
-    <p>
+  <section class="about">
+    <h1 class="about__title">
+      James C. Lee
+    </h1>
+
+    <p class="about__description">
       I'm just a lowly fullstack developer who began his programming journey at the computer science department of State
       University of New York - Stony Brook Unversity.
       <br/>
@@ -17,24 +21,15 @@ export default {
 }
 </script>
 <style lang="scss">
-.main-wrapper {
-  $content-size: 250px;
-
+.about {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  min-height: $content-size;
 
-  .main-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: $content-size;
-    height: $content-size;
-    border: 1px solid black;
-    border-radius: 25%;
+  .about__title {
+    font-size: 12em;
+  }
+
+  .about__description {
+
   }
 }
 </style>

@@ -17,7 +17,7 @@
         target="_blank">{{ exp.link }}o</a>
 
       <h3 class="role">{{ exp.role }}</h3>
-      <ul class="details ul-disc">
+      <ul class="details ul-square">
         <li
           v-for="(detail, index) in exp.details"
           :key="index">
