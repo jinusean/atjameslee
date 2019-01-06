@@ -5,7 +5,6 @@
     <!--v-for="project in projects" -->
     <!--:key="project.id" -->
     <!--:project="project"/>-->
-
     <projects-list :projects="projects"/>
   </section>
 </template>

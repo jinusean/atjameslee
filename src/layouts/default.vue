@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="jcl-layout">
       <jcl-navbar class="jcl-navbar"/>
 
@@ -21,8 +21,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
 .jcl-layout {
   display: grid;
+  flex: 1;
   grid-template-areas:
     'navbar'
     'main';
@@ -30,7 +37,6 @@ export default {
   grid-template-columns: 1fr;
   width: 1100px;
   max-width: 100%;
-  min-height: 100vh;
   margin: auto;
 
   .jcl-navbar {

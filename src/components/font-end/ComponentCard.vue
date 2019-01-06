@@ -1,4 +1,5 @@
 <template>
+
   <div class="component-card">
 
     <nuxt-link
@@ -56,8 +57,7 @@ $component-card-radius: 0.5em;
 .component-card {
   display: grid;
   flex: 1;
-  grid-template-areas: 'preview info links';
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   grid-gap: 2em;
   height: 12em;
   overflow: hidden;
@@ -67,7 +67,6 @@ $component-card-radius: 0.5em;
   transition: transform 300ms ease-in, box-shadow 300ms ease-in;
 
   .component-card__preview {
-    grid-template: 'preview';
     width: 16em;
     padding: 1em;
 
@@ -79,7 +78,6 @@ $component-card-radius: 0.5em;
   }
 
   .component-card__info {
-    grid-template: 'info';
     padding: 1em;
 
     .component-card__title {
@@ -97,7 +95,6 @@ $component-card-radius: 0.5em;
   }
 
   .component-card__links {
-    grid-template: 'links';
     padding: 1em 0.75em;
     background: $gray-100;
     border-top-right-radius: $component-card-radius;
@@ -133,7 +130,6 @@ $component-card-radius: 0.5em;
 
 @include media-breakpoint-down(sm) {
   .component-card {
-    grid-template-areas: 'preview' 'info' 'links';
     grid-template-rows: 1fr 1fr auto;
     grid-template-columns: auto;
     grid-gap: 0;
