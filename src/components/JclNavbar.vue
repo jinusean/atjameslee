@@ -1,9 +1,5 @@
 <template>
   <nav class="jcl-navbar">
-    <nuxt-link 
-      to="/" 
-      class="jcl-navbar__logo">James C. Lee</nuxt-link>
-
     <ul class="jcl-navbar__links">
       <li
         v-for="link in links"
@@ -24,7 +20,7 @@ export default {
   name: 'JclNavbar',
   computed: {
     links() {
-      return ['about', 'experiences', 'packages', 'projects', 'contact']
+      return ['about', 'experiences', 'packages', 'projects']
     }
   },
   methods: {
@@ -45,12 +41,16 @@ export default {
 <style lang="scss" scoped>
 .jcl-navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  padding: 0 2em;
+  overflow: scroll;
+  font-size: 1.2em;
   text-transform: capitalize;
 
   .jcl-navbar__links {
     display: flex;
-    margin: 0;
+
+    /* margin: 1em 0; */
 
     .jcl-navbar__link:not(:last-child) {
       margin-right: 1em;
@@ -67,21 +67,33 @@ export default {
 
       a::before {
         position: absolute;
-        content: ' ';
         bottom: 0;
         width: 100%;
         height: 0;
+        content: ' ';
         background: $link-color;
         transition: transform 300ms ease-in;
       }
 
       a.nav-active::before {
-        content: ' ';
         height: 2px;
-        transform: translateY(2px);
-        /*transition: all 1000ms linear;*/
+        content: ' ';
+        transform: translateY(3px);
+
+        /* transition: all 1000ms linear; */
       }
     }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .jcl-navbar {
+
+
+    .jcl-navbar__links {
+      overflow-x: scroll;
+    }
+
   }
 }
 </style>

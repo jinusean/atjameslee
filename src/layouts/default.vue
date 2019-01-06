@@ -1,22 +1,22 @@
 <template>
-  <div class="jcl-layout">
-    <jcl-navbar class="jcl-navbar"/>
-    <!--<jcl-sidebar class="jcl-sidebar"/>-->
-    <div class="jcl-main">
-      <!--<h1>-->
-      <!--<breadcrumbs-nav/>-->
-      <!--</h1>-->
-      <nuxt />
+  <div>
+    <div class="jcl-layout">
+      <jcl-navbar class="jcl-navbar"/>
+
+      <div class="jcl-main">
+        <nuxt />
+      </div>
     </div>
+    <jcl-footer/>
   </div>
 </template>
 
 <script>
 import JclNavbar from '../components/JclNavbar'
 import JclSidebar from '../components/JclSidebar'
-import BreadcrumbsNav from '../components/BreadcrumbsNav'
+import JclFooter from '../components/JclFooter'
 export default {
-  components: { BreadcrumbsNav, JclSidebar, JclNavbar }
+  components: { JclSidebar, JclNavbar, JclFooter }
 }
 </script>
 
@@ -35,7 +35,6 @@ export default {
 
   .jcl-navbar {
     grid-area: navbar;
-    padding: $layout-padding;
   }
 
   .jcl-sidebar {

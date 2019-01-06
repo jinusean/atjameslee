@@ -72,6 +72,7 @@ ul.projects__list {
       justify-content: center;
       width: 100%;
       height: 17em;
+      overflow: hidden;
       background: #f2f2f2;
 
       img {

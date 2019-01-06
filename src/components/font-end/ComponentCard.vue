@@ -54,18 +54,17 @@ export default {
 $component-card-radius: 0.5em;
 
 .component-card {
+  display: grid;
+  flex: 1;
+  grid-template-areas: 'preview info links';
+  grid-template-columns: auto 1fr;
+  grid-gap: 2em;
   height: 12em;
   overflow: hidden;
   border: $border;
   border-radius: $component-card-radius;
   box-shadow: none;
-  transition: transform 300ms ease-in;
-
-  display: grid;
-  flex: 1;
-  grid-template-columns: auto 1fr;
-  grid-gap: 2em;
-  grid-template-areas: 'preview info links';
+  transition: transform 300ms ease-in, box-shadow 300ms ease-in;
 
   .component-card__preview {
     grid-template: 'preview';
@@ -84,8 +83,8 @@ $component-card-radius: 0.5em;
     padding: 1em;
 
     .component-card__title {
-      color: $link-color;
       margin: 0 0 0.5em 0;
+      color: $link-color;
       text-transform: capitalize;
     }
     .component-card__subtitle {
@@ -134,19 +133,20 @@ $component-card-radius: 0.5em;
 
 @include media-breakpoint-down(sm) {
   .component-card {
+    grid-template-areas: 'preview' 'info' 'links';
     grid-template-rows: 1fr 1fr auto;
     grid-template-columns: auto;
-    grid-template-areas: 'preview' 'info' 'links';
-    height: 24em;
     grid-gap: 0;
-    /*border-radius: 0;*/
+    height: 24em;
+
+    /* border-radius: 0; */
 
     .component-card__preview {
+      display: flex;
+      justify-content: center;
       width: 100%;
       height: 10em;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
 
       img {
         width: auto;

@@ -68,6 +68,7 @@ export default {
     overflow: hidden;
 
     .project__banner {
+      width: 100%;
       transform-origin: center bottom;
 
       img {
