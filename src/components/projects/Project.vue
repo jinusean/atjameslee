@@ -2,9 +2,11 @@
   <div v-if="project">
     <section :class="`project project-${projectId}`">
 
-      <div 
+      <div
+        v-if="!$slots.header"
         ref="header" 
         class="project__header">
+
         <figure class="project__banner">
           <img
             ref="banner"
@@ -15,9 +17,11 @@
           ref="title"
           class="project__title">{{ project.name }}</h1>
       </div>
+      <slot name="header"/>
 
 
       <TagsList
+        v-if="project.tags"
         :tags="project.tags"
         class="project__tags"/>
 
@@ -89,6 +93,10 @@ export default {
     line-height: 1.5;
   }
 
+  li {
+    margin-bottom: 0.5em;
+  }
+
   // img captions
   em {
     font-size: 0.8em;
@@ -113,17 +121,15 @@ export default {
     width: 75%;
     margin: auto;
   }
-}
-</style>
 
-<style lang="scss">
-.project.project-tagalong {
-  .project__banner {
-
-    img {
-      height: 8em;
-      width: auto;
-    }
+  .img-sm {
+    // p tag
+    width: 50%;
+    margin: auto;
   }
 }
 </style>
+<style src="~/assets/scss/projects/swaychat.scss" lang="scss">
+</style>
+<style src="~/assets/scss/projects/tagalong.scss" lang="scss"/>
+<style src="~/assets/scss/projects/beauty-quotient.scss" lang="scss"/>

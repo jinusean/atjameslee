@@ -1,20 +1,20 @@
 <template>
   <div class="component-card">
+
     <nuxt-link
       :to="`/packages/${component.id}`"
-      class="component-card__content">
-
-      <div class="component-card__preview">
-        <img :src="`/images/${component.id}.png`"/>
-      </div>
-
-      <div class="component-card__info">
-        <h3 class="component-card__title">{{ title }}</h3>
-        <h4>{{ component.subtitle }}</h4>
-        <p v-html="component.info"/>
-      </div>
-
+      class="component-card__preview no-style">
+      <img :src="`/images/${component.id}.png`">
     </nuxt-link>
+
+    <nuxt-link
+      :to="`/packages/${component.id}`"
+      class="no-style component-card__info">
+      <h3 class="component-card__title">{{ title }}</h3>
+      <h4 class="component-card__subtitle">{{ component.subtitle }}</h4>
+      <p v-html="component.info"/>
+    </nuxt-link>
+
 
     <div class="component-card__links">
       <a
@@ -54,47 +54,53 @@ export default {
 $component-card-radius: 0.5em;
 
 .component-card {
-  display: flex;
   height: 12em;
   overflow: hidden;
   border: $border;
   border-radius: $component-card-radius;
+  box-shadow: none;
+  transition: transform 300ms ease-in;
 
-  .component-card__content {
-    display: grid;
-    flex: 1;
-    grid-template-columns: auto 1fr;
-    grid-gap: 2em;
+  display: grid;
+  flex: 1;
+  grid-template-columns: auto 1fr;
+  grid-gap: 2em;
+  grid-template-areas: 'preview info links';
+
+  .component-card__preview {
+    grid-template: 'preview';
+    width: 16em;
     padding: 1em;
 
-    .component-card__preview {
-      width: 16em;
-
-      img {
-        width: 100%;
-        max-width: 100%;
-        max-height: 100%;
-      }
-    }
-
-    .component-card__info {
-      .component-card__title {
-        margin: 0 0 0.5em 0;
-        text-transform: capitalize;
-      }
-      h4 {
-        margin: 0;
-      }
+    img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 
-  .component-card__content:hover {
-    color: inherit;
+  .component-card__info {
+    grid-template: 'info';
+    padding: 1em;
+
+    .component-card__title {
+      color: $link-color;
+      margin: 0 0 0.5em 0;
+      text-transform: capitalize;
+    }
+    .component-card__subtitle {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   .component-card__links {
+    grid-template: 'links';
     padding: 1em 0.75em;
-    background: $gray-200;
+    background: $gray-100;
     border-top-right-radius: $component-card-radius;
     border-bottom-right-radius: $component-card-radius;
 
@@ -114,11 +120,55 @@ $component-card-radius: 0.5em;
   }
 }
 
+.component-card:hover {
+  .component-card__title {
+    text-decoration: underline;
+  }
+
+  @include media-breakpoint-up(md) {
+    color: inherit;
+    transform: translateY(-5px);
+    @include box-shadow(0, 1em, 1em, -1em);
+  }
+}
+
 @include media-breakpoint-down(sm) {
   .component-card {
-    .component-card__content {
-      grid-template-rows: auto 1fr;
-      grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-columns: auto;
+    grid-template-areas: 'preview' 'info' 'links';
+    height: 24em;
+    grid-gap: 0;
+    /*border-radius: 0;*/
+
+    .component-card__preview {
+      width: 100%;
+      height: 10em;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: auto;
+        min-height: 100%;
+      }
+    }
+
+    .component-card__info {
+      overflow: hidden;
+    }
+
+    .component-card__links {
+      display: flex;
+      align-items: center;
+
+      a {
+        margin: 0;
+
+        &:not(:last-child) {
+          margin-right: 1em;
+        }
+      }
     }
   }
 }

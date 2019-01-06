@@ -9,10 +9,12 @@
       In addition to programming, I've also completed courses in business and political science, and enjoy writing apps
       that relate to these disciplines.
     </p>
+
   </section>
 </template>
 <script>
-export default {}
+export default {
+}
 </script>
 <style lang="scss">
 .main-wrapper {

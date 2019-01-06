@@ -3,6 +3,9 @@
     <!-- component showcase modal START -->
     <nuxt-child/>
     <!-- component showcase modal END -->
+
+    <h1>Packages</h1>
+
     <component-card
       v-for="component in components"
       :component="component"

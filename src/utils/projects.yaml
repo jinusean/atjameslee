@@ -5,7 +5,13 @@
   type: Node Development
   link: https://gitlab.com/jinusean/beauty-quotient
   images:
-    banner: beauty-quotient.png
+    logo: beauty-quotient_mona-lisa.jpg
+    banner: beauty-quotient_mona-lisa.jpg
+  tags:
+    - OpenCV
+    - Machine Learning
+    - React
+    - Node
 
 - id: import-genius
   name: Import Genius
@@ -18,24 +24,26 @@
 
 - id: tagalong
   description: Philippines' first aggregated news site for in English, Tagalog, and Cebuano
-  name: tagalong.ph
+  name: Tagalong News
   owner: Personal Project
   type: Full-Stack Development
   link: https://tagalong.ph/
   images:
     banner: tagalong-banner.png
     site: tagalong.png
+    logo: tagalong-logo.png
   tags:
     - Nuxt
     - Vue
+    - Bootstrap
     - MongoDB Atlas
     - Mongoose
-    - Express
     - AWS Lambda
     - Serverless
     - Jest
     - Netlify
     - Cloudinary
+    - PWA
 - id: bittionaire
   description: Become a Bitcoin billionaire
   name: Bittionaire
@@ -44,6 +52,7 @@
   link: https://gitlab.com/jinusean/bittionaire
   images:
     banner: bittionaire-banner.jpg
+    logo: bitcoin.png
   tags:
     - Node
     - Electron
@@ -61,14 +70,13 @@
   type: Full-stack Development
   link: https://swaychat.com/
   images:
-    banner: swaychat-logo-text.png
+    banner: swaychat-banner.png
     logo: swaychat-logo.png
   tags:
     - Node
     - nuxt
     - vue
     - firebase
-    - stripe
 
 - id: mooketplace
   name: Mooketplace

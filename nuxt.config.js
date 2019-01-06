@@ -9,7 +9,8 @@ module.exports = {
     routes: ['/', '/dicks', '/eyes']
   },
   router: {
-    // linkExactActiveClass: 'active'
+    linkExactActiveClass: 'exact-active',
+    linkActiveClass: 'active'
   },
   /*
    ** Headers of the page
@@ -52,7 +53,11 @@ module.exports = {
     ['vuex-actions-states'],
     [
       'nuxt-sass-resources-loader',
-      ['~/assets/scss/variables.scss', '~/assets/bootstrap/variables.scss']
+      [
+        '~/assets/scss/variables.scss',
+        '~/assets/bootstrap/variables.scss',
+        '~/assets/scss/mixins.scss'
+      ]
     ]
   ],
   /*
@@ -77,8 +82,6 @@ module.exports = {
     preset: 'default',
     linkify: true,
     breaks: true,
-    use: [
-      'markdown-it-attrs'
-    ]
+    use: ['markdown-it-attrs']
   }
 }

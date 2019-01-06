@@ -6,20 +6,12 @@
       class="projects__list-item">
 
       <div class="project-image">
-        <figure
-          v-if="project.images.logo"
+        <img
+          :src="`/images/${project.images.logo}`"
+          :alt="project.name"
           class="project-image__logo">
-          <img
-            :src="`/images/${project.images.logo}`"
-            :alt="project.name">
-        </figure>
 
-        <MacImg
-          v-else-if="project.images.banner"
-          :height="14"
-          :src="`/images/${project.images.banner}`"/>
-
-        <nuxt-link 
+        <nuxt-link
           :to="`/projects/${project.id}`"
           class="project-image__overlay">
           <p>
@@ -38,7 +30,8 @@
       </p>
 
       <p class="project-info">
-      <span class="project-owner">{{ project.owner }}</span> / <span class="project-type">{{ project.type }}</span></p>
+        <span class="project-owner">{{ project.owner }}</span> / <span class="project-type">{{ project.type }}</span>
+      </p>
     </li>
   </ul>
 </template>
@@ -81,15 +74,14 @@ ul.projects__list {
       height: 17em;
       background: #f2f2f2;
 
-      .project-image__logo {
-        img {
-          height: 80%;
-          border-radius: 12px;
-        }
+      img {
+        transition: all 300ms ease-in;
       }
 
-      figure img {
-        transition: all 300ms ease-in;
+      .project-image__logo {
+        display: block;
+        height: 60%;
+        border-radius: 4px;
       }
 
       .project-image__overlay {
@@ -113,10 +105,8 @@ ul.projects__list {
     }
 
     .project-image:hover {
-      figure {
-        img {
-          transform: scale(1.2);
-        }
+      img {
+        transform: scale(1.2);
       }
 
       .project-image__overlay {
@@ -128,7 +118,7 @@ ul.projects__list {
       margin-bottom: 0;
     }
 
-    .project-description{
+    .project-description {
       margin-top: 0;
     }
 

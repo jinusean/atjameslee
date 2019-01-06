@@ -20,17 +20,16 @@ body {
 }
 
 a {
-  //color: $primary-color;
+  color: $link-color;
   text-decoration: none;
+  transition: opacity 200ms ease-out;
 
   &:hover {
-    //color: $gray-500;
-    text-decoration: underline;
+    text-decoration:underline;
   }
 
-  &.active {
-    //font-weight: $font-weight-bold;
-    //color: $active-color;
+    &:visited {
+    color: $link-color;
   }
 }
 
