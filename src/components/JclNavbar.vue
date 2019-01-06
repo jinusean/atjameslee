@@ -42,13 +42,17 @@ export default {
 .jcl-navbar {
   display: flex;
   justify-content: flex-end;
+  height: $navbar-height;
   padding: 0 2em;
   overflow: scroll;
-  font-size: 1.2em;
+  font-size: $navbar-height / 3;
+  font-weight: 500;
   text-transform: capitalize;
 
   .jcl-navbar__links {
     display: flex;
+    align-items: center;
+    margin: 0;
 
     /* margin: 1em 0; */
 
@@ -59,6 +63,7 @@ export default {
     .jcl-navbar__link {
       a {
         position: relative;
+        display: block;
       }
 
       a.nav-active {
