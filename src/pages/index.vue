@@ -1,38 +1,61 @@
 <template>
   <section class="about">
     <div class="about__title">
-      <div class="about__title__inner">
-        <h1>
-          <p>
-            James
-          </p>
-          <p>
-            C. Lee
-          </p>
-        </h1>
-      </div>
+      <h1 class="about__title__inner"/>
     </div>
 
     <div class="about__description">
       <p>
-        I'm just a lowly fullstack developer who began his programming journey at the computer science department of State
-        University of New York - Stony Brook University.
-      </p>
-
-      <p>
-        Nowadays I do web stuff, focusing on the front-end, but capable of writing back-end apis.
-      </p>
-
-      <p>
-        In addition to programming, I've also completed courses in business and political science, and enjoy writing apps
+        I'm lowly full stack developer who began his programming journey at the computer science department of a State
+        University of New York (Stony Brook). In addition to programming, I've also completed a major and minor in business and political science respectively, and enjoy writing apps
         that relate to these disciplines.
       </p>
+
+      <p>
+        I have some prior experience coding in Java and C#, and even MIPS assembly during my time in university.
+        Nowadays I do most of my work working on web apps, writing front-end code in Vue and back-end code in Node.
+        Please stop by and take a look at my <nuxt-link to="/projects">projects</nuxt-link> to get a feel of how I
+        digitally express my offline interests.
+      </p>
+    </div>
+
+    <div class="about__skills">
+      <div 
+        v-for="(skill, index) in skills" 
+        :key="index" 
+        class="skill-card">
+        <h3>
+          {{ skill.title }}
+        </h3>
+        <div class="skill-card__skills">
+          <ul>
+            <li 
+              v-for="(skill, index) in skill.skills" 
+              :key="index">
+              <div v-for="(skillItem, index) in parseSkill(skill)">
+                <Tag
+                  :tag="skillItem"
+                  class-name="skill"/>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
   </section>
 </template>
 <script>
+import Tag from '../components/TagsList/Tag'
+import skills from '~/database/skills.yaml'
+
 export default {
+  components: { Tag },
+  computed: {
+    skills() {
+      return skills
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -44,7 +67,6 @@ export default {
     box-sizing: border-box;
     height: 100vh;
     margin: -$navbar-height 0 0 0;
-
 
     .about__title__inner {
       position: fixed;
@@ -64,7 +86,6 @@ export default {
   }
 
   .about__description {
-
   }
 }
 </style>
