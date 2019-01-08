@@ -1,7 +1,10 @@
 <template>
   <div class="jcl-footer">
     <div class="jcl-footer__container">
-      <a class="jcl-footer__email" href="mailto:atjameslee@gmail.com" alt="email me">atjameslee@gmail.com</a>
+      <a 
+        class="jcl-footer__email" 
+        href="mailto:atjameslee@gmail.com" 
+        alt="email me">atjameslee@gmail.com</a>
       <ul class="contact-links">
         <li
           v-for="(value, key) in links"
@@ -44,14 +47,13 @@ export default {
   background: $gray-100;
 
   .jcl-footer__container {
+    @include layout-size();
+
     display: flex;
     flex-flow: wrap;
     align-items: center;
     justify-content: space-between;
-    width: 1100px;
-    max-width: 100%;
     padding: 1em 2em;
-    margin: 0 auto;
   }
 
   .jcl-footer__email {
@@ -73,7 +75,7 @@ export default {
       transition: $transition;
 
       &:not(:last-child) {
-        margin-right:1em;
+        margin-right: 1em;
       }
 
       img {

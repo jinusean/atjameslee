@@ -28,6 +28,8 @@ export default {
   min-height: 100vh;
 }
 .jcl-layout {
+  @include layout-size();
+
   display: grid;
   flex: 1;
   grid-template-areas:
@@ -35,24 +37,14 @@ export default {
     'main';
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  width: 1100px;
-  max-width: 100%;
-  margin: auto;
 
   .jcl-navbar {
     grid-area: navbar;
   }
 
-  .jcl-sidebar {
-    grid-area: sidebar;
-    width: 200px;
-    padding: $layout-padding;
-  }
-
   .jcl-main {
     grid-area: main;
     width: 100%;
-    padding: $layout-padding;
 
     h1 {
       text-transform: uppercase;

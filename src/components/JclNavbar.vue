@@ -43,18 +43,13 @@ export default {
   display: flex;
   justify-content: flex-end;
   height: $navbar-height;
-  padding: 0 2em;
-  overflow: scroll;
-  font-size: $navbar-height / 3;
-  font-weight: 500;
+  font-size: 1.2em;
+  font-weight: 600;
   text-transform: capitalize;
 
   .jcl-navbar__links {
     display: flex;
     align-items: center;
-    margin: 0;
-
-    /* margin: 1em 0; */
 
     .jcl-navbar__link:not(:last-child) {
       margin-right: 1em;
@@ -84,21 +79,8 @@ export default {
         height: 2px;
         content: ' ';
         transform: translateY(3px);
-
-        /* transition: all 1000ms linear; */
       }
     }
-  }
-}
-
-@include media-breakpoint-down(sm) {
-  .jcl-navbar {
-
-
-    .jcl-navbar__links {
-      overflow-x: scroll;
-    }
-
   }
 }
 </style>

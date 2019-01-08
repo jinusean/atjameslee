@@ -3,8 +3,8 @@
     <h1>Experiences</h1>
 
     <div
-      v-for="exp in experiences"
-      :key="exp.company"
+      v-for="(exp, index) in experiences"
+      :key="index"
       class="experience-card">
 
       <h2 class="company">{{ exp.company }}</h2>

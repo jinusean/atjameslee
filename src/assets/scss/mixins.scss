@@ -1,3 +1,10 @@
 @mixin box-shadow($x-axis: 0.25em, $y-axis: 0.25em, $blur: 0.125em, $spread: 0, $color: $primary-color) {
   box-shadow: $x-axis $y-axis $blur $spread $color;
 }
+
+@mixin layout-size() {
+  width: $layout-width;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 $layout-padding;
+}
