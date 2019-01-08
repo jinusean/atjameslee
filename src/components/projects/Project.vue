@@ -111,7 +111,7 @@ export default {
   }
 
   .project__footer {
-    margin-top: 4em;
+    margin-top: 4rem;
   }
 }
 

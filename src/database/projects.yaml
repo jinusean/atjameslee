@@ -12,6 +12,7 @@
     - Machine Learning
     - React
     - Node
+    - GitLab
 
 - id: import-genius
   name: Import Genius
@@ -44,6 +45,8 @@
     - Netlify
     - Cloudinary
     - PWA
+    - GitLab
+
 - id: bittionaire
   description: Become a Bitcoin billionaire
   name: Bittionaire
@@ -62,6 +65,7 @@
     - Chartjs
     - Multithreading
     - WebSockets
+    - GitLab
 
 - id: swaychat
   name: SwayChat
@@ -78,6 +82,7 @@
     - vue
     - firebase
     - stripe
+    - GitHub
 
 - id: mooketplace
   name: Mooketplace

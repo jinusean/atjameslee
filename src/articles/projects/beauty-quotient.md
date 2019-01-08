@@ -26,6 +26,11 @@ P.S. the face with the most idealistic proportions is the fifth one from the lef
 
 P.S.S. check out this [video](https://www.youtube.com/watch?v=aircAruvnKk&t=78s) if you want to know exactly how neural networks work.
 
+
+![Desktop](/images/cover-page-golden-ratio.png)*Look familiar? This too adheres to the Golden Ratio*
+ {.img-sm .img-container .img-logo}
+
+
 ## References{.project__footer}
 https://www.goldennumber.net/golden-ratio-misconceptions-by-george-markowsky-reviewed/
 

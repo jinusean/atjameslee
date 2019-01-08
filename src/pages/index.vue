@@ -1,34 +1,21 @@
 <template>
   <section class="about">
-    <AboutTitle/>
+    <CoverPage/>
 
-    <div class="about__description">
-      <p>
-        I'm just a lowly fullstack developer who began his programming journey at the computer science department of
-        State
-        University of New York - Stony Brook University.
-      </p>
-
-      <p>
-        I have some prior experience coding in Java and C#, and even MIPS assembly during my time in university.
-        Nowadays I do most of my work working on web apps, writing front-end code in Vue and back-end code in Node.
-        Please stop by and take a look at my <nuxt-link to="/projects">projects</nuxt-link> to get a feel of how I
-        digitally express my offline interests.
-      </p>
-    </div>
+    <ProfileCard/>
 
 
     <div class="about__skills">
-      <div 
-        v-for="(skill, index) in skills" 
-        :key="index" 
+      <div
+        v-for="(skill, index) in skills"
+        :key="index"
         class="skill-card">
         <h3>
           {{ skill.title }}
         </h3>
         <div class="skill-card__skills">
           <ul>
-            <li 
+            <li
               v-for="(line, index) in skill.skills"
               :key="index">
               <span
@@ -49,12 +36,13 @@
   </section>
 </template>
 <script>
-import AboutTitle from '../components/about/AboutTitle'
+import CoverPage from '../components/about/CoverPage'
 import Tag from '../components/TagsList/Tag'
 import skills from '~/database/skills.yaml'
+import ProfileCard from '../components/about/ProfileCard'
 
 export default {
-  components: { Tag, AboutTitle },
+  components: { ProfileCard, Tag, CoverPage },
   computed: {
     skills() {
       return skills
@@ -70,7 +58,7 @@ export default {
           const { length } = splits
           splits.forEach((splitItem, index) => {
             this.parseSkill(splitItem, skills)
-            if (index !== length -1) {
+            if (index !== length - 1) {
               skills.push('/')
             }
           })
@@ -95,6 +83,10 @@ export default {
 }
 </script>
 <style lang="scss">
+.about > * {
+  /*margin-bottom: 2em;*/
+}
+
 .skill {
   display: inline-block;
 }

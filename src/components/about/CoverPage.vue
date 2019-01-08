@@ -1,17 +1,18 @@
 <template>
-  <div class="about-title">
-    <div class="about-title__outer">
+  <div class="cover-page">
+    <div class="cover-page__outer">
       <div 
         ref="title"
-        class="about-title__inner">
+        class="cover-page__inner">
         <h1 id="title">
-          <p style="font-size: 40%">
+          <p class="name">
             James
           </p>
-          <p style="font-size: 40%">
+          <p class="name">
             Lee
           </p>
-          <p class="subtitle" style="font-size: 12.5%">
+          <p
+            class="subtitle">
             Full Stack Developer
           </p>
         </h1>
@@ -32,29 +33,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.about-title {
+.cover-page {
   position: relative;
   width: 100%;
   height: calc(100vh - #{$navbar-height});
 
-  .about-title__outer {
+  .cover-page__outer {
     position: absolute;
     width: 100%;
     height: 100%;
     clip-path: inset(0 0 0 0);
   }
 
-  .about-title__inner {
+  .cover-page__inner {
     position: fixed;
     box-sizing: border-box;
     display: flex;
 
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     width: calc(100vw - #{$layout-padding * 2});
     max-width: calc(#{$layout-width} - #{$layout-padding * 2});
     height: calc(100vh - #{$navbar-height * 2});
-    //margin-left: -$layout-padding;
 
     padding: 0;
     backface-visibility: hidden;
@@ -65,14 +65,14 @@ export default {
       margin: 0;
       color: black;
 
-      .subtitle {
-        /* font-size: 12.5%; */
-
-        /* line-height: 2; */
+      .name,
+      .name {
+        font-size: 61.8034%;
       }
 
-      .sub {
-
+      .subtitle {
+        font-size: 38.1966%;
+        line-height: 1.6180339887;
       }
     }
   }
