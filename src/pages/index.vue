@@ -38,6 +38,7 @@
 <script>
 import CoverPage from '../components/about/CoverPage'
 import Tag from '../components/TagsList/Tag'
+import tags from '~/database/tags.yaml'
 import skills from '~/database/skills.yaml'
 import ProfileCard from '../components/about/ProfileCard'
 
@@ -51,6 +52,14 @@ export default {
   methods: {
     parseLine(line) {
       const skills = []
+
+      const tag = line.toLowerCase()
+      for (const tagName in tags) {
+        if (tagName.toLowerCase() === tag) {
+          skills.push(tagName)
+          return skills
+        }
+      }
 
       line.split(' ').forEach(item => {
         if (item.includes('/')) {

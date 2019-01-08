@@ -83,11 +83,12 @@ export default {
 <style lang="scss">
 .back-link {
   display: block;
+  margin-bottom: calc(1.6 * 1.6rem);
   font-size: 1.5em;
 }
 
 .project {
-  margin-bottom: 4em;
+  margin-bottom: 1.6rem;
 
   p {
     line-height: 1.5;

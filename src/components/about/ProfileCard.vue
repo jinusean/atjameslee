@@ -55,12 +55,15 @@ export default {
   }
 
   .profile-card__profile-image {
-    margin: -12em auto -8em auto;
-    width: 16em;
+    text-align: center;
+    margin: -9.88854em auto -6.11146em auto;
+    height: 16em;
 
     img {
+      display: inline-block;
       border-top: 1px solid $gray-600;
       border-radius: 50%;
+    height: 100%  ;
       //@include box-shadow(0, 0, 2.5em, 0.5em, gray);
     }
   }
