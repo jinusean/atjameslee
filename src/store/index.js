@@ -1,5 +1,5 @@
 // src/store/index.js
-import projects from '../utils/projects.yaml'
+import projects from '../database/projects.yaml'
 
 export const state = () => ({
   projects

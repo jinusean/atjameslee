@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import components from '~/utils/components.yaml'
+import components from '~/database/components.yaml'
 import ComponentCard from '../components/font-end/ComponentCard.vue'
 
 export default {

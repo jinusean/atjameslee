@@ -1,13 +1,18 @@
 <template>
-  <div class="about__title">
-    <div class="about__title__s">
-      <div ref="title" class="about__title__inner">
-        <h1>
-          <p>
-            Hapsdjf ioasdjfio sadjf io
+  <div class="about-title">
+    <div class="about-title__outer">
+      <div 
+        ref="title"
+        class="about-title__inner">
+        <h1 id="title">
+          <p style="font-size: 40%">
+            James
           </p>
-          <p>
-            aasdfjioasjoj
+          <p style="font-size: 40%">
+            Lee
+          </p>
+          <p class="subtitle" style="font-size: 12.5%">
+            Full Stack Developer
           </p>
         </h1>
       </div>
@@ -16,59 +21,57 @@
 </template>
 
 <script>
+import fitty from 'fitty'
+
 export default {
   name: 'AboutTitle',
   mounted() {
-    const LAST_HEX = 16777215
-    document.addEventListener('scroll', () => {
-      const { scrollTop } =
-      document.scrollingElement || document.documentElement
-      const viewportHeight = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0
-      )
-
-      const scrollPercent = Math.min(scrollTop / viewportHeight, 1)
-      const newValue = Math.ceil(scrollPercent * LAST_HEX)
-
-      let hexString = newValue.toString(16)
-      if (hexString.length % 2) {
-        hexString = '0' + hexString
-      }
-
-      console.log(newValue, hexString)
-      this.$refs.title.style.background = '#' + hexString
-    })
+    fitty('#title')
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.about__title {
+.about-title {
   position: relative;
-  min-height: calc(100vh - #{$navbar-height});
   width: 100%;
-  overflow: hidden;
+  height: calc(100vh - #{$navbar-height});
 
-  .about__title__s {
+  .about-title__outer {
     position: absolute;
-    height: 100%;
     width: 100%;
+    height: 100%;
     clip-path: inset(0 0 0 0);
   }
 
-  .about__title__inner {
+  .about-title__inner {
+    box-sizing: border-box;
     position: fixed;
-    left: 50%;
-    top: calc(50% - #{$navbar-height});
-    transform: translate(-50%, -50%);
-    background: red;
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    width: calc(100vw - #{$layout-padding * 2});
+    //margin-left: -$layout-padding;
+
+    padding: 0;
+    max-width: calc(#{$layout-width} - #{$layout-padding * 2});
+    height: calc(100vh - #{$navbar-height * 2});
     backface-visibility: hidden;
 
     h1,
     p {
-      text-align: center;
+      color: black;
       margin: 0;
+      position: relative;
+
+      .subtitle {
+        /*font-size: 12.5%;*/
+        /*line-height: 2;*/
+      }
+
+      .sub {
+
+      }
     }
   }
 }

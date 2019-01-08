@@ -43,8 +43,8 @@ export default {
 
   .jcl-navbar__content {
     align-items: flex-start;
-    text-align: right;
     overflow: hidden;
+    text-align: right;
 
     .btn-toggler {
       display: inline-block;

@@ -1,14 +1,18 @@
 <template>
-  <a
-    :href="link"
-    :class="className"
-    rel="noreferrer">
+  <span>
+    <a
+      v-if="tagName"
+      :href="link"
+      :class="className"
+      rel="noreferrer">
     {{ tagName }}
   </a>
+    <span v-else>{{ tag }}</span>
+  </span>
 </template>
 
 <script>
-import tags from '~/utils/tags.yaml'
+import tags from '~/database/tags.yaml'
 
 export default {
   name: 'Tag',
@@ -35,7 +39,7 @@ export default {
         }
       }
 
-      throw new Error('Tag ' + this.tag + ' does not exist')
+      console.warn('Tag ' + this.tag + ' does not exist')
     }
   }
 }

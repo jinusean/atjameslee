@@ -101,7 +101,7 @@
 
 
 <script>
-import experiences from '../utils/experiences.yaml'
+import experiences from '../database/experiences.yaml'
 
 export default {
   computed: {
