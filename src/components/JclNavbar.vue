@@ -1,18 +1,22 @@
 <template>
-  <nav class="jcl-navbar">
-    <ul class="jcl-navbar__links">
-      <li
-        v-for="link in links"
-        :key="link"
-        class="jcl-navbar__link">
-        <nuxt-link
-          :class="getLinkClass(link)"
-          :to="`/${link === 'about' ? '' : link}`">
-          {{ link }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </nav>
+  <div class="jcl-navbar-container">
+    <div class="jcl-navbar-desktop">
+      <nav class="jcl-navbar">
+        <ul class="jcl-navbar__links">
+          <li
+            v-for="link in links"
+            :key="link"
+            class="jcl-navbar__link">
+            <nuxt-link
+              :class="getLinkClass(link)"
+              :to="`/${link === 'about' ? '' : link}`">
+              {{ link }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -39,10 +43,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.jcl-navbar-container {
+  width: 100%;
+  height: $navbar-height;
+}
+
+.jcl-navbar-desktop {
+  position: fixed;
+  left: 0;
+  z-index: $zindex-header;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid $gray-200;
+}
+
 .jcl-navbar {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+  max-width: $layout-width;
   height: $navbar-height;
+  padding: 0 $layout-padding;
+  margin: 0 auto;
   font-size: 1.2em;
   font-weight: 600;
   text-transform: capitalize;

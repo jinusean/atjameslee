@@ -45,28 +45,30 @@ export default {
   }
 
   .about-title__inner {
-    box-sizing: border-box;
     position: fixed;
+    box-sizing: border-box;
     display: flex;
-    /*justify-content: center;*/
+
+    /* justify-content: center; */
     align-items: center;
     width: calc(100vw - #{$layout-padding * 2});
+    max-width: calc(#{$layout-width} - #{$layout-padding * 2});
+    height: calc(100vh - #{$navbar-height * 2});
     //margin-left: -$layout-padding;
 
     padding: 0;
-    max-width: calc(#{$layout-width} - #{$layout-padding * 2});
-    height: calc(100vh - #{$navbar-height * 2});
     backface-visibility: hidden;
 
     h1,
     p {
-      color: black;
-      margin: 0;
       position: relative;
+      margin: 0;
+      color: black;
 
       .subtitle {
-        /*font-size: 12.5%;*/
-        /*line-height: 2;*/
+        /* font-size: 12.5%; */
+
+        /* line-height: 2; */
       }
 
       .sub {

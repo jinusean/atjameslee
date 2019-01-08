@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="jcl-layout">
-      <jcl-navbar class="jcl-navbar"/>
+      <jcl-navbar class="navbar"/>
 
-      <div class="jcl-main">
+      <div class="main">
         <nuxt />
       </div>
     </div>
@@ -38,11 +38,11 @@ export default {
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
 
-  .jcl-navbar {
+  .navbar {
     grid-area: navbar;
   }
 
-  .jcl-main {
+  .main {
     grid-area: main;
     width: 100%;
 
