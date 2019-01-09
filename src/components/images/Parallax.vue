@@ -41,7 +41,7 @@ export default {
       if (scrollTop < 0) {
         return
       }
-      const BUFFER_PERCENT = 0.20
+      const BUFFER_PERCENT = 0.10
       const MAX_SCALE = 2
       const MIN_SCALE = 1
       const HEADER_HEIGHT = 70
@@ -62,10 +62,9 @@ export default {
         return this.setScale(MAX_SCALE)
       }
 
-      console.log(height, BUFFER_PERCENT, HEADER_HEIGHT, scrollableTop)
-
-      const ratio = (scrollableTop - scrollTop) / scrollableHeight
-      const scale = ratio * (MAX_SCALE - MIN_SCALE) + MIN_SCALE
+      const ratio = (top - scrollableTop) / scrollableHeight
+      const scale = Math.max(ratio * (MAX_SCALE - MIN_SCALE) + MIN_SCALE, 1)
+      console.log(scale)
       this.setScale(scale)
     },
     setScale(scale) {
@@ -77,18 +76,22 @@ export default {
 
 <style lang="scss" scoped>
 .parallax {
-  width: 100%;
-  min-height: 36em;
+  @include marginless(md);
+
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 100%;
+  min-height: 36em;
   overflow: hidden;
-  position: relative;
 
   img {
     position: absolute;
     top: 0;
     display: block;
+    min-width: 100%;
+    max-height: 100%;
     transform-origin: center top;
   }
 }

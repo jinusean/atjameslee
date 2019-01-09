@@ -1,7 +1,9 @@
 <template>
   <div class="profile-card">
 
-    <Parallax class="profile-card__header-image" :src="`/images/nyc/${nycImageNumber}.png`"/>
+    <Parallax 
+      :src="`/images/nyc/${nycImageNumber}.png`" 
+      class="profile-card__header-image"/>
 
     <div class="profile-card__info">
       <figure class="profile-card__profile-image">
@@ -38,7 +40,7 @@ export default {
   computed: {
     nycImageNumber() {
       const TOTAL = 3
-      return Math.floor(Math.random() * (TOTAL + 1))
+      return Math.floor(Math.random() * TOTAL + 1)
     }
   }
 }
@@ -51,6 +53,7 @@ export default {
   .profile-card__profile-image {
     $a-margin: -9.88854em;
     $b-margin: -6.11146em;
+
     position: relative;
     height: 16em;
     margin-top: -9.88854em;
@@ -78,7 +81,8 @@ export default {
   .profile-card__description {
     width: 100%;
     max-width: 60rem;
-    /*padding-top: 5em;*/
+
+    /* padding-top: 5em; */
     margin: 0 auto;
     font-size: 1.5em;
 

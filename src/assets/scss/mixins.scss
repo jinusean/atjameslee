@@ -1,9 +1,9 @@
 @mixin background-img {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-left: -#{$layout-padding};
   margin-right: -#{$layout-padding};
+  margin-left: -#{$layout-padding};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 @mixin box-shadow($x-axis: 0.25em, $y-axis: 0.25em, $blur: 0.125em, $spread: 0, $color: $primary-color) {
@@ -17,3 +17,9 @@
   margin: 0 auto;
 }
 
+@mixin marginless($size: sm) {
+  @include media-breakpoint-down($size) {
+    margin-right: -#{$layout-padding};
+    margin-left: -#{$layout-padding};
+  }
+}
