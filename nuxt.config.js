@@ -22,7 +22,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   /*
@@ -43,7 +43,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/index.js'],
+  plugins: ['~/plugins/globals.js', '~/plugins/index.js'],
 
   /*
    ** Nuxt.js modules
@@ -55,7 +55,7 @@ module.exports = {
       'nuxt-sass-resources-loader',
       [
         '~/assets/scss/variables.scss',
-        '~/assets/bootstrap/variables.scss',
+        '~/assets/bootstrap/utilities.scss',
         '~/assets/scss/mixins.scss'
       ]
     ]

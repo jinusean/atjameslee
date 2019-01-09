@@ -49,13 +49,11 @@ export default {
     position: fixed;
     box-sizing: border-box;
     display: flex;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: calc(100vw - #{$layout-padding * 2});
     max-width: calc(#{$layout-width} - #{$layout-padding * 2});
     height: calc(100vh - #{$navbar-height * 2});
-
     padding: 0;
     backface-visibility: hidden;
 

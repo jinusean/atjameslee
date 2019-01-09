@@ -93,7 +93,7 @@ export default {
 </script>
 <style lang="scss">
 .about > * {
-  /*margin-bottom: 2em;*/
+  /* margin-bottom: 2em; */
 }
 
 .skill {

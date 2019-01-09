@@ -5,7 +5,7 @@ Human beauty is no different from an exquisite painting, or even an architectura
 
 The Golden Ratio or Phi or Φ is a mathematical constant whose ratio takes the form of the irrational number 1.6180339887.
 
-![Golden Spiral](/images/beauty-quotient_golden-rectangle.png)
+![Golden Spiral](/images/beauty-quotient_golden-rectangle.png)**a / b  =  (a + b) / a  =  1.6180339887** 
 {.img-golden-rectangle .img-container}
 
 What’s interesting about this ratio is that it is not limited to rectangles and squares, but can also to any geometric shape. Including the human face. 

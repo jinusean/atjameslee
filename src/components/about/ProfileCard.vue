@@ -1,15 +1,16 @@
 <template>
   <div class="profile-card">
 
-    <figure class="profile-card__header-image">
-      <img :src="`/images/nyc/${nycImageNumber}.png`">
-    </figure>
+    <Parallax class="profile-card__header-image" :src="`/images/nyc/${nycImageNumber}.png`"/>
 
     <div class="profile-card__info">
       <figure class="profile-card__profile-image">
         <img src="/images/white-shirt.png">
       </figure>
-      <div class="profile-card__description">
+
+      <div
+        v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }"
+        class="profile-card__description">
         <p>
           I'm just a lowly fullstack developer who began his programming journey at the computer science department of
           State
@@ -30,8 +31,10 @@
 </template>
 
 <script>
+import Parallax from '../images/Parallax'
 export default {
   name: 'ProfileCard',
+  components: { Parallax },
   computed: {
     nycImageNumber() {
       const TOTAL = 3
@@ -45,34 +48,38 @@ export default {
 .profile-card {
   width: 100%;
 
-  .profile-card__header-image {
-
-    img {
-      width: 100%;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-    }
-  }
-
   .profile-card__profile-image {
-    text-align: center;
-    margin: -9.88854em auto -6.11146em auto;
+    $a-margin: -9.88854em;
+    $b-margin: -6.11146em;
+    position: relative;
     height: 16em;
+    margin-top: -9.88854em;
+    text-align: center;
 
     img {
       display: inline-block;
+      height: 100%;
+      padding: 0.125rem;
+      background: white;
       border-top: 1px solid $gray-600;
       border-radius: 50%;
-    height: 100%  ;
-      //@include box-shadow(0, 0, 2.5em, 0.5em, gray);
+      @include box-shadow(0, 0, 2.5em, 0.25em, gray);
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-top: -2em;
+
+      img {
+        padding: 2px;
+      }
     }
   }
 
   .profile-card__description {
     width: 100%;
     max-width: 60rem;
+    /*padding-top: 5em;*/
     margin: 0 auto;
-    padding-top: 5em;
     font-size: 1.5em;
 
     @include media-breakpoint-up(sm) {

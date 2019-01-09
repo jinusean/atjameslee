@@ -14,7 +14,7 @@
             :href="value"
             target="_blank">
             <img
-              :src="`/logos/${key}.svg`"
+              :src="require(`~/assets/logos/${key}.svg`)"
               :alt="key">
           </a>
           <!--<span class="contact-links__link__text">-->

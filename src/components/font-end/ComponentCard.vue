@@ -22,13 +22,13 @@
         v-if="component.gitlab"
         :href="`https://gitlab.com/jinusean/${component.id}`"
         target="_blank">
-        <img src="/logos/gitlab.png">
+        <img src="~/assets/logos/gitlab.png">
       </a>
       <a
         v-if="component.npm"
         :href="`https://www.npmjs.com/package/${component.id}`"
         target="_blank">
-        <img src="/logos/npm.png">
+        <img src="~/assets/logos/npm.png">
       </a>
     </div>
   </div>

@@ -93,7 +93,7 @@ export default {
 </style>
 
 <style lang="scss">
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(lg) {
   .project.project-bittionaire {
     .project__header {
       margin: (-$layout-padding) (-$layout-padding) 0 (-$layout-padding);
