@@ -72,9 +72,11 @@ export default {
     }
 
     @include media-breakpoint-down(sm) {
+      // calc doesn't work with this value, don't know why
+      $margin-value: -85.5613px;
       $margin-value: calc(16em * #{$phi-a});
 
-      //margin-top: calc(-16em + #{$margin-value});
+      margin-top: calc(-16em + #{$margin-value});
       img {
         padding: 2px;
       }
