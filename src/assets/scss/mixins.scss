@@ -21,5 +21,6 @@
   @include media-breakpoint-down($size) {
     margin-right: -#{$layout-padding};
     margin-left: -#{$layout-padding};
+    min-width: 100vw;
   }
 }

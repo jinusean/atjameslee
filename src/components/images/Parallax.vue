@@ -82,17 +82,22 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 100%;
-  min-height: 36em;
+  width: 100%;
+  height: 36em;
   overflow: hidden;
+  @include media-breakpoint-down(sm) {
+    height: 40vh;
+  }
 
   img {
     position: absolute;
     top: 0;
     display: block;
     min-width: 100%;
-    max-height: 100%;
     transform-origin: center top;
+    min-height: 100%;
+    height: inherit;
+    /*height: 100%;*/
   }
 }
 </style>

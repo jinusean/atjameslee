@@ -51,13 +51,13 @@ export default {
   width: 100%;
 
   .profile-card__profile-image {
-    $a-margin: -9.88854em;
-    $b-margin: -6.11146em;
+    $a-margin: -9.88854rem;
+    $b-margin: -6.11146rem;
 
     position: relative;
     height: 16em;
-    margin-top: -9.88854em;
     text-align: center;
+    margin-top: calc(-16em + calc(16em * #{$phi-b}));
 
     img {
       display: inline-block;
@@ -70,8 +70,7 @@ export default {
     }
 
     @include media-breakpoint-down(sm) {
-      margin-top: -2em;
-
+      margin-top: calc(-16em + calc(16em * #{$phi-a}));
       img {
         padding: 2px;
       }
