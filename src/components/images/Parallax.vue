@@ -95,10 +95,11 @@ export default {
     top: 0;
     display: block;
     min-width: 100%;
-    transform-origin: center top;
-    min-height: 100%;
     height: inherit;
-    /*height: 100%;*/
+    min-height: 100%;
+    transform-origin: center top;
+
+    /* height: 100%; */
   }
 }
 </style>

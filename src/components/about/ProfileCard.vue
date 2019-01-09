@@ -58,8 +58,8 @@ export default {
 
     position: relative;
     height: 16em;
-    text-align: center;
     margin-top: calc(-16em + calc(16em * #{$phi-b}));
+    text-align: center;
 
     img {
       display: inline-block;

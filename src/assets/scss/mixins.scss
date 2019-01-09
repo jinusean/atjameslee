@@ -19,8 +19,8 @@
 
 @mixin marginless($size: sm) {
   @include media-breakpoint-down($size) {
+    min-width: 100vw;
     margin-right: -#{$layout-padding};
     margin-left: -#{$layout-padding};
-    min-width: 100vw;
   }
 }
