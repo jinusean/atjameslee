@@ -14,18 +14,20 @@
         v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }"
         class="profile-card__description">
         <p>
-          I'm just a lowly fullstack developer who began his programming journey at the computer science department of
-          State
-          University of New York - Stony Brook University.
+          I am a humble full stack developer who began his development journey as a computer science student at the
+          State University of New York in Stony Brook.
         </p>
 
         <p>
-          I have some prior experience coding in Java and C#, and even MIPS assembly during my time in university.
-          Nowadays I do most of my work working on web apps, writing front-end code in Vue and back-end code in Node.
+          Some of my earliest qualifications include coding in Java, MIPS assembly, and C#.
         </p>
 
         <p>
-          Sit back, relax, and take a look at how I digitally express my offline interests.
+          Nowadays I do most of my work programming for a web browser, like the one your're using right now.
+        </p>
+
+        <p>
+          With that in mind - sit back, relax, and take a look at how I express my interests digitally.
         </p>
       </div>
     </div>
@@ -66,7 +68,7 @@ export default {
       background: white;
       border-top: 1px solid $gray-600;
       border-radius: 50%;
-      @include box-shadow(0, 0, 2.5em, 0.25em, gray);
+      @include box-shadow(0, 0, 0.5em, 0.125em, silver);
     }
 
     @include media-breakpoint-down(sm) {

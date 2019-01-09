@@ -85,6 +85,7 @@ export default {
   width: 100%;
   height: 36em;
   overflow: hidden;
+
   @include media-breakpoint-down(sm) {
     height: 40vh;
   }
