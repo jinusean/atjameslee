@@ -72,7 +72,9 @@ export default {
     }
 
     @include media-breakpoint-down(sm) {
-      margin-top: calc(-16em + calc(16em * #{$phi-a}));
+      $margin-value: calc(16em * #{$phi-a});
+
+      margin-top: calc(-16em + #{$margin-value});
       img {
         padding: 2px;
       }
