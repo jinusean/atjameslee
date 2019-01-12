@@ -7,7 +7,9 @@
       rel="noreferrer">
     {{ tagName }}
   </a>
-    <span v-else>{{ tag }}</span>
+    <span
+      :class="className"
+      v-else>{{ tag }}</span>
   </span>
 </template>
 

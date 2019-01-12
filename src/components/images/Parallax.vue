@@ -64,7 +64,6 @@ export default {
 
       const ratio = (top - scrollableTop) / scrollableHeight
       const scale = Math.max(ratio * (MAX_SCALE - MIN_SCALE) + MIN_SCALE, 1)
-      console.log(scale)
       this.setScale(scale)
     },
     setScale(scale) {

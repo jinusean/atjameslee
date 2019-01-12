@@ -1,9 +1,9 @@
 <template>
   <div class="jcl-footer">
     <div class="jcl-footer__container">
-      <a 
-        class="jcl-footer__email" 
-        href="mailto:atjameslee@gmail.com" 
+      <a
+        class="jcl-footer__email"
+        href="mailto:atjameslee@gmail.com"
         alt="email me">atjameslee@gmail.com</a>
       <ul class="contact-links">
         <li
@@ -102,6 +102,17 @@ export default {
         opacity: 1;
       }
     }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .jcl-footer__container {
+      flex-direction: column;
+
+      > * {
+        margin: 1em;
+      }
+    }
+
   }
 }
 </style>

@@ -1,34 +1,27 @@
 <template>
   <div class="profile-card">
 
-    <Parallax 
-      :src="`/images/nyc/${nycImageNumber}.png`" 
+    <Parallax
+      :src="`/images/nyc/${nycImageNumber}.png`"
       class="profile-card__header-image"/>
 
     <div class="profile-card__info">
-      <figure class="profile-card__profile-image">
-        <img src="/images/white-shirt.png">
-      </figure>
+      <!--<figure class="profile-card__profile-image">-->
+        <!--<img src="/images/white-shirt.png">-->
+      <!--</figure>-->
 
       <div
         v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }"
         class="profile-card__description">
         <p>
-          I am a humble full stack developer who began his development journey as a computer science student at the
-          State University of New York in Stony Brook.
+          I am a full stack developer who began his development journey as a computer science student in New York.
         </p>
 
         <p>
-          Some of my earliest qualifications include coding in Java, MIPS assembly, and C#.
+          Some of my earliest studies include coding in Java, MIPS assembly, and C#. Nowadays I do most of my work
+          programming for the web using Javascript with Node and Vue.
         </p>
 
-        <p>
-          Nowadays I do most of my work programming for a web browser, like the one your're using right now.
-        </p>
-
-        <p>
-          With that in mind - sit back, relax, and take a look at how I express my interests digitally.
-        </p>
       </div>
     </div>
   </div>
@@ -51,14 +44,23 @@ export default {
 <style lang="scss" scoped>
 .profile-card {
   width: 100%;
+  color: black;
+
+  .profile-card__header-image {
+    margin-bottom: 4em;
+  }
+
+
+
 
   .profile-card__profile-image {
+    // phi margins
     $a-margin: -9.88854rem;
     $b-margin: -6.11146rem;
 
     position: relative;
     height: 16em;
-    margin-top: calc(-16em + calc(16em * #{$phi-b}));
+    margin-top: $a-margin;
     text-align: center;
 
     img {
@@ -72,11 +74,7 @@ export default {
     }
 
     @include media-breakpoint-down(sm) {
-      // calc doesn't work with this value, don't know why
-      $margin-value: -85.5613px;
-      $margin-value: calc(16em * #{$phi-a});
-
-      margin-top: calc(-16em + #{$margin-value});
+      margin-top: $b-margin;
       img {
         padding: 2px;
       }
@@ -84,14 +82,15 @@ export default {
   }
 
   .profile-card__description {
-    width: 100%;
-    max-width: 60rem;
+    max-width: 40rem;
+    text-align: center;
 
     /* padding-top: 5em; */
     margin: 0 auto;
     font-size: 1.5em;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-down(sm) {
+      text-align: left;
       max-width: 100%;
     }
   }

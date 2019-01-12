@@ -1,18 +1,23 @@
 - title: Front-end
   skills:
-    - Vue (Nuxt)
-    - Styling SCSS/CSS
-    - Slicing designs
-    - Bundling (Webpack)
+    - Vue / Nuxt
+    - SCSS / CSS
+    - Webpack
     - React
-    - SEO
-- title:
+    - Styling and slicing
+
+- title: DevOps
+  skills:
+    - Serverless
+    - AWS
+    - GitLab
+    - GitHub
+    - Docker
 
 - title: Back-end
   skills:
-    - Node
-    - Serverless / AWS-Lambda
-    - Adonis
-    - Express
-    - .NET (C#)
-
+  - Node
+  - .NET (C#)
+  - MongoDB
+  - MySQL
+  - Firebase

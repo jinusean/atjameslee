@@ -1,13 +1,19 @@
 // src/store/index.js
 import projects from '../database/projects.yaml'
+import skills from '../database/skills.yaml'
 
 export const state = () => ({
-  projects
+  projects,
+  skills,
+  breakpoint: 'sm'
 })
 
 export const mutations = {
   setFoo(state, foo) {
     state.foo = foo
+  },
+  setBreakpoint(state, breakpoint) {
+    state.breakpoint = breakpoint
   }
 }
 

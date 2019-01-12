@@ -2,101 +2,37 @@
   <section class="about">
     <CoverPage/>
 
-    <ProfileCard/>
+    <ProfileCard class="profile-card"/>
 
+    <skills-cards/>
 
-    <div class="about__skills">
-      <div
-        v-for="(skill, index) in skills"
-        :key="index"
-        class="skill-card">
-        <h3>
-          {{ skill.title }}
-        </h3>
-        <div class="skill-card__skills">
-          <ul>
-            <li
-              v-for="(line, index) in skill.skills"
-              :key="index">
-              <span
-                v-for="(skillItem, index) in parseLine(line)"
-                :key="index">
-                <Tag
-                  :tag="skillItem"
-                  class-name="skill"/>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="more-information">
+      <h2>
+        More Information
+      </h2>
+      <p>
+        Please checkout my <nuxt-link to="/projects">projects</nuxt-link> to see some of the work that I have been working on.
+      </p>
     </div>
-
-    <div style="height:50vh;"/>
-
   </section>
 </template>
 <script>
 import CoverPage from '../components/about/CoverPage'
 import Tag from '../components/TagsList/Tag'
-import tags from '~/database/tags.yaml'
-import skills from '~/database/skills.yaml'
 import ProfileCard from '../components/about/ProfileCard'
+import SkillsCards from '../components/about/SkillsCards'
 
 export default {
-  components: { ProfileCard, Tag, CoverPage },
-  computed: {
-    skills() {
-      return skills
-    }
-  },
-  methods: {
-    parseLine(line) {
-      const skills = []
-
-      const tag = line.toLowerCase()
-      for (const tagName in tags) {
-        if (tagName.toLowerCase() === tag) {
-          skills.push(tagName)
-          return skills
-        }
-      }
-
-      line.split(' ').forEach(item => {
-        if (item.includes('/')) {
-          const splits = item.split('/')
-          const { length } = splits
-          splits.forEach((splitItem, index) => {
-            this.parseSkill(splitItem, skills)
-            if (index !== length - 1) {
-              skills.push('/')
-            }
-          })
-        } else {
-          this.parseSkill(item, skills)
-        }
-        skills.push(' ')
-      })
-
-      return skills
-    },
-    parseSkill(skill, skills) {
-      if (skill[0] === '(') {
-        skills.push('(')
-        skills.push(skill.substring(1, skill.length - 1))
-        skills.push(')')
-      } else {
-        skills.push(skill)
-      }
-    }
-  }
+  components: { SkillsCards, ProfileCard, CoverPage },
+  methods: {}
 }
 </script>
 <style lang="scss">
-.about > * {
-  /* margin-bottom: 2em; */
+.about > *:not(:first-child) {
+  margin-bottom: 4em;
+  font-size: 1.2em;
 }
 
-.skill {
-  display: inline-block;
+.profile-card {
 }
 </style>
