@@ -1,12 +1,16 @@
 import pkg from './package'
-import fs from 'fs'
+import yamljs from 'yamljs'
+
+const idPaths = ['projects', 'packages'].reduce((paths, path) => {
+  return paths.concat(
+    yamljs.load(`./src/database/${path}.yaml`).map(({ id }) => `/${path}/${id}`)
+  )
+}, [])
 
 module.exports = {
-  srcDirectory: 'src/',
-  mode: 'spa',
   srcDir: 'src/',
   generate: {
-    routes: ['/', '/dicks', '/eyes']
+    routes: idPaths
   },
   router: {
     linkExactActiveClass: 'exact-active',
@@ -46,15 +50,16 @@ module.exports = {
   plugins: [
     '~/plugins/globals.js',
     '~/plugins/index.js',
-    '~/plugins/breakpoints.js'
+    { src: '~/plugins/breakpoints.js', ssr: false },
+    { src: '~/plugins/no-ssr.js', ssr: false }
   ],
 
   /*
    ** Nuxt.js modules
    */
   modules: [
+    ['@nuxtjs/pwa'],
     ['@nuxtjs/markdownit'],
-    ['vuex-actions-states'],
     [
       'nuxt-sass-resources-loader',
       [

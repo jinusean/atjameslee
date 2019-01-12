@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="modal-row">
-      <h3>src/store/index.js</h3>
+      <h3>src/store/no-ssr.js</h3>
 
       <div class="modal-row__content">
         <img
           src="/images/vuex-actions-states-store.png"
-          alt="src/store/index.js">
+          alt="src/store/no-ssr.js">
         <p>
           Given the following vuex-store file with actions: <b>fetchThis</b>, <b>fetchThat</b> & <b>dontFetch</b>.<br>
           <br>

@@ -1,9 +1,10 @@
-// src/store/index.js
 import projects from '../database/projects.yaml'
 import skills from '../database/skills.yaml'
+import packages from '../database/packages.yaml'
 
 export const state = () => ({
   projects,
+  packages,
   skills,
   breakpoint: 'sm'
 })

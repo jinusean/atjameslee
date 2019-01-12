@@ -1,32 +1,32 @@
 <template>
 
-  <div class="component-card">
+  <div class="package-card">
 
     <nuxt-link
-      :to="`/packages/${component.id}`"
-      class="component-card__preview no-style">
-      <img :src="`/images/${component.id}.png`">
+      :to="`/packages/${data.id}`"
+      class="package-card__preview no-style">
+      <img :src="`/images/${data.id}.png`">
     </nuxt-link>
 
     <nuxt-link
-      :to="`/packages/${component.id}`"
-      class="no-style component-card__info">
-      <h3 class="component-card__title">{{ title }}</h3>
-      <h4 class="component-card__subtitle">{{ component.subtitle }}</h4>
-      <p v-html="component.info"/>
+      :to="`/packages/${data.id}`"
+      class="no-style package-card__info">
+      <h3 class="package-card__title">{{ title }}</h3>
+      <h4 class="package-card__subtitle">{{ data.subtitle }}</h4>
+      <p v-html="data.info"/>
     </nuxt-link>
 
 
-    <div class="component-card__links">
+    <div class="package-card__links">
       <a
-        v-if="component.gitlab"
-        :href="`https://gitlab.com/jinusean/${component.id}`"
+        v-if="data.gitlab"
+        :href="`https://gitlab.com/jinusean/${data.id}`"
         target="_blank">
         <img src="~/assets/logos/gitlab.png">
       </a>
       <a
-        v-if="component.npm"
-        :href="`https://www.npmjs.com/package/${component.id}`"
+        v-if="data.npm"
+        :href="`https://www.npmjs.com/package/${data.id}`"
         target="_blank">
         <img src="~/assets/logos/npm.png">
       </a>
@@ -36,25 +36,25 @@
 
 <script>
 export default {
-  name: 'ComponentCard',
+  name: 'PackageCard',
   props: {
-    component: {
+    data: {
       type: Object,
       required: true
     }
   },
   computed: {
     title() {
-      return this.component.id.split('-').join(' ')
+      return this.data.id.split('-').join(' ')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$component-card-radius: 0.5em;
+$package-card-radius: 0.5em;
 
-.component-card {
+.package-card {
   display: grid;
   flex: 1;
   grid-template-columns: auto 1fr auto;
@@ -62,11 +62,11 @@ $component-card-radius: 0.5em;
   height: 12em;
   overflow: hidden;
   border: $border;
-  border-radius: $component-card-radius;
+  border-radius: $package-card-radius;
   box-shadow: none;
   transition: transform 300ms ease-in, box-shadow 300ms ease-in;
 
-  .component-card__preview {
+  .package-card__preview {
     width: 16em;
     padding: 1em;
 
@@ -77,15 +77,15 @@ $component-card-radius: 0.5em;
     }
   }
 
-  .component-card__info {
+  .package-card__info {
     padding: 1em;
 
-    .component-card__title {
+    .package-card__title {
       margin: 0 0 0.5em 0;
       color: $link-color;
       text-transform: capitalize;
     }
-    .component-card__subtitle {
+    .package-card__subtitle {
       margin-top: 0;
     }
 
@@ -94,11 +94,11 @@ $component-card-radius: 0.5em;
     }
   }
 
-  .component-card__links {
+  .package-card__links {
     padding: 1em 0.75em;
     background: $gray-100;
-    border-top-right-radius: $component-card-radius;
-    border-bottom-right-radius: $component-card-radius;
+    border-top-right-radius: $package-card-radius;
+    border-bottom-right-radius: $package-card-radius;
 
     a {
       display: block;
@@ -116,8 +116,8 @@ $component-card-radius: 0.5em;
   }
 }
 
-.component-card:hover {
-  .component-card__title {
+.package-card:hover {
+  .package-card__title {
     text-decoration: underline;
   }
 
@@ -129,7 +129,7 @@ $component-card-radius: 0.5em;
 }
 
 @include media-breakpoint-down(sm) {
-  .component-card {
+  .package-card {
     grid-template-rows: 1fr 1fr auto;
     grid-template-columns: auto;
     grid-gap: 0;
@@ -137,7 +137,7 @@ $component-card-radius: 0.5em;
 
     /* border-radius: 0; */
 
-    .component-card__preview {
+    .package-card__preview {
       display: flex;
       justify-content: center;
       width: 100%;
@@ -150,11 +150,11 @@ $component-card-radius: 0.5em;
       }
     }
 
-    .component-card__info {
+    .package-card__info {
       overflow: hidden;
     }
 
-    .component-card__links {
+    .package-card__links {
       display: flex;
       align-items: center;
 

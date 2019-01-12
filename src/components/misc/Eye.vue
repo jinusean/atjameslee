@@ -1,6 +1,7 @@
 <template>
-  <div ref="eye"
-       class="eye">
+  <div 
+    ref="eye"
+    class="eye">
     <div ref="pupil"/>
   </div>
 </template>

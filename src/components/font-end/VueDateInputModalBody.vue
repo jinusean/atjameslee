@@ -11,13 +11,15 @@
         target="_blank">Responsive</a>: adjust the browser width and see the magic.
     </p>
     <div class="vue-date-input">
-      <vue-date-input v-model="dates"/>
+      <no-ssr>
+        <vue-date-input v-model="dates"/>
+      </no-ssr>
     </div>
   </div>
 </template>
 
 <script>
-import VueDateInput from 'vue-date-input'
+import VueDateInput from 'vue-date-input/src/components/DatePicker'
 import 'vue-date-input/dist/styles.css'
 
 export default {

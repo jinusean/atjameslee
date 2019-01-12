@@ -7,22 +7,25 @@
 
     <div class="profile-card__info">
       <!--<figure class="profile-card__profile-image">-->
-        <!--<img src="/images/white-shirt.png">-->
+      <!--<img src="/images/white-shirt.png">-->
       <!--</figure>-->
+      <no-ssr>
+        <div
+          v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }"
+          class="profile-card__description">
+          <p>
+            I began my development journey as a computer science student in New York.
+          </p>
 
-      <div
-        v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }"
-        class="profile-card__description">
-        <p>
-          I am a full stack developer who began his development journey as a computer science student in New York.
-        </p>
+          <p>
+            Some of my earliest studies include coding in Java, MIPS assembly, and C#. Nowadays I do most of my work
+            programming for the web using Javascript with Node and Vue.
+          </p>
 
-        <p>
-          Some of my earliest studies include coding in Java, MIPS assembly, and C#. Nowadays I do most of my work
-          programming for the web using Javascript with Node and Vue.
-        </p>
+          <p/>
 
-      </div>
+        </div>
+      </no-ssr>
     </div>
   </div>
 </template>
@@ -48,10 +51,11 @@ export default {
 
   .profile-card__header-image {
     margin-bottom: 4em;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 2em;
+    }
   }
-
-
-
 
   .profile-card__profile-image {
     // phi margins

@@ -1,10 +1,6 @@
 <template>
   <section class="projects">
     <h1>Projects</h1>
-    <!--<ProjectCard -->
-    <!--v-for="project in projects" -->
-    <!--:key="project.id" -->
-    <!--:project="project"/>-->
     <projects-list :projects="projects"/>
   </section>
 </template>

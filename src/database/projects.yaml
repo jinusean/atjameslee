@@ -22,6 +22,13 @@
   link: http://importgenius.com
   images:
     logo: import-genius-logo.png
+    banner: import-genius.png
+  tags:
+    - Vue
+    - Nuxt
+    - Workbox
+    - Chartjs
+    - Google Maps
 
 - id: tagalong
   description: Philippines' first aggregated news site for in English, Tagalog, and Cebuano

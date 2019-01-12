@@ -1,34 +1,35 @@
 <template>
   <section>
     <!-- component showcase modal START -->
-    <nuxt-child/>
+    <no-ssr>
+      <nuxt-child/>
+    </no-ssr>
     <!-- component showcase modal END -->
 
     <h1>Packages</h1>
 
-    <component-card
-      v-for="component in components"
-      :component="component"
-      :key="component.id" />
+    <package-card
+      v-for="p in packages"
+      :data="p"
+      :key="p.id" />
   </section>
 </template>
 
 <script>
-import components from '~/database/components.yaml'
-import ComponentCard from '../components/font-end/ComponentCard.vue'
+import PackageCard from '../components/font-end/PackageCard.vue'
 
 export default {
   name: 'Packages',
-  components: { ComponentCard },
+  components: { PackageCard },
   computed: {
-    components() {
-      return components
+    packages() {
+      return this.$store.state.packages
     }
   }
 }
 </script>
 <style lang="scss">
-.component-card {
+.package-card {
   margin-bottom: 2em;
 }
 

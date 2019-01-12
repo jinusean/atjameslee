@@ -36,11 +36,13 @@
       </p>
     </section>
 
+    <no-ssr>
     <nuxt-link
       v-scroll-reveal="{origin: 'left' }"
       class="back-link"
       to="/projects">← See more projects
     </nuxt-link>
+    </no-ssr>
   </div>
 </template>
 <script>
@@ -88,7 +90,7 @@ export default {
 }
 
 .project {
-  margin-bottom: 1.6rem;
+  margin-bottom: 4rem;
 
   p {
     line-height: 1.5;
@@ -114,6 +116,10 @@ export default {
   .project__footer {
     margin-top: 4rem;
   }
+
+  .img-site {
+    border: 1px solid $gray-200;
+  }
 }
 
 @include media-breakpoint-up(md) {
@@ -132,5 +138,6 @@ export default {
 </style>
 <style src="~/assets/scss/projects/swaychat.scss" lang="scss">
 </style>
-<style src="~/assets/scss/projects/tagalong.scss" lang="scss"/>
+<style src="~/assets/scss/projects/tagalong.scss" lang="scss"></style>
 <style src="~/assets/scss/projects/beauty-quotient.scss" lang="scss"/>
+<style src="~/assets/scss/projects/import-genius.scss" lang="scss"/>
