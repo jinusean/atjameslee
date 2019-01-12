@@ -8,7 +8,7 @@
       class="experience-card">
 
       <h2 class="company">{{ exp.company }}</h2>
-      <p class="location">{{ exp.location }}</p>
+      <!--<p class="location">{{ exp.location }}</p>-->
       <p class="dates">{{ exp.dates }}</p>
 
       <a

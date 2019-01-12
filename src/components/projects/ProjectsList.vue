@@ -32,6 +32,8 @@
       <p class="project-info">
         <span class="project-owner">{{ project.owner }}</span> / <span class="project-type">{{ project.type }}</span>
       </p>
+
+      <tags-list :tags="project.tags" class="project-tags"/>
     </li>
   </ul>
 </template>
@@ -39,10 +41,11 @@
 <script>
 import MacImg from '../images/MacImg'
 import MonitorImg from '../images/MonitorImg'
+import TagsList from '../TagsList/TagsList'
 
 export default {
   name: 'ProjectsList',
-  components: { MonitorImg, MacImg },
+  components: { TagsList, MonitorImg, MacImg },
   props: {
     projects: {
       type: Array,
@@ -61,6 +64,14 @@ ul.projects__list {
   padding: 0;
   margin: 0 auto;
   list-style: none;
+
+  .project-tags {
+    margin: 1em 0;
+
+    .tag {
+      background: $gray-600;
+    }
+  }
 
   li.projects__list-item {
     margin-bottom: 4em;
@@ -92,6 +103,7 @@ ul.projects__list {
         justify-content: center;
         width: 100%;
         height: 100%;
+        text-align: center;
         text-decoration: none;
         background: rgba(black, 0.5);
         opacity: 0;
@@ -116,7 +128,9 @@ ul.projects__list {
     }
 
     .project-name {
-      margin-bottom: 0;
+      margin: 0;
+      font-size: 1.5em;
+      line-height: 2em;
     }
 
     .project-description {

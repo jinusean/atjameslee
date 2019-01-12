@@ -2,6 +2,10 @@
   <section class="about">
     <CoverPage/>
 
+    <Parallax
+      :src="`/images/nyc-${nycImageNumber}.png`"
+      class="about__background-picture"/>
+
     <ProfileCard class="profile-card"/>
 
     <skills-cards/>
@@ -11,7 +15,9 @@
         More Information
       </h2>
       <p>
-        Please checkout my <nuxt-link to="/projects">projects</nuxt-link> to see some of the work that I have been working on.
+        Please checkout my
+        <nuxt-link to="/projects">projects</nuxt-link>
+        to see some of the work that I have been working on.
       </p>
     </div>
   </section>
@@ -21,10 +27,17 @@ import CoverPage from '../components/about/CoverPage'
 import Tag from '../components/TagsList/Tag'
 import ProfileCard from '../components/about/ProfileCard'
 import SkillsCards from '../components/about/SkillsCards'
+import Parallax from '../components/images/Parallax'
 
 export default {
-  components: { SkillsCards, ProfileCard, CoverPage },
-  methods: {}
+  components: { Parallax, SkillsCards, ProfileCard, CoverPage },
+  methods: {},
+  computed:{
+    nycImageNumber() {
+      const TOTAL = 3
+      return Math.floor(Math.random() * TOTAL + 1)
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -33,6 +46,11 @@ export default {
   font-size: 1.2em;
 }
 
-.profile-card {
+.about__background-picture {
+  margin-bottom: 4em;
+
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 2em;
+  }
 }
 </style>

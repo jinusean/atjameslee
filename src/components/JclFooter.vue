@@ -33,7 +33,7 @@ export default {
     links() {
       return {
         // gmail: 'mailto:atjameslee@gmail.com',
-        gitlab: 'https://gitlab.com/jinusean',
+        gitlab: 'https://gitlab.com/users/jinusean/projects',
         instagram: 'https://instagram.com/atjameslee'
       }
     }

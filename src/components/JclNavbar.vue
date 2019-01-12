@@ -53,7 +53,7 @@ export default {
   left: 0;
   z-index: $zindex-header;
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid $gray-200;
 }
 

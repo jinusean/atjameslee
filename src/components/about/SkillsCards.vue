@@ -11,7 +11,7 @@
         </h3>
         <div class="skill-card__skills">
           <no-ssr>
-            <ul v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }">
+            <u>
               <li
                 v-for="(skill, index) in skill.skills"
                 :key="index">
@@ -19,7 +19,7 @@
                   {{ skill }}
                 </span>
               </li>
-            </ul>
+            </u>
           </no-ssr>
         </div>
       </div>
@@ -57,8 +57,8 @@ export default {
 
   .skill {
     display: inline-block;
-    font-size: 1.2em;
     margin-bottom: 0.25em;
+    font-size: 1.2em;
     color: $primary-color;
   }
 }

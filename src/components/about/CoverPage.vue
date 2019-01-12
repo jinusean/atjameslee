@@ -22,13 +22,8 @@
 </template>
 
 <script>
-import fitty from 'fitty'
-
 export default {
   name: 'AboutTitle',
-  mounted() {
-    fitty('#title')
-  }
 }
 </script>
 
@@ -56,6 +51,11 @@ export default {
     height: calc(100vh - #{$navbar-height * 2});
     padding: 0;
     backface-visibility: hidden;
+    font-size: 12vw;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 10rem;
+    }
 
     h1,
     p {

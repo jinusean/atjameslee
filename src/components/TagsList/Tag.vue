@@ -50,16 +50,16 @@ export default {
 <style lang="scss" scoped>
 .tag {
   display: inline-block;
-  padding: 0.2em 0.4em;
+  padding: 0.4em 0.4em;
   color: white;
   text-decoration: none;
-  background: lightgrey;
+  background: $gray-600;
   border-radius: 0.25em;
   opacity: 1;
   transition: all 300ms ease-in;
 }
 
-.tag:hover {
-  background: grey;
+a.tag:hover {
+  opacity: 0.7;
 }
 </style>

@@ -90,8 +90,8 @@ export default {
 }
 
 .project {
-  margin-bottom: 4rem;
   min-height: 100vh;
+  margin-bottom: 4rem;
 
   p {
     line-height: 1.5;
