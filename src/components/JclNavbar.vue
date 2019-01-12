@@ -2,6 +2,9 @@
   <div class="jcl-navbar-container">
     <div class="jcl-navbar-desktop">
       <nav class="jcl-navbar">
+
+        <div class="jcl-navbar__icon"/>
+
         <ul class="jcl-navbar__links">
           <li
             v-for="link in links"
@@ -59,7 +62,8 @@ export default {
 
 .jcl-navbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   max-width: $layout-width;
   height: $navbar-height;
@@ -68,6 +72,22 @@ export default {
   font-size: 1.2em;
   font-weight: 600;
   text-transform: capitalize;
+
+  @include media-breakpoint-down(sm) {
+    justify-content: center;
+
+    .jcl-navbar__icon {
+      display: none;
+    }
+  }
+
+  .jcl-navbar__icon {
+    background: url("/icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: $navbar-height / 2;
+    width: 6rem;
+  }
 
   .jcl-navbar__links {
     display: flex;
