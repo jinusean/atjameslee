@@ -1,11 +1,16 @@
 import pkg from './package'
 import yamljs from 'yamljs'
+const fs = require('fs')
 
 const idPaths = ['projects', 'packages'].reduce((paths, path) => {
   return paths.concat(
     yamljs.load(`./src/database/${path}.yaml`).map(({ id }) => `/${path}/${id}`)
   )
 }, [])
+
+const imagePaths = fs
+  .readdirSync('./src/static/images')
+  .map(file => `/images/${file}`)
 
 module.exports = {
   srcDir: 'src/',
@@ -20,7 +25,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'James Lee',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -92,5 +97,8 @@ module.exports = {
     linkify: true,
     breaks: true,
     use: ['markdown-it-attrs']
+  },
+  workbox: {
+    offlineAssets: imagePaths
   }
 }

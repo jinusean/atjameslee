@@ -4,6 +4,5 @@ const server = new StaticServer({
   port: 3000               // required, the port to listen
   // host: '10.0.0.100',       // optional, defaults to any interface
 })
-console.log('hey')
 
 server.start()

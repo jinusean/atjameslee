@@ -2,13 +2,13 @@
   <div class="profile-card">
 
     <Parallax
-      :src="`/images/nyc/${nycImageNumber}.png`"
+      :src="`/images/nyc-${nycImageNumber}.png`"
       class="profile-card__header-image"/>
 
     <div class="profile-card__info">
-      <!--<figure class="profile-card__profile-image">-->
-      <!--<img src="/images/white-shirt.png">-->
-      <!--</figure>-->
+      <figure class="profile-card__profile-image">
+      <img src="/images/white-shirt.png">
+      </figure>
       <no-ssr>
         <div
           v-scroll-reveal="{origin: 'bottom', viewFactor: PHI_B }"
