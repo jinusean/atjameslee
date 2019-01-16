@@ -69,6 +69,7 @@ export default {
       }
 
       .subtitle {
+        white-space: nowrap;
         font-size: 38.1966%;
         line-height: 1.6180339887;
       }
