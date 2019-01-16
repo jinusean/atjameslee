@@ -1,6 +1,9 @@
 import pkg from './package'
 import yamljs from 'yamljs'
-const fs = require('fs')
+import fs from 'fs'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const idPaths = ['projects', 'packages'].reduce((paths, path) => {
   return paths.concat(
@@ -72,7 +75,8 @@ module.exports = {
         '~/assets/bootstrap/utilities.scss',
         '~/assets/scss/mixins.scss'
       ]
-    ]
+    ],
+    ['@nuxtjs/google-analytics', { id: process.env.GA_TRACKING_ID }]
   ],
   /*
    ** Build configuration

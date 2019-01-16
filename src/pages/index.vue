@@ -2,7 +2,7 @@
   <section class="about">
     <CoverPage/>
 
-    <Parallax
+    <Parallax 
       :src="`/images/nyc-${nycImageNumber}.png`"
       class="about__background-picture"/>
 
@@ -31,13 +31,13 @@ import Parallax from '../components/images/Parallax'
 
 export default {
   components: { Parallax, SkillsCards, ProfileCard, CoverPage },
-  methods: {},
-  computed:{
+  computed: {
     nycImageNumber() {
       const TOTAL = 3
       return Math.floor(Math.random() * TOTAL + 1)
     }
-  }
+  },
+  methods: {}
 }
 </script>
 <style lang="scss">
