@@ -8,12 +8,12 @@ The Golden Ratio or Phi or Φ is a mathematical constant whose ratio takes the f
 ![Golden Spiral](/images/beauty-quotient_golden-rectangle.png)**a / b  =  (a + b) / a  =  1.6180339887** 
 {.img-golden-rectangle .img-container}
 
-What’s interesting about this ratio is that it is not limited to rectangles and squares, but can also to any geometric shape. Including the human face. 
+What’s interesting about this ratio is that it is not limited to rectangles and squares, but also applies to any geometric shape. Including the human face. 
 
 ![Different ratios of the same face](/images/beauty-quotient_different-ratios.jpg)*Which face is the most aesthetic to you? The answer according to Phi is at the end of the page.*
 {.text-center .img-container}
 
-For this project, I used an Open Source Computer Vision Library (OpenCV) in order to extract the pixel coordinates of a person’s faces. With the pixel coordinates, I drew rectangles to find their ratios, and compared it to how close they fell in line to the Phi. This took the most of my development time since my trigonometry was a bit rusty, and I had to do perform geometric transformations on the datapoints in order to make sure all the rectangles were at a 90 degree angle. 
+For this project I used an Open Source Computer Vision Library (OpenCV) to extract the facial pixel coordinates. I then used the raw data to drew virtual rectangles to find their ratios, and compared it to how close they fell in line to the Phi. This took the most of my development time since my trigonometry was a bit rusty, and I had to do perform geometric transformations on the datapoints in order to make sure all the rectangles were at a 90 degree angle. 
 
 ![Output of Beauty Quotient program](/images/beauty-quotient_megan-fox.png)*Output of Beauty Quotient*
  {.img-sm .img-container}
