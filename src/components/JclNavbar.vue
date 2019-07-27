@@ -3,7 +3,9 @@
     <div class="jcl-navbar-desktop">
       <nav class="jcl-navbar">
 
-        <div class="jcl-navbar__icon"/>
+        <nuxt-link 
+          class="jcl-navbar__icon" 
+          to="/" />
 
         <ul class="jcl-navbar__links">
           <li
@@ -82,7 +84,7 @@ export default {
   }
 
   .jcl-navbar__icon {
-    background: url("/icon.png");
+    background: url('/icon.png');
     background-size: contain;
     background-repeat: no-repeat;
     height: $navbar-height / 2;

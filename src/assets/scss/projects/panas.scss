@@ -1,0 +1,21 @@
+.project.project-panas {
+
+  .mobile-demos {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      width: 30%;
+      text-align: center;
+
+      img {
+        border: $border;
+      }
+
+      em {
+        font-size: $font-size;
+
+      }
+    }
+  }
+}

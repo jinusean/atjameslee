@@ -37,11 +37,11 @@
     </section>
 
     <no-ssr>
-    <nuxt-link
-      v-scroll-reveal="{origin: 'left' }"
-      class="back-link"
-      to="/projects">← See more projects
-    </nuxt-link>
+      <nuxt-link
+        v-scroll-reveal="{origin: 'left' }"
+        class="back-link"
+        to="/projects">← See more projects
+      </nuxt-link>
     </no-ssr>
   </div>
 </template>
@@ -139,6 +139,7 @@ export default {
 </style>
 <style src="~/assets/scss/projects/swaychat.scss" lang="scss">
 </style>
-<style src="~/assets/scss/projects/tagalong.scss" lang="scss"></style>
+<style src="~/assets/scss/projects/tagalong.scss" lang="scss"/>
 <style src="~/assets/scss/projects/beauty-quotient.scss" lang="scss"/>
 <style src="~/assets/scss/projects/import-genius.scss" lang="scss"/>
+<style src="~/assets/scss/projects/panas.scss" lang="scss" />

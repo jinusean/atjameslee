@@ -1,3 +1,17 @@
+- id: panas
+  description: Track and analyze your mood(s) with a clinical survey
+  name: P.A.N.A.S.
+  owner: Personal Project
+  type: NativeScript (android & ios) Development
+  images:
+    logo: panas-logo.png
+    banner: panas-banner.jpg
+  tags:
+    - NativeScript
+    - Vue
+    - Android
+    - iOS
+
 - id: beauty-quotient
   description: Facial recognition technology + the golden ratio
   name: Beauty Quotient

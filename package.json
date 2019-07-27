@@ -22,6 +22,7 @@
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
     "markdown-it-attrs": "^2.3.2",
+    "markdown-it-div": "^1.1.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.3.4",
     "nuxt-sass-resources-loader": "^2.0.5",

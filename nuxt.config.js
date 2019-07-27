@@ -98,7 +98,7 @@ module.exports = {
     preset: 'default',
     linkify: true,
     breaks: true,
-    use: ['markdown-it-attrs']
+    use: ['markdown-it-div', 'markdown-it-attrs']
   },
   workbox: {
     offlineAssets: imagePaths
