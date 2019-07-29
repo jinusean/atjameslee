@@ -22,7 +22,7 @@ Track your mood by selecting a rating for each of the 20 emotions. Emotions are 
 :::
 
 ::: .mobile-demo__description
-Review your previous moods in a list format. Tap on a record and see a visual breakdown of the moods' scores.  
+Review your previous moods in list format. Tap on a record and see a visual breakdown of the moods' scores.  
 :::
 :::
 
@@ -32,7 +32,7 @@ Review your previous moods in a list format. Tap on a record and see a visual br
 :::
 
 ::: .mobile-demo__description
-The first step in improving your mental health is to be aware of what you are feeling. Analyze your previous moods for a given time-frame (daily, weekly, monthly). Understand which negative moods are influencing in your life, or check which positive moods you are lacking.   
+The first step in improving your mental health is to be aware of what you are feeling. Analyze your previous moods for a given time-frame (daily, weekly, monthly). Understand which negative moods are influencing in your life, or check which positive moods need improvement.   
 :::
 :::
 
