@@ -101,12 +101,6 @@ export default {
     margin-bottom: 0.5em;
   }
 
-  // img captions
-  em {
-    font-size: 0.8em;
-    font-style: normal;
-  }
-
   img {
     display: block;
     width: 100%;
@@ -115,7 +109,9 @@ export default {
   }
 
   .project__footer {
-    margin-top: 4rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: $border;
   }
 
   .img-site {

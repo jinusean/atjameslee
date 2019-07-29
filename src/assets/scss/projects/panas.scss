@@ -1,21 +1,40 @@
 .project.project-panas {
 
-  .mobile-demos {
+  .mobile-demo {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    border-top: $border;
 
-    p {
-      width: 30%;
-      text-align: center;
+    .mobile-demo__image {
+      margin-right: 16px;
+
+      p {
+        float: right;
+      }
 
       img {
+        max-width: 260px;
         border: $border;
       }
+    }
 
-      em {
-        font-size: $font-size;
+    .mobile-demo__description {
+      max-width: 260px;
+    }
+  }
 
+  .mobile-demo.mobile-demo--reverse {
+    flex-direction: row-reverse;
+
+    .mobile-demo__image {
+      margin-right: 0;
+      margin-left: 16px;
+
+      p {
+        float: left;
       }
     }
+
+    .mobile-demo__description{}
   }
 }
