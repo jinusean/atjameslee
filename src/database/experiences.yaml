@@ -1,5 +1,15 @@
+- company: Eatlab
+  dates: June 2019 - Novemeber 2019
+  location: Bangkok, Thailand
+  companyLink: eatlab.space/
+  role: AI Intern
+  details:
+    - Scraped and normalized data from the web into a structured database.
+    - Trained a CNN model on 256 classes of Asian foods, that was then used as the base for a
+      transfer-learning model on foods with limited sample images.
+    - Achieved over 94% accuracy with the transfer-learned model on Thai foods.
 - company: Code Ninja
-  dates: March 2017 - Current
+  dates: April 2017 - March 2019
   location: Manila, Phlippines
   companyLink: codeninja.co
   role: Full-Stack Developer
