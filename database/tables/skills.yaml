@@ -1,0 +1,31 @@
+- title: Machine Learning
+  skills:
+    - Tensorflow / Keras / PyTorch
+    - Colab / Jupyter
+    - Computer Vision
+    - Audio Classification
+
+- title: Front-end
+  skills:
+    - Vue / Nuxt
+    - SCSS / CSS
+    - Webpack
+    - React
+    - Styling and slicing
+
+
+- title: Back-end
+  skills:
+  - Node
+  - .NET (C#)
+  - MongoDB
+  - MySQL
+  - Firebase
+
+- title: DevOps
+  skills:
+    - Serverless
+    - AWS
+    - GitLab
+    - GitHub
+    - Docker

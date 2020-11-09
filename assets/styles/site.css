@@ -1,0 +1,38 @@
+html,
+body {
+  color: #6c757d;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: black;
+}
+h1 {
+  font-size: 1.5em;
+}
+h2 {
+  font-size: 1.25em;
+}
+h3 {
+  font-size: 1em;
+}
+
+a {
+  color: #800080;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+blockquote {
+  padding-left: 1em;
+  margin-left: 1em;
+  font-style: italic;
+  border-left: .2em solid #6c757d;
+}
