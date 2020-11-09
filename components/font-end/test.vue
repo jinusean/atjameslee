@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="modal-row">
-      <h3 class="mb-4"><code>'store/store.js'</code></h3>
+      <h3 class="mb-4">src/store/plugins.client.js</h3>
 
       <div class="grid gap-4 sm:grid-flow-col">
         <img
@@ -76,26 +76,17 @@ export default {
 <style scoped>
 /*grid-template-columns: 12em auto;*/
 
-@screen sm {
-  .modal-row > div {
-    grid-template-columns: 12em auto;
-  }
+.modal-row > div {
+  grid-template-columns: 24em auto;
 }
-
-@screen md {
-  .modal-row > div {
-    grid-template-columns: 20em auto;
-  }
-}
-
 img {
   max-width: 100%;
   max-height: 16em;
 }
 
-/*@screen sm {*/
-/*  img {*/
-/*    max-width: 16em;*/
-/*  }*/
-/*}*/
+@screen sm {
+  img {
+    max-width: 16em;
+  }
+}
 </style>
