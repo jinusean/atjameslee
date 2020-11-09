@@ -1,0 +1,3 @@
+[build]
+  NODE_VERSION = '12.9.0'
+  command = 'nuxt generate'
