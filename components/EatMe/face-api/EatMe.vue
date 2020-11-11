@@ -1,18 +1,7 @@
 <template>
   <div class="center-content page-container">
-    <div
-      v-if="!isLoaded"
-      class="fixed z-50 left-0 top-0 w-full h-full bg-gray-400 bg-opacity-25 flex justify-center items-center"
-    >
-      <p class="text-center font-extrabold white text-6xl">
-        <span v-if="isVideoPlaying">STILL </span>
-        LOADING...
-      </p>
-    </div>
     <div :style="isLoaded ? '' : 'visibility: hidden'">
-      <p class="text-white text-center mt-4 font-bold text-2xl">
-        Say "AHHH...."
-      </p>
+      <p class="text-center mt-4 font-bold text-2xl">Say "AHHH...."</p>
     </div>
     <div class="relative -scale-100" style="transform: scaleX(-1)">
       <video
@@ -25,7 +14,7 @@
       ></video>
       <canvas id="overlay" ref="overlay" class="absolute top-0 max-w-full" />
     </div>
-    <div class="text-white" :style="isVideoPlaying ? '' : 'visibility: hidden'">
+    <div :style="isVideoPlaying ? '' : 'visibility: hidden'">
       <input id="landmarks" v-model="showLandmarks" type="checkbox" />
       <label for="landmarks">Show landmarks</label>
     </div>
@@ -34,9 +23,7 @@
 
 <script>
 import * as faceapi from 'face-api.js'
-import * as artist from './artist'
 import { drawDicks } from './draw'
-import Modal from '~/components/modal'
 
 const SSD_MOBILENETV1 = 'ssd_mobilenetv1'
 const TINY_FACE_DETECTOR = 'tiny_face_detector'
@@ -44,9 +31,6 @@ const TINY_FACE_DETECTOR = 'tiny_face_detector'
 const models = [SSD_MOBILENETV1, TINY_FACE_DETECTOR]
 
 export default {
-  components: {
-    Modal,
-  },
   props: {
     minConfidence: {
       type: Number,

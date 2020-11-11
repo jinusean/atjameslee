@@ -1,8 +1,14 @@
 <template>
-  <div
-    class="fixed top-0 w-screen h-screen flex items-center justify-center bg-black"
-  >
-    <eat-me v-if="isMounted" />
+  <div class="fixed top-0 w-screen h-screen flex items-center justify-center">
+    <div v-if="$store.state.isWebView" class="center-content page-container">
+      <p>Please open this page in Safari App</p>
+      <img
+        src="/images/open-default-browser.jpg"
+        style="height: 50vh"
+        alt="open default browser"
+      />
+    </div>
+    <eat-me v-else-if="isMounted" />
   </div>
 </template>
 
