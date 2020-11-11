@@ -63,6 +63,14 @@ export default {
         test: /\.y?(a)ml$/,
         use: ['js-yaml-loader'],
       })
+
+      if (isClient) {
+        // config.devtool = 'eval'
+      }
+
+      config.node = {
+        fs: 'empty',
+      }
     },
   },
 }
