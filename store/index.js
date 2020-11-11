@@ -2,11 +2,13 @@ export const state = () => ({
   isWebView: undefined,
 })
 
-export const getters = {
+export const mutations = {
   setIsWebView(state, isWebView) {
     state.isWebView = isWebView
   },
 }
+
+export const getters = {}
 
 export const actions = {
   nuxtClientInit({ commit }, context) {
@@ -20,7 +22,7 @@ export const actions = {
       // not iOS
     }
 
-    commit('isWebView', isWebView)
+    commit('setIsWebView', isWebView)
   },
   fetchThis({ commit }) {
     // Will complete after 5000ms

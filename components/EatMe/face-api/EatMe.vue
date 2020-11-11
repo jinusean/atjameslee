@@ -1,9 +1,15 @@
 <template>
   <div class="center-content page-container">
-    <div :style="isLoaded ? '' : 'visibility: hidden'">
-      <p class="text-center mt-4 font-bold text-2xl">Say "AHHH...."</p>
+    <div
+      v-if="!isLoaded"
+      class="fixed top-0 left-0 z-50 bg-black bg-opacity-75 text-white font-bold text-4xl w-full h-full center-content"
+    >
+      <p><span v-if="isVideoPlaying">Still</span> Loading...</p>
     </div>
-    <div class="relative -scale-100" style="transform: scaleX(-1)">
+    <div :style="isLoaded ? '' : 'visibility: hidden'">
+      <p class="text-center mt-4 font-bold text-2xl">Say "Ahh...."</p>
+    </div>
+    <div class="rounded relative -scale-100" style="transform: scaleX(-1)">
       <video
         id="inputVideo"
         ref="inputVideo"

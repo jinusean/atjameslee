@@ -9,6 +9,7 @@
       />
     </div>
     <eat-me v-else-if="isMounted" />
+    <!--    <eat-me />-->
   </div>
 </template>
 
@@ -29,5 +30,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>
