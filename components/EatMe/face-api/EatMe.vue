@@ -4,7 +4,10 @@
       v-if="!isLoaded"
       class="fixed z-50 left-0 top-0 w-full h-full bg-gray-400 bg-opacity-25 flex justify-center items-center"
     >
-      <p class="font-extrabold white text-6xl">LOADING...</p>
+      <p class="text-center font-extrabold white text-6xl">
+        <span v-if="isVideoPlaying">STILL </span>
+        LOADING...
+      </p>
     </div>
     <div :style="isLoaded ? '' : 'visibility: hidden'">
       <p class="text-white text-center mt-4 font-bold text-2xl">
