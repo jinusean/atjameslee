@@ -1,10 +1,16 @@
 <template>
   <div class="center-content page-container">
-    <modal v-model="showModal" :close-button="true">
-      <div slot="body" class="flex justify-center items-center h-full">
-        <p>Open your mouth</p>
-      </div>
-    </modal>
+    <div
+      v-if="!isLoaded"
+      class="fixed z-50 left-0 top-0 w-full h-full bg-gray-400 bg-opacity-25 flex justify-center items-center"
+    >
+      <p class="font-extrabold white text-6xl">LOADING...</p>
+    </div>
+    <div :style="isLoaded ? '' : 'visibility: hidden'">
+      <p class="text-white text-center mt-4 font-bold text-2xl">
+        Say "AHHH...."
+      </p>
+    </div>
     <div class="relative -scale-100" style="transform: scaleX(-1)">
       <video
         id="inputVideo"
@@ -15,6 +21,10 @@
         @loadedmetadata="onLoadedMetaData"
       ></video>
       <canvas id="overlay" ref="overlay" class="absolute top-0 max-w-full" />
+    </div>
+    <div class="text-white" :style="isVideoPlaying ? '' : 'visibility: hidden'">
+      <input id="landmarks" v-model="showLandmarks" type="checkbox" />
+      <label for="landmarks">Show landmarks</label>
     </div>
   </div>
 </template>
@@ -56,7 +66,9 @@ export default {
   },
   data() {
     return {
-      showModal: false,
+      isLoaded: false,
+      isVideoPlaying: false,
+      showLandmarks: true,
     }
   },
   mounted() {
@@ -85,14 +97,14 @@ export default {
           })
     },
     async onLoadedMetaData() {
-      await this.onPlay()
-      this.showModal = true
+      await this.play()
+      this.isVideoPlaying = true
     },
-    async onPlay() {
+    async play() {
       const videoEl = this.$refs.inputVideo
 
       if (videoEl.paused || videoEl.ended || !this.isFaceDetectionModelLoaded())
-        return setTimeout(() => this.onPlay())
+        return setTimeout(() => this.play())
 
       const options = this.getFaceDetectorOptions()
 
@@ -108,16 +120,19 @@ export default {
         if (this.boundingBox) {
           // faceapi.draw.drawDetections(canvas, resizedResult)
         }
-        // faceapi.draw.drawFaceLandmarks(canvas, resizedResult)
+        if (this.showLandmarks) {
+          faceapi.draw.drawFaceLandmarks(canvas, resizedResult)
+        }
         // artist.draw(canvas, resizedResult)
         drawDicks(
           canvas.getContext('2d'),
           resizedResult.landmarks.positions,
           '#000000'
         )
+        this.isLoaded = true
       }
 
-      setTimeout(() => this.onPlay())
+      setTimeout(() => this.play())
     },
     async changeFaceDetector(detector) {
       this.model = detector
