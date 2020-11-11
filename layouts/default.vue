@@ -4,7 +4,7 @@
       <jcl-navbar />
     </div>
     <div class="mt-16 flex flex-grow flex-col">
-      <div class="flex-grow">
+      <div class="flex-grow flex items-stretch">
         <nuxt />
       </div>
       <jcl-footer />
