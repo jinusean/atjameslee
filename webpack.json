@@ -1,0 +1,851 @@
+{
+  "name": "client",
+  "mode": "development",
+  "devtool": "cheap-module-eval-source-map",
+  "optimization": {
+    "runtimeChunk": "single",
+    "minimize": false,
+    "splitChunks": {
+      "chunks": "all",
+      "automaticNameDelimiter": "/",
+      "cacheGroups": {
+        "commons": {
+          "test": {},
+          "chunks": "all",
+          "name": true,
+          "priority": 10
+        }
+      }
+    }
+  },
+  "output": {
+    "path": "/Users/suah/WebstormProjects/atjameslee2/.nuxt/dist/client",
+    "filename": "[name].js",
+    "futureEmitAssets": true,
+    "chunkFilename": "[name].js",
+    "publicPath": "/_nuxt/"
+  },
+  "performance": {
+    "maxEntrypointSize": 1024000,
+    "hints": false
+  },
+  "module": {
+    "rules": [
+      {
+        "test": {},
+        "loader": "vue-loader",
+        "options": {
+          "transformAssetUrls": {
+            "video": "src",
+            "source": "src",
+            "object": "src",
+            "embed": "src"
+          },
+          "productionMode": false
+        }
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "pug-plain-loader",
+                "options": {}
+              }
+            ]
+          },
+          {
+            "use": [
+              "raw-loader",
+              {
+                "loader": "pug-plain-loader",
+                "options": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "use": [
+          {
+            "loader": "/Users/suah/WebstormProjects/atjameslee2/node_modules/babel-loader/lib/index.js",
+            "options": {
+              "configFile": false,
+              "babelrc": false,
+              "cacheDirectory": true,
+              "envName": "client",
+              "presets": [
+                [
+                  "/Users/suah/WebstormProjects/atjameslee2/node_modules/@nuxt/babel-preset-app/src/index.js",
+                  {
+                    "corejs": {
+                      "version": 3
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "modules": {
+                    "localIdentName": "[local]_[hash:base64:5]"
+                  },
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "modules": {
+                    "localIdentName": "[local]_[hash:base64:5]"
+                  },
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "modules": {
+                    "localIdentName": "[local]_[hash:base64:5]"
+                  },
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "less-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "less-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "modules": {
+                    "localIdentName": "[local]_[hash:base64:5]"
+                  },
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "sass-loader",
+                "options": {
+                  "sassOptions": {
+                    "indentedSyntax": true
+                  },
+                  "sourceMap": true
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "sass-loader",
+                "options": {
+                  "sassOptions": {
+                    "indentedSyntax": true
+                  },
+                  "sourceMap": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "modules": {
+                    "localIdentName": "[local]_[hash:base64:5]"
+                  },
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "sass-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "sass-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "oneOf": [
+          {
+            "resourceQuery": {},
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "modules": {
+                    "localIdentName": "[local]_[hash:base64:5]"
+                  },
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "stylus-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "vue-style-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              },
+              {
+                "loader": "css-loader",
+                "options": {
+                  "sourceMap": true,
+                  "importLoaders": 2,
+                  "onlyLocals": false
+                }
+              },
+              {
+                "loader": "postcss-loader",
+                "options": {
+                  "sourceMap": true,
+                  "plugins": [
+                    null,
+                    null,
+                    {
+                      "version": "7.0.35",
+                      "plugins": [
+                        null,
+                        null
+                      ],
+                      "postcssPlugin": "tailwind",
+                      "postcssVersion": "7.0.35"
+                    },
+                    null
+                  ],
+                  "order": "presetEnvAndCssnanoLast"
+                }
+              },
+              {
+                "loader": "stylus-loader",
+                "options": {
+                  "sourceMap": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": {},
+        "use": [
+          {
+            "loader": "url-loader",
+            "options": {
+              "limit": 1000,
+              "name": "[path][name].[ext]"
+            }
+          }
+        ]
+      },
+      {
+        "test": {},
+        "use": [
+          {
+            "loader": "url-loader",
+            "options": {
+              "limit": 1000,
+              "name": "[path][name].[ext]"
+            }
+          }
+        ]
+      },
+      {
+        "test": {},
+        "use": [
+          {
+            "loader": "file-loader",
+            "options": {
+              "name": "[path][name].[ext]"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "plugins": [
+    {
+      "watchOffset": 11000
+    },
+    {},
+    {},
+    {
+      "profile": false,
+      "modulesCount": 500,
+      "showEntries": false,
+      "showModules": true,
+      "showActiveModules": true,
+      "options": {
+        "name": "client",
+        "color": "green",
+        "reporters": [
+          "basic",
+          "fancy",
+          "profile",
+          "stats"
+        ],
+        "reporter": {},
+        "basic": false,
+        "fancy": true,
+        "profile": false,
+        "stats": false
+      },
+      "reporters": [
+        {},
+        {}
+      ]
+    },
+    {
+      "options": {
+        "template": "/Users/suah/WebstormProjects/atjameslee2/.nuxt/views/app.template.html",
+        "templateContent": false,
+        "filename": "../server/index.spa.html",
+        "publicPath": "auto",
+        "hash": false,
+        "inject": true,
+        "scriptLoading": "blocking",
+        "compile": true,
+        "favicon": false,
+        "minify": {
+          "collapseBooleanAttributes": true,
+          "decodeEntities": true,
+          "minifyCSS": true,
+          "minifyJS": true,
+          "processConditionalComments": true,
+          "removeEmptyAttributes": true,
+          "removeRedundantAttributes": true,
+          "trimCustomFragments": true,
+          "useShortDoctype": true
+        },
+        "cache": true,
+        "showErrors": true,
+        "chunks": "all",
+        "excludeChunks": [],
+        "chunksSortMode": "auto",
+        "meta": {},
+        "base": false,
+        "title": "Webpack App",
+        "xhtml": false
+      },
+      "version": 4
+    },
+    {
+      "options": {
+        "filename": "../server/client.manifest.json"
+      }
+    },
+    {
+      "definitions": {
+        "process.env.NODE_ENV": "\"development\"",
+        "process.mode": "\"development\"",
+        "process.dev": true,
+        "process.static": true,
+        "process.target": "\"static\"",
+        "process.env.VUE_ENV": "\"client\"",
+        "process.browser": true,
+        "process.client": true,
+        "process.server": false,
+        "process.modern": false
+      }
+    },
+    {
+      "options": {},
+      "fullBuildTimeout": 200,
+      "requestTimeout": 10000
+    }
+  ],
+  "resolve": {
+    "extensions": [
+      ".wasm",
+      ".mjs",
+      ".js",
+      ".json",
+      ".vue",
+      ".jsx"
+    ],
+    "alias": {
+      "~~": "/Users/suah/WebstormProjects/atjameslee2",
+      "@@": "/Users/suah/WebstormProjects/atjameslee2",
+      "~": "/Users/suah/WebstormProjects/atjameslee2",
+      "@": "/Users/suah/WebstormProjects/atjameslee2",
+      "assets": "/Users/suah/WebstormProjects/atjameslee2/assets",
+      "static": "/Users/suah/WebstormProjects/atjameslee2/static",
+      "vue-meta": "/Users/suah/WebstormProjects/atjameslee2/node_modules/vue-meta/dist/vue-meta.esm.browser.js",
+      "nuxt_plugin_plugin_7c9943fb": "./components/plugin.js",
+      "nuxt_plugin_pluginclient_539299f7": "./content/plugin.client.js",
+      "nuxt_plugin_pluginserver_8d67e902": "./empty.js",
+      "nuxt_plugin_workbox_5618246d": "./workbox.js",
+      "nuxt_plugin_meta_0057302d": "./pwa/meta.js",
+      "nuxt_plugin_icons_0ce9c4bc": "./pwa/icons.js",
+      "nuxt_plugin_axios_134560de": "./axios.js",
+      "nuxt_plugin_libmoduleplugin1cff0f5d_5c21200e": "./lib.module.plugin.1cff0f5d.js",
+      "nuxt_plugin_globals_57393abd": "../plugins/globals.js",
+      "nuxt_plugin_plugins_73575e4d": "../plugins/plugins.js",
+      "nuxt_plugin_pluginsclient_4bfd1e70": "../plugins/plugins.client.js"
+    },
+    "modules": [
+      "node_modules",
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules/nuxt/bin/node_modules",
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules/nuxt/node_modules",
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules",
+      "/Users/suah/WebstormProjects/node_modules",
+      "/Users/suah/node_modules",
+      "/Users/node_modules",
+      "/node_modules"
+    ]
+  },
+  "resolveLoader": {
+    "modules": [
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules/@nuxt/webpack/node_modules",
+      "node_modules",
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules/nuxt/bin/node_modules",
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules/nuxt/node_modules",
+      "/Users/suah/WebstormProjects/atjameslee2/node_modules",
+      "/Users/suah/WebstormProjects/node_modules",
+      "/Users/suah/node_modules",
+      "/Users/node_modules",
+      "/node_modules"
+    ]
+  }
+}

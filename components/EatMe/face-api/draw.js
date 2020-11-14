@@ -90,9 +90,9 @@ const getLinePoint = (pointA, pointB, distance) => {
 export const drawDicks = (ctx, array, color, width = 25, height = 50) => {
   // 50 is about the max distance from mouth opening
   const MOUTH_MAX_OPEN = 50
-
   // get area of opened mouth
   const noseBot = array[51]
+  console.log(noseBot)
   const topLipBot = array[62]
   const topLipTop = array[51]
   const left = array[60]

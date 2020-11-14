@@ -59,7 +59,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    extend(config, { isClient }) {
+    stats: 'verbose',
+    extend(config, { isClient, loaders }) {
+      config.stats = 'verbose'
       config.module.rules.push({
         test: /\.y?(a)ml$/,
         use: ['js-yaml-loader'],
@@ -67,6 +69,10 @@ export default {
 
       if (isClient) {
         // config.devtool = 'eval'
+      }
+
+      config.watchOptions = {
+        ignored: '/components/EatMe/brfv5_js_tk121020_v5.2.0_trial.js',
       }
 
       config.node = {

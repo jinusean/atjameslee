@@ -15,6 +15,7 @@
     "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
+    "brfv5-browser": "https://github.com/Tastenkunst/brfv5-browser.git",
     "core-js": "^3.6.5",
     "element-ui": "2.4.11",
     "face-api.js": "^0.22.2",

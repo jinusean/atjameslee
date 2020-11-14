@@ -13,7 +13,6 @@
       <video
         id="inputVideo"
         ref="inputVideo"
-        autoplay
         muted
         playsinline
         @loadedmetadata="onLoadedMetaData"
@@ -62,6 +61,9 @@ export default {
       isLoaded: false,
       isVideoPlaying: false,
       showLandmarks: true,
+
+      height: 480,
+      width: 640,
     }
   },
   mounted() {
@@ -89,43 +91,44 @@ export default {
             scoreThreshold: this.scoreThreshold,
           })
     },
-    async onLoadedMetaData() {
-      await this.play()
-      this.isVideoPlaying = true
+    onLoadedMetaData() {
+      window.requestAnimationFrame(async () => {
+        await this.track()
+        this.isVideoPlaying = true
+      })
     },
-    async play() {
+    async track() {
       const videoEl = this.$refs.inputVideo
+      if (
+        videoEl.paused ||
+        videoEl.ended ||
+        !this.isFaceDetectionModelLoaded()
+      ) {
+        return window.requestAnimationFrame(this.track)
+      }
 
-      if (videoEl.paused || videoEl.ended || !this.isFaceDetectionModelLoaded())
-        return setTimeout(() => this.play())
-
-      const options = this.getFaceDetectorOptions()
+      const canvas = this.$refs.overlay
+      const ctx = canvas.getContext('2d')
 
       const result = await faceapi
-        .detectSingleFace(videoEl, options)
+        .detectSingleFace(videoEl, this.getFaceDetectorOptions())
         .withFaceLandmarks()
 
       if (result) {
-        const canvas = this.$refs.overlay
         const dims = faceapi.matchDimensions(canvas, videoEl, true)
         const resizedResult = faceapi.resizeResults(result, dims)
 
         if (this.boundingBox) {
-          // faceapi.draw.drawDetections(canvas, resizedResult)
+          faceapi.draw.drawDetections(canvas, resizedResult)
         }
         if (this.showLandmarks) {
           faceapi.draw.drawFaceLandmarks(canvas, resizedResult)
         }
-        // artist.draw(canvas, resizedResult)
-        drawDicks(
-          canvas.getContext('2d'),
-          resizedResult.landmarks.positions,
-          '#000000'
-        )
+        drawDicks(ctx, resizedResult.landmarks.positions, '#000000')
         this.isLoaded = true
       }
 
-      setTimeout(() => this.play())
+      window.requestAnimationFrame(this.track)
     },
     async changeFaceDetector(detector) {
       this.model = detector
@@ -135,14 +138,26 @@ export default {
     },
     async run() {
       // load face detection and face landmark models
-      await this.changeFaceDetector(this.model)
-      await faceapi.loadFaceLandmarkModel('/weights')
+      await Promise.all([
+        this.changeFaceDetector(this.model).then(() =>
+          console.log('changeFaceDetector')
+        ),
+        faceapi
+          .loadFaceLandmarkModel('/weights')
+          .then(() => console.log('loaded model')),
+      ])
 
       // try to access users webcam and stream the images
       // to the video element
-      this.$refs.inputVideo.srcObject = await navigator.mediaDevices.getUserMedia(
-        { video: {} }
-      )
+      const video = this.$refs.inputVideo
+      const { height, width } = this
+      video.srcObject = await navigator.mediaDevices.getUserMedia({
+        video: { frameRate: 30, height, width },
+      })
+      const canvas = this.$refs.overlay
+      canvas.width = width
+      canvas.height = height
+      video.play()
     },
   },
 }
