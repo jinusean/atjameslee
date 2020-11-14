@@ -14,7 +14,7 @@ import {
   disableDynamicPerformance,
   enableDynamicPerformance,
 } from 'brfv5-browser/js/brfv5/brfv5__dynamic_performance'
-import { drawDick, drawRects, drawRect } from './draw'
+import { draw, drawDick, drawRects, drawRect } from './draw'
 
 setLogLevel(false)
 
@@ -119,7 +119,8 @@ export default {
               drawCircles(ctx, face.landmarks, '#00a0ff', 2.0 * sizeFactor)
               // drawRect(ctx, face.bounds, '#ffffff', 1.0) // landmarks bounding box
             }
-            drawDick(ctx, face.landmarks, 'black', 25, 100)
+            // drawDick(ctx, face.landmarks, 'black', 25, 100)
+            draw(ctx, face.landmarks, face.rotationZ, 'black', 25, 100)
           } else {
             // Only draw face detection results, if face detection was performed.
             drawRect(

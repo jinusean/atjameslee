@@ -87,6 +87,142 @@ const getLinePoint = (pointA, pointB, distance) => {
 
   return { x, y }
 }
+class ContextWrap {
+  constructor(ctx) {
+    this.ctx = ctx
+    this.x = 0
+    this.y = 0
+
+    this.wrapped = {}
+  }
+
+  wrap() {
+    for (const prop in this.ctx) {
+      const attribute = this.ctx[prop]
+      if (typeof attribute === 'function') {
+        this.wrapped[prop] = attribute
+        this.ctx[prop] = (...args) => {
+          switch (prop) {
+            case 'translate':
+            case 'rotate':
+              break
+            case 'beginPath':
+              this.y = 0
+              this.x = 0
+              break
+            case 'rect':
+              attribute.call(this.ctx, this.x, this.y, ...args)
+              this.x += args[0]
+              this.y += args[1]
+              return
+            case 'arc':
+              return attribute.call(this.ctx, this.x, this.y, ...args)
+            default:
+              if (args.length < 2) {
+                break
+              }
+              this.y += args[args.length - 1]
+              this.x += args[args.length - 2]
+              args[args.length - 1] = this.y
+              args[args.length - 2] = this.x
+          }
+          return attribute.apply(this.ctx, args)
+        }
+      }
+    }
+  }
+
+  unwrap() {
+    for (const prop in this.wrapped) {
+      this.ctx[prop] = this.wrapped[prop]
+    }
+    this.wrapped = {}
+  }
+}
+
+export const draw = (
+  ctx,
+  landmarks,
+  rotation,
+  color,
+  width = 25,
+  height = 100,
+  tip = 0.3
+) => {
+  const noseBot = landmarks[51]
+  const topLipBot = landmarks[62]
+  const topLipTop = landmarks[51]
+  const mouthLeft = landmarks[60]
+  const mouthRight = landmarks[64]
+  const chin = landmarks[8]
+  const botLipBot = landmarks[57]
+  const botLipTop = landmarks[66]
+  const area = getPolygonArea(landmarks.slice(60, 68))
+  const center = getCenter(mouthLeft, mouthRight)
+  const slope = getSlope(center, topLipBot)
+
+  // image is mirrored os left = right and vice-versa
+  const finishPos = getCenter(mouthLeft, mouthRight)
+  const MOUTH_MAX_OPEN = 50
+  const MAX_DISTANCE = getDistance(finishPos, {
+    x: ctx.canvas.width,
+    y: ctx.canvas.height,
+  })
+  const mouthOpenDistance = Math.min(
+    getDistance(botLipTop, topLipBot),
+    MOUTH_MAX_OPEN
+  )
+  const distanceFromMouthFactor = 1 - logBase(mouthOpenDistance, MOUTH_MAX_OPEN)
+  const distFromMouth = Math.max(0, MAX_DISTANCE * distanceFromMouthFactor)
+
+  const startX = finishPos.x
+  const startY = finishPos.y
+
+  const BALL_RADIUS = width / 2
+  const TIP_HEIGHT = height * tip
+  const SHAFT_HEIGHT = height - TIP_HEIGHT - BALL_RADIUS
+
+  console.log(mouthOpenDistance, distanceFromMouthFactor, distFromMouth)
+  // const wrapped = new ContextWrap(ctx)
+  // wrapped.wrap()
+  ctx.beginPath()
+  ctx.fillStyle = 'black'
+  ctx.translate(finishPos.x, finishPos.y)
+  ctx.rotate((rotation * Math.PI) / 180)
+  ctx.ellipse(
+    0,
+    TIP_HEIGHT + distFromMouth,
+    BALL_RADIUS,
+    TIP_HEIGHT,
+    0,
+    0,
+    Math.PI,
+    true
+  )
+  ctx.fill()
+  ctx.fillRect(-BALL_RADIUS, TIP_HEIGHT + distFromMouth, width, SHAFT_HEIGHT) // bottom right shaft
+
+  ctx.beginPath()
+  ctx.arc(
+    -BALL_RADIUS,
+    TIP_HEIGHT + distFromMouth + SHAFT_HEIGHT,
+    BALL_RADIUS,
+    0,
+    2 * Math.PI
+  )
+  ctx.fill()
+
+  ctx.beginPath()
+  ctx.arc(
+    BALL_RADIUS,
+    TIP_HEIGHT + distFromMouth + SHAFT_HEIGHT,
+    BALL_RADIUS,
+    0,
+    2 * Math.PI
+  )
+  ctx.fill()
+}
+
 export const drawDick = (ctx, array, color, width = 25, height = 50) => {
   // get area of opened mouth
   const noseBot = array[51]
@@ -97,7 +233,7 @@ export const drawDick = (ctx, array, color, width = 25, height = 50) => {
   const right = array[64]
   const botLipBot = array[57]
   const botLipTop = array[66]
-  const area = getPolygonArea(array.slice(60, 68))
+  const area = getPolygonArea(array.slice(60, 68)) // mouth area
   // const width = getDistance(left, right)
   const center = getCenter(left, right)
   const slope = getSlope(center, topLipBot)
