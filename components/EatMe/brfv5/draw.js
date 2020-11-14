@@ -182,7 +182,6 @@ export const draw = (
   const TIP_HEIGHT = height * tip
   const SHAFT_HEIGHT = height - TIP_HEIGHT - BALL_RADIUS
 
-  console.log(mouthOpenDistance, distanceFromMouthFactor, distFromMouth)
   // const wrapped = new ContextWrap(ctx)
   // wrapped.wrap()
   ctx.beginPath()
