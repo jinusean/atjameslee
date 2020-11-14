@@ -1,11 +1,7 @@
 <template>
   <div class="rounded relative -scale-100">
-    <video id="_webcam" ref="video" playsinline />
-    <canvas
-      id="_imageData"
-      ref="canvas"
-      class="absolute top-0 h-full w-full z-50"
-    />
+    <video id="_webcam" ref="video" class="hidden" playsinline />
+    <canvas id="_imageData" ref="canvas" />
   </div>
 </template>
 
@@ -106,17 +102,14 @@ export default {
       }
 
       const ctx = canvas.getContext('2d')
-      const { height, width } = window.getComputedStyle(canvas)
 
       ctx.setTransform(-1.0, 0, 0, 1, this.width, 0) // A virtual mirror should be... mirrored
-      ctx.drawImage(this.$refs.video, 0, 0, width, height)
+      ctx.drawImage(this.$refs.video, 0, 0, this.width, this.height)
       ctx.setTransform(1.0, 0, 0, 1, 0, 0) // unmirror to draw the results
-      // this.manager.update(ctx.getImageData(0, 0, width, height))
-      console.log(ctx.getImageData(0, 0, width, height))
-      // this.manager.update(this.$refs.video.srcObject)
+      this.manager.update(ctx.getImageData(0, 0, this.width, this.height))
 
       if (this.config.enableFaceTracking) {
-        const sizeFactor = Math.min(width, height) / 480.0
+        const sizeFactor = Math.min(this.width, this.height) / 480.0
         const faces = this.manager.getFaces()
 
         for (let i = 0; i < faces.length; i++) {
@@ -144,9 +137,9 @@ export default {
       requestAnimationFrame(this.trackFaces)
     },
     configureTracking() {
-      // if (this.config === null || this.width <= 0) {
-      //   return
-      // }
+      if (this.config === null || this.width <= 0) {
+        return
+      }
       // Camera stream and BRFv5 are ready. Now configure. Internal defaults are set for a 640x480 resolution.
       // So the following isn't really necessary.
 
@@ -262,8 +255,8 @@ export default {
       video.srcObject = mediaStream
       await video.play()
       const canvas = this.$refs.canvas
-      // this.width = canvas.width = width
-      // this.height = canvas.height = height
+      canvas.width = width
+      canvas.height = height
       this.configureTracking()
     },
     run() {
