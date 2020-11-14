@@ -8,7 +8,7 @@
         alt="open default browser"
       />
     </div>
-    <div v-else-if="isMounted" class="center-content page-container">
+    <div v-else-if="isMounted" class="center-content page-container max-w-full">
       <div
         v-if="!isLoaded"
         class="fixed top-0 left-0 z-50 bg-black bg-opacity-75 text-white font-bold text-4xl w-full h-full center-content"
@@ -29,6 +29,7 @@
 
 <script>
 import Brfv5 from '~/components/EatMe/brfv5/brfv5'
+
 export default {
   components: { Brfv5 },
   data() {

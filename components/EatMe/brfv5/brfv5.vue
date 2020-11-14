@@ -1,7 +1,7 @@
 <template>
-  <div class="rounded relative -scale-100">
+  <div class="rounded relative">
     <video id="_webcam" ref="video" class="hidden" playsinline />
-    <canvas id="_imageData" ref="canvas" />
+    <canvas id="_imageData" ref="canvas" class="max-w-full" />
   </div>
 </template>
 
