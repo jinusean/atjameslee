@@ -224,8 +224,8 @@ export default {
 
       Object.assign(brfv5, {
         appId: 'brfv5.browser.minimal.nomodules',
-        binaryLocation: 'models/' + libraryName,
-        modelLocation: 'models/' + this.modelName + '_c',
+        binaryLocation: '/models/' + libraryName,
+        modelLocation: '/models/' + this.modelName + '_c',
         modelChunks: 8, // 4, 6, 8
         binaryProgress(progress) {
           // console.log('progress:', progress)
