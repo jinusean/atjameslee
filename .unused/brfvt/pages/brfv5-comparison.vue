@@ -1,12 +1,16 @@
 <template>
-  <div class="w-full h-full flex items-center justify-center m-auto">
+  <div
+    class="w-full h-full flex-row flex items-center justify-center m-auto"
+    style="transform: scaleX(-1)"
+  >
     <div class="center-content mx-auto max-w-full relative">
       <video id="_webcam" ref="video" class="hidden" playsinline />
       <canvas id="_imageData" ref="canvas" class="max-w-full" />
     </div>
-    <!--    <div class="center-content mx-auto max-w-full relative">-->
-    <!--      <canvas ref="canvas" class="max-w-full w-full h-full p-inherit" />-->
-    <!--    </div>-->
+    <div class="center-content mx-auto max-w-full relative relative">
+      <video ref="v" playsinline />
+      <canvas ref="c" class="max-w-full w-full h-full absolute" />
+    </div>
   </div>
 </template>
 
@@ -107,62 +111,60 @@ export default {
   mounted() {
     this.run()
 
-    // this.c = document.createElement('canvas')
-    // this.c.width = this.width
-    // this.c.height = this.height
+    this.c = document.createElement('canvas')
+    this.c.width = this.width
+    this.c.height = this.height
   },
   destroyed() {
     this.isDestroyed = true
   },
   methods: {
-    // track() {
-    //   if (this.isDestroyed) {
-    //     return
-    //   }
-    //   const ctx = this.$refs.c.getContext('2d')
-    //   ctx.clearRect(0, 0, this.width, this.height)
-    //   // ctx.drawImage(this.$refs.video, 0, 0, this.width, this.height)
-    //   if (this.config.enableFaceTracking) {
-    //     const sizeFactor = Math.min(this.width, this.height) / 480.0
-    //     const faces = this.manager.getFaces()
-    //
-    //     drawCircles(
-    //       ctx,
-    //       [
-    //         { x: 0, y: 0 },
-    //         { x: 50, y: 50 },
-    //         { x: 200, y: 200 },
-    //         { x: 300, y: 300 },
-    //       ],
-    //       '#00a0ff',
-    //       2.0 * sizeFactor
-    //     )
-    //
-    //     for (let i = 0; i < faces.length; i++) {
-    //       const face = faces[i]
-    //       console.log(face)
-    //       if (face.state === brfv5.BRFv5State.FACE_TRACKING) {
-    //         if (this.landmarks) {
-    //           drawCircles(ctx, face.landmarks, '#00a0ff', 2.0 * sizeFactor)
-    //           // drawRect(ctx, face.bounds, '#ffffff', 1.0) // landmarks bounding box
-    //         }
-    //         // drawDick(ctx, face.landmarks, 'black', 25, 100)
-    //         draw(ctx, face.landmarks, face.rotationZ, 'black', 25, 100)
-    //       } else {
-    //         // Only draw face detection results, if face detection was performed.
-    //         drawRect(
-    //           ctx,
-    //           this.config.faceDetectionConfig.regionOfInterest,
-    //           '#ffffff',
-    //           2.0
-    //         )
-    //         drawRects(ctx, this.manager.getDetectedRects(), '#00a0ff', 1.0)
-    //         drawRects(ctx, this.manager.getMergedRects(), '#ffffff', 3.0)
-    //       }
-    //     }
-    //   }
-    //   requestAnimationFrame(this.track)
-    // },
+    track() {
+      if (this.isDestroyed) {
+        return
+      }
+      const ctx = this.$refs.c.getContext('2d')
+      ctx.clearRect(0, 0, this.width, this.height)
+      // ctx.drawImage(this.$refs.video, 0, 0, this.width, this.height)
+      if (this.config.enableFaceTracking) {
+        const sizeFactor = Math.min(this.width, this.height) / 480.0
+        const faces = this.manager.getFaces()
+
+        drawCircles(
+          ctx,
+          [
+            { x: 0, y: 0 },
+            { x: 50, y: 50 },
+            { x: 200, y: 200 },
+            { x: 300, y: 300 },
+          ],
+          '#00a0ff',
+          2.0 * sizeFactor
+        )
+
+        for (let i = 0; i < faces.length; i++) {
+          const face = faces[i]
+          if (face.state === brfv5.BRFv5State.FACE_TRACKING) {
+            if (this.landmarks) {
+              drawCircles(ctx, face.landmarks, '#00a0ff', 2.0 * sizeFactor)
+              // drawRect(ctx, face.bounds, '#ffffff', 1.0) // landmarks bounding box
+            }
+            // draw(ctx, face.landmarks, face.rotationZ, 'black', 25, 100)
+          } else {
+            // Only draw face detection results, if face detection was performed.
+            drawRect(
+              ctx,
+              this.config.faceDetectionConfig.regionOfInterest,
+              '#ffffff',
+              2.0
+            )
+            drawRects(ctx, this.manager.getDetectedRects(), '#00a0ff', 1.0)
+            drawRects(ctx, this.manager.getMergedRects(), '#ffffff', 3.0)
+          }
+        }
+      }
+      requestAnimationFrame(this.track)
+    },
     trackFaces() {
       if (this.isDestroyed) {
         return
@@ -174,9 +176,9 @@ export default {
       }
 
       const ctx = canvas.getContext('2d')
-      ctx.setTransform(-1.0, 0, 0, 1, this.width, 0) // A virtual mirror should be... mirrored
+      // ctx.setTransform(-1.0, 0, 0, 1, this.width, 0) // A virtual mirror should be... mirrored
       ctx.drawImage(this.$refs.video, 0, 0, this.width, this.height)
-      ctx.setTransform(1.0, 0, 0, 1, 0, 0) // unmirror to draw the results
+      // ctx.setTransform(1.0, 0, 0, 1, 0, 0) // unmirror to draw the results
       this.manager.update(ctx.getImageData(0, 0, this.width, this.height))
 
       if (this.config.enableFaceTracking) {
@@ -190,19 +192,18 @@ export default {
               drawCircles(ctx, face.landmarks, '#00a0ff', 2.0 * sizeFactor)
               drawRect(ctx, face.bounds, '#ffffff', 1.0) // landmarks bounding box
             }
-            // drawDick(ctx, face.landmarks, 'black', 25, 100)
-            draw(ctx, face.landmarks, face.rotationZ, 'black', 25, 100)
-          } else {
-            // Only draw face detection results, if face detection was performed.
-            drawRect(
-              ctx,
-              this.config.faceDetectionConfig.regionOfInterest,
-              '#ffffff',
-              2.0
-            )
-            drawRects(ctx, this.manager.getDetectedRects(), '#00a0ff', 1.0)
-            drawRects(ctx, this.manager.getMergedRects(), '#ffffff', 3.0)
+            // draw(ctx, face.landmarks, face.rotationZ, 'black', 25, 100)
+            continue
           }
+          // draw face detection roi
+          drawRect(
+            ctx,
+            this.config.faceDetectionConfig.regionOfInterest,
+            '#ffffff',
+            2.0
+          )
+          drawRects(ctx, this.manager.getDetectedRects(), '#00a0ff', 1.0)
+          drawRects(ctx, this.manager.getMergedRects(), '#ffffff', 3.0)
         }
       }
 
@@ -287,8 +288,6 @@ export default {
 
         // ... use fixed numTrackingPasses and enableFreeRotation
       }
-      this.trackFaces()
-      // this.track()
     },
     async loadModel() {
       const libraryName = 'brfv5_js_tk121020_v5.2.0_trial.brfv5'
@@ -329,12 +328,20 @@ export default {
       const canvas = this.$refs.canvas
       canvas.width = width
       canvas.height = height
+
+      const v = this.$refs.v
+      v.srcObject = mediaStream
+      await v.play()
+      const c = this.$refs.c
+      c.width = width
+      c.height = height
     },
     async run() {
       await this.openCamera()
       await this.loadModel()
+      this.configureTracking()
       this.trackFaces()
-      // this.configureTracking()
+      this.track()
     },
   },
 }

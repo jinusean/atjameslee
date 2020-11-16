@@ -87,58 +87,6 @@ const getLinePoint = (pointA, pointB, distance) => {
 
   return { x, y }
 }
-class ContextWrap {
-  constructor(ctx) {
-    this.ctx = ctx
-    this.x = 0
-    this.y = 0
-
-    this.wrapped = {}
-  }
-
-  wrap() {
-    for (const prop in this.ctx) {
-      const attribute = this.ctx[prop]
-      if (typeof attribute === 'function') {
-        this.wrapped[prop] = attribute
-        this.ctx[prop] = (...args) => {
-          switch (prop) {
-            case 'translate':
-            case 'rotate':
-              break
-            case 'beginPath':
-              this.y = 0
-              this.x = 0
-              break
-            case 'rect':
-              attribute.call(this.ctx, this.x, this.y, ...args)
-              this.x += args[0]
-              this.y += args[1]
-              return
-            case 'arc':
-              return attribute.call(this.ctx, this.x, this.y, ...args)
-            default:
-              if (args.length < 2) {
-                break
-              }
-              this.y += args[args.length - 1]
-              this.x += args[args.length - 2]
-              args[args.length - 1] = this.y
-              args[args.length - 2] = this.x
-          }
-          return attribute.apply(this.ctx, args)
-        }
-      }
-    }
-  }
-
-  unwrap() {
-    for (const prop in this.wrapped) {
-      this.ctx[prop] = this.wrapped[prop]
-    }
-    this.wrapped = {}
-  }
-}
 
 export const draw = (
   ctx,
@@ -221,72 +169,6 @@ export const draw = (
   )
   ctx.fill()
   ctx.resetTransform()
-}
-
-export const drawDick = (ctx, array, color, width = 25, height = 50) => {
-  // get area of opened mouth
-  const noseBot = array[51]
-  const topLipBot = array[62]
-  const topLipTop = array[51]
-  const left = array[60]
-  const chin = array[8]
-  const right = array[64]
-  const botLipBot = array[57]
-  const botLipTop = array[66]
-  const area = getPolygonArea(array.slice(60, 68)) // mouth area
-  // const width = getDistance(left, right)
-  const center = getCenter(left, right)
-  const slope = getSlope(center, topLipBot)
-
-  const ballRadius = width / 2
-
-  const x = ctx.canvas.width
-  const y = ctx.canvas.height
-  const canvasLeftCorner = { x: 0, y }
-  const canvasRightCorner = { x, y }
-  const intersection = lineIntersection(
-    topLipBot,
-    chin,
-    canvasLeftCorner,
-    canvasRightCorner
-  )
-  // 50 is about the max distance from mouth opening
-  const MOUTH_MAX_OPEN = 50
-  const MIN_DISTANCE = ballRadius + 10
-  const maxDistance = y + MIN_DISTANCE - topLipBot.y
-
-  const mouthOpenDistance = Math.min(
-    getDistance(botLipTop, topLipBot),
-    MOUTH_MAX_OPEN
-  )
-  // mouthOpenDistance = mouthOpenDistance - MOUTH_MAX_OPEN / 2
-  // const distanceFromMouthFactor = 1 - mouthOpenDistance / (MOUTH_MAX_OPEN / 2)
-  const distanceFromMouthFactor = 1 - logBase(mouthOpenDistance, MOUTH_MAX_OPEN)
-
-  const distanceFromMouth = Math.max(
-    MIN_DISTANCE,
-    maxDistance * distanceFromMouthFactor
-  ) // where the tip position is
-
-  const shaftTop = getExtendedPoint(noseBot, topLipBot, distanceFromMouth)
-  const shaftBot = getExtendedPoint(noseBot, shaftTop, height)
-
-  let px = topLipBot.y - shaftBot.y
-  let py = topLipBot.x - shaftBot.x
-  const len = ballRadius / Math.hypot(px, py)
-  px = px * len
-  py = -(py * len)
-  const leftBall = {
-    x: shaftBot.x + px,
-    y: shaftBot.y + py,
-  }
-  const rightBall = {
-    x: shaftBot.x - px,
-    y: shaftBot.y - py,
-  }
-
-  drawLine(ctx, shaftTop, shaftBot, color, width)
-  drawCircles(ctx, [shaftTop, rightBall, leftBall], color, ballRadius)
 }
 
 export const drawCircle = (ctx, x, y, color, radius) => {
