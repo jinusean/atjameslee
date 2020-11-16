@@ -19,6 +19,9 @@
   }
 }
 
+.p-inherit {
+  padding: inherit;
+}
 .page-container {
   @apply my-6 px-6 mx-auto;
 }

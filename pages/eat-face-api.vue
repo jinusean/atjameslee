@@ -9,7 +9,6 @@
       />
     </div>
     <eat-me v-else-if="isMounted" />
-    <!--    <eat-me />-->
   </div>
 </template>
 

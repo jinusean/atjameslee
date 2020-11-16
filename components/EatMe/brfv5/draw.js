@@ -220,6 +220,7 @@ export const draw = (
     2 * Math.PI
   )
   ctx.fill()
+  ctx.resetTransform()
 }
 
 export const drawDick = (ctx, array, color, width = 25, height = 50) => {
