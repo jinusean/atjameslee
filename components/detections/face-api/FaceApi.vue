@@ -6,13 +6,10 @@
     >
       <p><span v-if="isVideoPlaying">Still</span> Loading...</p>
     </div>
-    <div :style="isLoaded ? '' : 'visibility: hidden'">
-      <p class="text-center mt-4 font-bold text-2xl">Say "Ahh...."</p>
-    </div>
     <div class="rounded relative -scale-100" style="transform: scaleX(-1)">
       <video
-        id="inputVideo"
-        ref="inputVideo"
+        id="video"
+        ref="video"
         muted
         :class="isLoaded ? 'hidden' : ''"
         playsinline
@@ -20,17 +17,13 @@
         @loadedmetadata="onLoadedMetaData"
       ></video>
       <canvas
-        id="overlay"
-        ref="overlay"
+        id="canvas"
+        ref="canvas"
         :class="!isLoaded ? 'absolute' : ''"
         class="max-w-full top-0 left-0"
         :height="height"
         :width="width"
       />
-    </div>
-    <div :style="isVideoPlaying ? '' : 'visibility: hidden'">
-      <input id="landmarks" v-model="showLandmarks" type="checkbox" />
-      <label for="landmarks">Show landmarks</label>
     </div>
   </div>
 </template>
@@ -63,12 +56,15 @@ export default {
         return models.includes(value)
       },
     },
+    landmarks: {
+      default: false,
+      type: Boolean,
+    },
   },
   data() {
     return {
       isLoaded: false,
       isVideoPlaying: false,
-      showLandmarks: true,
 
       height: 480,
       width: 640,
@@ -110,7 +106,7 @@ export default {
       })
     },
     async track() {
-      const videoEl = this.$refs.inputVideo
+      const videoEl = this.$refs.video
       if (this.isDestroyed || !videoEl) {
         return
       }
@@ -118,7 +114,7 @@ export default {
         return window.requestAnimationFrame(this.track)
       }
 
-      const canvas = this.$refs.overlay
+      const canvas = this.$refs.canvas
       const ctx = canvas.getContext('2d')
       const face = await faceApi
         .detectSingleFace(videoEl, this.getFaceDetectorOptions())
@@ -134,11 +130,11 @@ export default {
         if (this.boundingBox) {
           faceApi.draw.drawDetections(canvas, face)
         }
-        if (this.showLandmarks) {
+        if (this.landmarks) {
           faceApi.draw.drawFaceLandmarks(canvas, face)
         }
-        this.$emit('face', { ctx, face, faceapi: faceApi })
       }
+      this.$emit('track', { ctx, face, faceapi: faceApi })
       window.requestAnimationFrame(this.track)
     },
     async run() {
@@ -152,12 +148,12 @@ export default {
 
       // try to access users webcam and stream the images
       // to the video element
-      const video = this.$refs.inputVideo
+      const video = this.$refs.video
       const { height, width } = this
       video.srcObject = await navigator.mediaDevices.getUserMedia({
         video: { frameRate: 30, height, width },
       })
-      const canvas = this.$refs.overlay
+      const canvas = this.$refs.canvas
       canvas.width = width
       canvas.height = height
       video.play()

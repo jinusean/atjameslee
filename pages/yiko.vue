@@ -8,25 +8,16 @@
         alt="open default browser"
       />
     </div>
-    <div
-      v-else-if="isMounted"
-      class="flex justify-center items-center flex-col"
-    >
-      <div>
-        <p class="text-center mt-4 font-bold text-2xl">Say "Ahh...."</p>
-      </div>
-      <FaceApi ref="faceApi" :landmarks="showLandmarks" @track="onTrack" />
-      <div>
-        <input id="landmarks" v-model="showLandmarks" type="checkbox" />
-        <label for="landmarks">Show landmarks</label>
-      </div>
-    </div>
+    <FaceApi v-else-if="isMounted" ref="faceApi" @track="onTrack" />
   </div>
 </template>
 
 <script>
 import FaceApi from '~/components/detections/face-api/FaceApi'
 import { draw } from '~/components/detections/face-api/draw'
+import { Yikos } from '~/components/detections/face-api/yiko'
+
+let yikos = null
 
 export default {
   name: 'EatMePage',
@@ -36,18 +27,26 @@ export default {
   data() {
     return {
       isMounted: false,
-      showLandmarks: true,
     }
   },
   mounted() {
     this.isMounted = true
+
+    const image = new Image(80, 95)
+    image.src = '/draw/james_side.png'
+
+    this.$nextTick(() => {
+      const ctx = this.$refs.faceApi.$refs.canvas.getContext('2d')
+      yikos = new Yikos(ctx, image, 5, 10)
+    })
   },
   methods: {
     onTrack({ face, ctx }) {
+      yikos.randomAdd()
       if (!face) {
         return
       }
-      draw(ctx, face.landmarks.positions, 'black')
+      yikos.draw(face.landmarks.positions)
     },
   },
 }

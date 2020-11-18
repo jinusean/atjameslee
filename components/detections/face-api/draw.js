@@ -1,3 +1,5 @@
+import { getLandmarks, getCenter } from './utils'
+
 /// ////////////////////////////////////////////////////////////////////////   Start
 const getDistance = (a, b) => {
   const deltaX = a.x - b.x
@@ -15,17 +17,6 @@ const getPolygonArea = (points) => {
     total += a.x * b.y + a.y * b.x
   }
   return total * 0.5
-}
-
-const getCenter = (a, b) => {
-  return {
-    x: (a.x + b.x) / 2,
-    y: (a.y + b.y) / 2,
-  }
-}
-
-const getSlope = (a, b) => {
-  return (b.y - a.y) / (b.x - a.x)
 }
 
 const getExtendedPoint = (a, b, extension) => {
@@ -114,18 +105,19 @@ export const draw = (
   height = 100,
   tip = 0.3
 ) => {
-  const noseBot = landmarks[51]
-  const topLipBot = landmarks[62]
-  const topLipTop = landmarks[51]
-  const mouthLeft = landmarks[60]
-  const mouthRight = landmarks[64]
-  const chin = landmarks[8]
-  const botLipBot = landmarks[57]
-  const botLipTop = landmarks[66]
-  const center = getCenter(mouthLeft, mouthRight)
-
-  const faceLeft = landmarks[0]
-  const faceRight = landmarks[16]
+  const {
+    noseBot,
+    topLipBot,
+    topLipTop,
+    mouthRight,
+    mouthLeft,
+    chin,
+    botLipTop,
+    botLipBot,
+    center,
+    faceLeft,
+    faceRight,
+  } = getLandmarks(landmarks)
 
   const rotation = getRotation(faceLeft, faceRight)
 
@@ -186,4 +178,41 @@ export const draw = (
   )
   ctx.fill()
   ctx.resetTransform()
+}
+
+export const drawHeart = (ctx, x, y, width, height, color = 'red') => {
+  ctx.save()
+  ctx.beginPath()
+  const topCurveHeight = height * 0.3
+  ctx.moveTo(x, y + topCurveHeight)
+  // top left curve
+  ctx.bezierCurveTo(x, y, x - width / 2, y, x - width / 2, y + topCurveHeight)
+
+  // bottom left curve
+  ctx.bezierCurveTo(
+    x - width / 2,
+    y + (height + topCurveHeight) / 2,
+    x,
+    y + (height + topCurveHeight) / 2,
+    x,
+    y + height
+  )
+
+  // bottom right curve
+  ctx.bezierCurveTo(
+    x,
+    y + (height + topCurveHeight) / 2,
+    x + width / 2,
+    y + (height + topCurveHeight) / 2,
+    x + width / 2,
+    y + topCurveHeight
+  )
+
+  // top right curve
+  ctx.bezierCurveTo(x + width / 2, y, x, y, x, y + topCurveHeight)
+
+  ctx.closePath()
+  ctx.fillStyle = color
+  ctx.fill()
+  ctx.restore()
 }
