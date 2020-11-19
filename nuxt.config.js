@@ -23,11 +23,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   // plugins with `<filename>.client.js` will only be installed on client
-  plugins: [
-    '~/plugins/globals.js',
-    '~/plugins/plugins.js',
-    '~/plugins/plugins.client.js',
-  ],
+  plugins: ['~/plugins/plugins.js', '~/plugins/plugins.client.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

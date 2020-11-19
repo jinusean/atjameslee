@@ -14,7 +14,6 @@
 
 <script>
 import FaceApi from '~/components/detections/face-api/FaceApi'
-import { draw } from '~/components/detections/face-api/draw'
 import { Yikos } from '~/components/detections/face-api/yiko'
 
 let yikos = null

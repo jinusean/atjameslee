@@ -28,6 +28,9 @@
   </div>
 </template>
 <script>
+// This does not work in iOS safari because the video element cannot be autoplayed and
+// video cannot be played while the element is hidden
+
 import * as faceApi from 'face-api.js'
 
 const SSD_MOBILENETV1 = 'ssd_mobilenetv1'

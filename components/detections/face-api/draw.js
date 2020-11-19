@@ -1,6 +1,6 @@
+/* eslint-disable */
 import { getLandmarks, getCenter } from './utils'
 
-/// ////////////////////////////////////////////////////////////////////////   Start
 const getDistance = (a, b) => {
   const deltaX = a.x - b.x
   const deltaY = a.y - b.y
@@ -210,7 +210,6 @@ export const drawHeart = (ctx, x, y, width, height, color = 'red') => {
 
   // top right curve
   ctx.bezierCurveTo(x + width / 2, y, x, y, x, y + topCurveHeight)
-
   ctx.closePath()
   ctx.fillStyle = color
   ctx.fill()

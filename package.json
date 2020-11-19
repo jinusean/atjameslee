@@ -11,14 +11,18 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "@codekraft-studio/vue-record": "^0.0.3",
     "@neojp/tailwindcss-important-variant": "^1.0.1",
     "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
+    "@tensorflow/tfjs": "^2.7.0",
     "brfv5-browser": "https://github.com/Tastenkunst/brfv5-browser.git",
     "core-js": "^3.6.5",
     "element-ui": "2.4.11",
     "face-api.js": "^0.22.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "meyda": "^5.0.8",
     "nuxt": "^2.14.6",
     "nuxt-client-init-module": "^0.1.9",
     "react": "^17.0.1",
