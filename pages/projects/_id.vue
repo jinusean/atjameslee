@@ -2,7 +2,7 @@
   <Project :project="project" :document="document" />
 </template>
 <script>
-import Project from '~/components/projects/Project'
+import Project from '@/components/pages/projects/Project'
 
 export default {
   components: { Project },

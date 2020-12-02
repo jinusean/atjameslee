@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-import TagsList from '~/components/TagsList'
+import TagsList from '@/components/TagsList/TagsList'
 
 export default {
   name: 'Project',

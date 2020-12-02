@@ -8,11 +8,11 @@
   </div>
 </template>
 <script>
-import Eye from '~/components/misc/Eye.vue'
+import Eye from '@/components/misc/Eye.vue'
 
 export default {
   name: 'Eye',
-  components: { Eye }
+  components: { Eye },
 }
 </script>
 

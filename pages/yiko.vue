@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import FaceApi from '~/components/detections/face-api/FaceApi'
-import { Yikos } from '~/components/detections/face-api/yiko'
+import FaceApi from '@/components/detections/face-api/FaceApi'
+import { Yikos } from '@/components/detections/face-api/yiko'
 
 let yikos = null
 

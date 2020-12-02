@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import aboutMe from '~/content/about-me.md'
+// import aboutMe from '@/content/about-me.md'
 
 export default {
   name: 'ProfileCard',

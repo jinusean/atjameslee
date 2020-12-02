@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import TagsList from '../TagsList/TagsList'
+import TagsList from '@/components/TagsList/TagsList'
 
 export default {
   name: 'ProjectsList',

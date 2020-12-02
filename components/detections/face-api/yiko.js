@@ -1,13 +1,7 @@
-import {
-  getColor,
-  getRotation,
-  drawHeart,
-} from '@/components/detections/face-api/draw'
+import { getRotation, drawHeart } from '@/components/detections/face-api/draw'
 import {
   getDistantPoint,
-  getCenter,
   getDistance,
-  getLandmarks,
   getRandom,
 } from '@/components/detections/face-api/utils'
 

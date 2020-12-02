@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import FaceApi from '~/components/detections/face-api/FaceApi'
-import { draw } from '~/components/detections/face-api/draw'
+import FaceApi from '@/components/detections/face-api/FaceApi'
+import { draw } from '@/components/detections/face-api/draw'
 
 export default {
   name: 'EatMePage',

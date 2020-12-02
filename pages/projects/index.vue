@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ProjectsList from '@/components/projects/ProjectsList.vue'
+import ProjectsList from '@/components/pages/projects/ProjectsList.vue'
 
 export default {
   components: {

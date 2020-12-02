@@ -1,7 +1,7 @@
 - id: 'vue-date-input'
   subtitle: "Input or pick a date range"
   info: "Inspired by element-ui's date-picker component.<br/>Fully accessible and fully-responsive."
-  gitlab: true
+  github: true
   npm: true
 - id: 'eslint-plugin-jinusean'
   subtitle: 'min-attributes-per-line'

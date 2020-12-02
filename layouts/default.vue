@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import JclNavbar from '../components/JclNavbar'
-import JclFooter from '../components/JclFooter'
+import JclNavbar from '@/components/layout/JclNavbar'
+import JclFooter from '@/components/layout/JclFooter'
 
 export default {
   components: { JclNavbar, JclFooter },

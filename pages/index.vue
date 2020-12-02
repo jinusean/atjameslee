@@ -41,10 +41,10 @@
   </section>
 </template>
 <script>
-import CoverPage from '../components/about/CoverPage'
-import Parallax from '../components/images/Parallax'
-import SkillsCards from '../components/about/SkillsCards'
-import ProfileImg from '~/components/about/ProfileImg'
+import CoverPage from '@/components/pages/about/CoverPage'
+import Parallax from '@/components/images/Parallax'
+import SkillsCards from '@/components/pages/about/SkillsCards'
+import ProfileImg from '@/components/pages/about/ProfileImg'
 
 export default {
   components: { Parallax, CoverPage, ProfileImg, SkillsCards },

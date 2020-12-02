@@ -3,8 +3,9 @@
     class="rounded border-gray-400 border sm:flex flex-row sm:min-h-48 sm:hover-translate-y"
   >
     <nuxt-link
-      :to="`/packages/${data.id}`"
+      :to="`#${data.id}`"
       class="flex justify-center items-center p-4 bg-gray-100 border-b border-gray-200 sm:w-64"
+      replace
     >
       <img
         class="h-32 sm:max-h-full"
@@ -13,10 +14,7 @@
       />
     </nuxt-link>
 
-    <nuxt-link
-      :to="`/packages/${data.id}`"
-      class="hover:no-underline sm:flex-1"
-    >
+    <nuxt-link replace :to="`#${data.id}`" class="hover:no-underline sm:flex-1">
       <div class="p-4">
         <h3 class="capitalize">{{ title }}</h3>
         <h4 class="font-normal text-sm">{{ data.subtitle }}</h4>
@@ -29,18 +27,25 @@
       class="flex items-center py-4 px-3 bg-gray-200 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-4"
     >
       <a
+        v-if="data.github"
+        :href="`https://github.com/jinusean/${data.id}`"
+        target="_blank"
+      >
+        <img src="~/assets/logos/github.png" class="w-8" :alt="title" />
+      </a>
+      <a
         v-if="data.gitlab"
         :href="`https://gitlab.com/jinusean/${data.id}`"
         target="_blank"
       >
-        <img src="~/assets/logos/gitlab.png" class="w-8" />
+        <img src="~/assets/logos/gitlab.png" class="w-8" :alt="title" />
       </a>
       <a
         v-if="data.npm"
         :href="`https://www.npmjs.com/package/${data.id}`"
         target="_blank"
       >
-        <img src="~/assets/logos/npm.png" class="w-8" />
+        <img src="~/assets/logos/npm.png" class="w-8" :alt="title" />
       </a>
     </div>
   </div>

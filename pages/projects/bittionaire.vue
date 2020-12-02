@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import db from '~/database/database'
-import Project from '~/components/projects/Project'
+import db from '@/database/database'
+import Project from '@/components/pages/projects/Project'
 
 export default {
   components: { Project },
