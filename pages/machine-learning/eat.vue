@@ -3,7 +3,7 @@
     <div v-if="$store.state.isWebView" class="center-content page-container">
       <p>Please open this page in Safari App</p>
       <img
-        src="/images/open-default-browser.jpg"
+        src="@/assets/images/open-default-browser.jpg"
         style="height: 50vh"
         alt="open default browser"
       />
@@ -45,9 +45,8 @@ export default {
   methods: {
     onTrack({ face, ctx }) {
       if (!face) {
-        return
       }
-      draw(ctx, face.landmarks.positions, 'black')
+      // draw(ctx, face.landmarks.positions, 'black')
     },
   },
 }

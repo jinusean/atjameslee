@@ -7,11 +7,7 @@
       class="flex justify-center items-center p-4 bg-gray-100 border-b border-gray-200 sm:w-64"
       replace
     >
-      <img
-        class="h-32 sm:max-h-full"
-        :src="`/images/${data.id}.png`"
-        :alt="data.id"
-      />
+      <img class="h-32 sm:max-h-full" :src="packageImg" :alt="data.id" />
     </nuxt-link>
 
     <nuxt-link replace :to="`#${data.id}`" class="hover:no-underline sm:flex-1">
@@ -63,6 +59,9 @@ export default {
   computed: {
     title() {
       return this.data.id.split('-').join(' ')
+    },
+    packageImg() {
+      return require(`@/assets/images/${this.data.id}.png`)
     },
   },
 }

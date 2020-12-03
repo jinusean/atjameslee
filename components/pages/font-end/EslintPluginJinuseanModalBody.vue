@@ -4,7 +4,10 @@
       <h3>eslint-plugin-vue: max-attribtues-per-line</h3>
 
       <div class="modal-row__content">
-        <img src="/images/eslint-plugin-vue.png" alt="eslint-plugin-vue" />
+        <img
+          src="@/assets/images/eslint-plugin-vue.png"
+          alt="eslint-plugin-vue"
+        />
         <p>
           Current eslint-plugin-vue standards dictate that attributes must start
           on a newline if there are more than two attributes (<span
@@ -24,7 +27,7 @@
       <h3>eslint-plugin-jinusean: min-attributes-per-line</h3>
       <div class="modal-row__content">
         <img
-          src="/images/eslint-plugin-jinusean.png"
+          src="@/assets/images/eslint-plugin-jinusean.png"
           alt="eslint-plugin-jinusean"
         />
 

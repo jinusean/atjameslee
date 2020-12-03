@@ -2,7 +2,7 @@
   <figure class="profile-img relative text-center">
     <img
       class="inline-block shadow-2xl h-full bg-white rounded-half shadow-lg p-1"
-      src="/images/white-shirt.png"
+      src="@/assets/images/white-shirt.png"
       alt="white shirt"
     />
   </figure>

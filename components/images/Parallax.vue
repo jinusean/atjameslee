@@ -4,7 +4,7 @@
   >
     <img
       ref="img"
-      class="absolute min-w-full min-h-full"
+      class="absolute max-w-none sm:max-w-full sm:min-w-full"
       :src="src"
       alt="nyc"
     />

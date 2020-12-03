@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="container page-container">
     <div
       ref="header"
       class="relative flex items-center justify-center overflow-hidden lg:container mx-auto"
@@ -9,7 +9,7 @@
           ref="banner"
           class="block w-full"
           alt="bittionaire"
-          :src="`/images/${project.images.banner}`"
+          :src="$utils.getAsset(`/images/${project.images.banner}`)"
         />
       </figure>
 
@@ -23,20 +23,18 @@
     </div>
     <br />
 
-    <Project
-      class="container page-container"
-      :project="project"
-      :document="document"
-    />
+    <Project class="" :project="project" :document="document" />
   </div>
 </template>
 
 <script>
 import db from '@/database/database'
+import parseContentDocument from '@/mixins/parseContentDocument'
 import Project from '@/components/pages/projects/Project'
 
 export default {
   components: { Project },
+  mixins: [parseContentDocument],
   async asyncData({ $content }) {
     const document = await $content('bittionaire').fetch()
     return { document }

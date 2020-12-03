@@ -17,7 +17,7 @@ What’s interesting about this ratio is that it is not limited to rectangles an
 
 <figure class="flex flex-col items-center my-8">
     <img src="/images/beauty-quotient_different-ratios.jpg" alt="Different ratios of the same face"/>
-    <i class="text-sm">Which face is the most aesthetic to you? The answer according to Phi is at the end of the page.</i>
+    <i class="text-sm">Which face is the most aesthetic to you? The answer  Phi is at the end of the page.</i>
 </figure>
 
 For this project I used an Open Source Computer Vision Library (OpenCV) to extract the facial pixel coordinates. I then used the raw data to drew virtual rectangles to find their ratios, and compared it to how close they fell in line to the Phi. This took the most of my development time since my trigonometry was a bit rusty, and I had to do perform geometric transformations on the datapoints in order to make sure all the rectangles were at a 90 degree angle. 
@@ -37,7 +37,7 @@ P.S. the face with the most idealistic proportions is the fifth one from the lef
 P.S.S. check out this [video](https://www.youtube.com/watch?v=aircAruvnKk&t=78s) if you want to know exactly how neural networks work.
 
 <figure class="flex flex-col items-center my-8">
-    <img src="/images/cover-page-golden-ratio.png" alt="Desktop" class="sm:w-1/2"/>
+    <img src="/images/beauty-quotient_cover-page-golden-ratio.png" alt="Desktop" class="sm:w-1/2"/>
     <i class="text-sm">Look familiar? This too adheres to the Golden Ratio</i>
 </figure>
 

@@ -6,7 +6,7 @@
         style="background: #f2f2f2"
       >
         <img
-          :src="`/images/${project.images.logo}`"
+          :src="$utils.getAsset(`/images/${project.images.logo}`, project)"
           :alt="project.name"
           class="block h-3/5 rounded-2xl transform transition duration-300 ease-in group-hover:scale-125"
         />

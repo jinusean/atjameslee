@@ -4,7 +4,7 @@
       <img
         ref="banner"
         :class="project.bannerClass || ''"
-        :src="`/images/${project.images.banner}`"
+        :src="$utils.getAsset(`/images/${project.images.banner}`)"
         :alt="project.images.banner"
       />
     </figure>

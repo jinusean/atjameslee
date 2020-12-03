@@ -3,7 +3,7 @@
     <div v-if="$store.state.isWebView" class="center-content page-container">
       <p>Please open this page in Safari App</p>
       <img
-        src="/images/open-default-browser.jpg"
+        src="@/assets/images/open-default-browser.jpg"
         style="height: 50vh"
         alt="open default browser"
       />
@@ -32,7 +32,7 @@ export default {
     this.isMounted = true
 
     const image = new Image(80, 95)
-    image.src = '/draw/james_side.png'
+    image.src = require('@/assets/images/james_side.png')
 
     this.$nextTick(() => {
       const ctx = this.$refs.faceApi.$refs.canvas.getContext('2d')

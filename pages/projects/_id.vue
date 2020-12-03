@@ -3,9 +3,11 @@
 </template>
 <script>
 import Project from '@/components/pages/projects/Project'
+import parseContentDocument from '@/mixins/parseContentDocument'
 
 export default {
   components: { Project },
+  mixins: [parseContentDocument],
   async asyncData({ $content, params }) {
     const document = await $content(params.id).fetch()
     return { document }

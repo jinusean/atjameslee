@@ -4,7 +4,7 @@
 
     <div class="bg-white relative">
       <Parallax
-        :src="`/images/nyc-${nycImageNumber}.png`"
+        :src="$utils.getAsset(`/images/nyc-${nycImageNumber}.png`)"
         class="border-b-2 border-white"
       />
 
@@ -15,7 +15,7 @@
           <client-only>
             <div
               v-scroll-reveal="{ origin: 'bottom' }"
-              class="w-full lg:max-w-2xl text-left md:mx-auto my-0"
+              class="w-full lg:max-w-2xl text-left md:mx-auto mt-0 mb-10"
             >
               <nuxt-content :document="aboutMe" class="w-full" />
             </div>
@@ -50,7 +50,6 @@ export default {
   components: { Parallax, CoverPage, ProfileImg, SkillsCards },
   async asyncData({ $content }) {
     const [aboutMe] = await Promise.all([$content('about-me').fetch()])
-
     return {
       aboutMe,
     }

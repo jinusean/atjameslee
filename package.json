@@ -11,23 +11,20 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@codekraft-studio/vue-record": "^0.0.3",
     "@neojp/tailwindcss-important-variant": "^1.0.1",
     "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
-    "@tensorflow/tfjs": "^2.7.0",
-    "brfv5-browser": "https://github.com/Tastenkunst/brfv5-browser.git",
-    "core-js": "^3.6.5",
+    "@tensorflow/tfjs-core": "^2.7.0",
+    "core-js": "^3.8.0",
     "element-ui": "2.4.11",
     "face-api.js": "^0.22.2",
-    "fluent-ffmpeg": "^2.1.2",
-    "meyda": "^5.0.8",
     "nuxt": "^2.14.6",
     "nuxt-client-init-module": "^0.1.9",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-photo-uploader": "^1.0.0",
+    "tailwind-percentage-heights-plugin": "^0.1.4",
     "velocity-animate": "^1.5.2",
     "vue-date-input": "^1.0.3",
     "vue-scroll-reveal": "^1.0.11",
@@ -44,7 +41,6 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "js-yaml-loader": "^1.2.2",
-    "prettier": "^2.1.2",
-    "tailwind-percentage-heights-plugin": "^0.1.4"
+    "prettier": "^2.1.2"
   }
 }

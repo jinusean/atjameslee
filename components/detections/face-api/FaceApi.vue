@@ -73,6 +73,7 @@ export default {
       width: 640,
 
       isDestroyed: false,
+      srcObject: null,
     }
   },
   computed: {
@@ -113,6 +114,10 @@ export default {
       if (this.isDestroyed || !videoEl) {
         return
       }
+      if (videoEl.paused) {
+        // video is paused in Safari when it becomes hidden
+        videoEl.play()
+      }
       if (videoEl.paused || videoEl.ended || !this.faceDetectionNet.params) {
         return window.requestAnimationFrame(this.track)
       }
@@ -141,6 +146,10 @@ export default {
       window.requestAnimationFrame(this.track)
     },
     async run() {
+      if (!navigator.mediaDevices) {
+        /* eslint-disable-next-line */
+        return console.log('No media devices found...')
+      }
       // load face detection and face landmark models
       await Promise.all([
         this.faceDetectionNet.load('/weights'),
@@ -154,6 +163,9 @@ export default {
       const video = this.$refs.video
       const { height, width } = this
       video.srcObject = await navigator.mediaDevices.getUserMedia({
+        video: { frameRate: 30, height, width },
+      })
+      this.srcObject = await navigator.mediaDevices.getUserMedia({
         video: { frameRate: 30, height, width },
       })
       const canvas = this.$refs.canvas

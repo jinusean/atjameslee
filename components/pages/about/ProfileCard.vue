@@ -3,7 +3,7 @@
     <figure class="relative text-center">
       <img
         class="inline-block h-full bg-white rounded-xl shadow-lg p-1 sm:p-0"
-        src="/images/white-shirt.png"
+        src="@/assets/images/white-shirt.png"
         alt="white shirt"
       />
     </figure>

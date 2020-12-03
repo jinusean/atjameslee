@@ -60,7 +60,7 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  background: url('/images/imac.png');
+  background: url('@/assets/images/imac.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

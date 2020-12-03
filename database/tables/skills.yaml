@@ -1,5 +1,6 @@
 - title: Machine Learning
   skills:
+    - Python
     - Tensorflow / Keras / PyTorch
     - Colab / Jupyter
     - Computer Vision
@@ -8,16 +9,13 @@
 - title: Front-end
   skills:
     - Vue / Nuxt
-    - SCSS / CSS
+    - Tailwind / SCSS
     - Webpack
-    - React
-    - Styling and slicing
 
 
 - title: Back-end
   skills:
   - Node
-  - .NET (C#)
   - MongoDB
   - MySQL
   - Firebase
@@ -26,6 +24,6 @@
   skills:
     - Serverless
     - AWS
-    - GitLab
-    - GitHub
+    - GitHub / Gitlab
     - Docker
+
