@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   server: {
     port: 8080, // default: 3000
@@ -45,6 +47,18 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    [
+      'nuxt-rollbar-module',
+      {
+        clientAccessToken: process.env.ROLLBAR_CLIENT_ACCESS_TOKEN,
+        config: {
+          captureUncaught: true,
+          captureUnhandledRejections: true,
+          enabled: process.env.NODE_ENV === 'production',
+          environment: process.env.NODE_ENV,
+        },
+      },
+    ],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)

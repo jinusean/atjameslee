@@ -148,7 +148,10 @@ export default {
     async run() {
       if (!navigator.mediaDevices) {
         /* eslint-disable-next-line */
-        return console.log('No media devices found...')
+        if (this.$rollbar) {
+          this.$rollbar.debug('No media device found')
+        }
+        return
       }
       // load face detection and face landmark models
       await Promise.all([
