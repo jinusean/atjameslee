@@ -13,8 +13,7 @@ class Database {
     return this._db[tableName]
   }
 
-  _loadTable(tableName) {
-    const table = require(`./tables/${tableName}.yaml`)
+  _parseTable(tableName, table) {
     switch (tableName) {
       case 'projects':
         return table.map((row) => {
@@ -26,6 +25,11 @@ class Database {
       default:
         return table
     }
+  }
+
+  _loadTable(tableName) {
+    const table = import(`./tables/${tableName}.yaml`)
+    return this._parseTable(tableName, table)
   }
 
   findProject(projectId) {
