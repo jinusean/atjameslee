@@ -1,29 +1,38 @@
 - title: Machine Learning
+  start: 2019
+  technologies:
+    - Tensorflow, Keras
+    - PyTorch
   skills:
-    - Python
-    - Tensorflow / Keras / PyTorch
-    - Colab / Jupyter
-    - Computer Vision
-    - Audio Classification
+    - Data Scraping & Processing
+    - Deep Learning
+    - Reinforcement Learning
 
-- title: Front-end
-  skills:
-    - Vue / Nuxt
-    - Tailwind / SCSS
+- title: Front-End
+  start: 2015
+  technologies:
+    - Vue, Nuxt
+    - Tailwind.css, SCSS
     - Webpack
-
-
-- title: Back-end
+    - SPA/SSR
   skills:
-  - Node
-  - MongoDB
-  - MySQL
-  - Firebase
+    - Performance Optimization
+
+- title: Back-End
+  start: 2017
+  technologies:
+    - Node, Express
+    - SQL, NoSQL
+    - REST Apis, GraphQL
+    - Serverless
+  skills:
+    - Microservices
 
 - title: DevOps
-  skills:
-    - Serverless
+  start: 2018
+  technologies:
     - AWS
-    - GitHub / Gitlab
-    - Docker
+    - GitHub, Gitlab
+  skills:
+    - Agile
 

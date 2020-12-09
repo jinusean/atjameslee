@@ -1,11 +1,11 @@
 - company: Eatlab
-  dates: August 2019 - Novemeber 2019
+  dates: August 2019 - November 2019
   location: Bangkok, Thailand
   companyLink: eatlab.space/
   role: Jr. AI Developer
   details:
     - Scraped and normalized data from the web into a structured database.
-    - Trained a CNN model on 256 classes of Asian foods, that was then used as the base for a
+    - Trained a CNN model on 256 classes of Asian foods that was used as the base for a
       transfer-learning model on foods with limited sample images.
     - Achieved over 94% accuracy with the transfer-learned model on Thai foods.
 - company: Code Ninja
@@ -14,28 +14,37 @@
   companyLink: codeninja.co
   role: Full-Stack Developer
   details:
-    - Lead front-end development for all (2) projects.
+    - "Lead front-end development for all (2) projects: B2C chat service & Import/Export data visualization"
     - Ported legacy monolithic-PHP project to Node (Nuxt front-end and Adonis back-end).
     - Refactored existing codebase by modularizing front-end code and styles to be bundled by Webpack.
     - Isolated back-end and front-end bottlenecks that ultimately reduced initial SPA loading time from 12 to 2 seconds.
-    - Presented a number of brown bag sessions for both front-end and back-end team on various topics.
+
 - company: Linken Labs
   dates: January 2015 - March 2016
   role: Full-Stack Developer
   location: Macau / Remote
+  technologies:
+    - Angular
+    - MySQL
+    - C#
+    - .NET
+    - AWS
   details:
     - "Developed three projects: Client-facing web-app, admin-facing web-app, backend API services."
     - Front-end designed entirely with Bootstrap and CSS.
     - Boosted site's SEO rankings to first page of Google.
-    - "Technologies: Angular1, MySql, C#, .Net, AWS."
+
 - company: Stony Brook University
   dates: January 2014 - December 2014
   role: Web-Content Manager
   location: New York, USA
+  technologies:
+    - Drupal
+    - HTML
+    - CSS
   details:
     - Maintained and updated existing site-content with Drupal content management system.
     - Designed and produced graphic content using Adobe Photoshop to be used in both paper and electronic advertisements, banners, and pamphlets.
-    - "Technologies: Drupal, HTML, CSS"
 
 - company: Stony Brook University
   dates: December 2014

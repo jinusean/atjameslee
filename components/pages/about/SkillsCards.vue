@@ -2,8 +2,8 @@
   <div class="flex flex-col sm:flex-row sm:justify-between">
     <client-only>
       <div
-        v-for="(skill, index) in skills"
-        :key="index"
+        v-for="(skill, skillIndex) in skills"
+        :key="skillIndex"
         v-scroll-reveal="{ origin: 'left' }"
         class="mb-6 sm:mb-0 last:mb-0"
       >
@@ -12,11 +12,16 @@
         </h3>
         <div>
           <ul>
-            <li v-for="(text, skillIndex) in skill.skills" :key="skillIndex">
-              <span class="inline-block">
-                {{ text }}
-              </span>
-            </li>
+            <template v-for="(type, index) in ['technologies', 'skills']">
+              <li
+                v-for="(text, textIndex) in skill[type]"
+                :key="type + index + textIndex"
+              >
+                <span class="inline-block">
+                  {{ text }}
+                </span>
+              </li>
+            </template>
           </ul>
         </div>
       </div>
@@ -28,11 +33,6 @@
 export default {
   name: 'SkillsCards',
   computed: {
-    slideIn() {
-      return ['left', 'bottom', 'right']
-      // ? ['left', 'bottom', 'right']
-      // : ['left', 'left', 'left']
-    },
     skills() {
       return this.$db.find('skills')
     },

@@ -2,8 +2,8 @@ require('dotenv').config()
 
 export default {
   server: {
-    port: 8080, // default: 3000
-    host: '0.0.0.0', // default: localhost
+    port: process.env.PORT,
+    host: process.env.HOST,
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -11,7 +11,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'James Lee',
+    title: 'James Lee: Fullstack Developer',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -25,27 +25,24 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   // plugins with `<filename>.client.js` will only be installed on client
-  plugins: ['@/plugins/plugins.js', '@/plugins/plugins.client.js'],
+  plugins: [
+    '@/plugins/plugins.js',
+    '@/plugins/plugins.client.js',
+    '@/plugins/plugins.server.js',
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     ['@nuxtjs/eslint-module', { emitWarning: true }],
-    // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
 
-  // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    'nuxt-client-init-module',
-    // https://go.nuxtjs.dev/axios
     '@nuxt/http',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
     '@nuxt/content',
     [
       'nuxt-rollbar-module',
@@ -61,13 +58,9 @@ export default {
     ],
   ],
 
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
-
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
 
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     stats: 'verbose',
     extend(config, { isClient, loaders }) {

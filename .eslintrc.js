@@ -18,5 +18,6 @@ module.exports = {
   // add your custom rules here
   rules: {
     'vue/no-v-html': 'off',
+    'no-case-declarations': 'off',
   },
 }

@@ -11,7 +11,7 @@ module.exports = {
     },
   },
   variants: {
-    margin: ['responsive', 'last', 'important'],
+    margin: ['children', 'responsive', 'last', 'important'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     padding: ['responsive', 'important'],
     scale: ['responsive', 'hover', 'focus', 'group-hover'],
@@ -24,5 +24,6 @@ module.exports = {
   plugins: [
     require('tailwind-percentage-heights-plugin')(),
     require('@neojp/tailwindcss-important-variant'),
+    require('tailwindcss-children'),
   ],
 }

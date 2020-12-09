@@ -1,3 +1,6 @@
+/**
+ * Converts <img src="srcString"/> srcString to <img src="$utils.getAsset(srcString)" />
+ */
 export default {
   beforeMount() {
     if (this.document) {
