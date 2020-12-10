@@ -11,7 +11,6 @@
         id="video"
         ref="video"
         muted
-        :class="isLoaded ? 'hidden' : ''"
         playsinline
         autoplay
         @loadedmetadata="onLoadedMetaData"
@@ -19,10 +18,7 @@
       <canvas
         id="canvas"
         ref="canvas"
-        :class="!isLoaded ? 'absolute' : ''"
-        class="max-w-full top-0 left-0"
-        :height="height"
-        :width="width"
+        class="absolute top-0 left-0 right-0 bottom-0"
       />
     </div>
   </div>
@@ -140,11 +136,10 @@ export default {
       ctx.clearRect(0, 0, this.width, this.height)
 
       if (this.isLoaded) {
-        ctx.drawImage(videoEl, 0, 0, this.width, this.height)
+        // ctx.drawImage(videoEl, 0, 0, this.width, this.height)
       }
 
       if (face) {
-        console.log('face', face)
         this.isLoaded = true
         if (this.boundingBox) {
           faceApi.draw.drawDetections(canvas, face)
@@ -177,16 +172,15 @@ export default {
       // to the video element
       const video = this.$refs.video
       const { height, width } = this
-      console.log('getUserMedia')
       video.srcObject = await navigator.mediaDevices.getUserMedia({
         video: { frameRate: 30, height, width },
       })
-      console.log('GOT userMedia')
+
       const canvas = this.$refs.canvas
       canvas.width = width
       canvas.height = height
+
       video.play()
-      console.log('video playing')
     },
   },
 }
