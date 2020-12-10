@@ -1,4 +1,4 @@
-import Database from './database'
+import Database from './Database'
 
 const plugin = {
   install(Vue, options) {
