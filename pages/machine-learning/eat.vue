@@ -45,6 +45,7 @@ export default {
   methods: {
     onTrack({ face, ctx }) {
       if (!face) {
+        return
       }
       draw(ctx, face.landmarks.positions, 'black')
     },

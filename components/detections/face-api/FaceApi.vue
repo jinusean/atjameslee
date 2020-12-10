@@ -107,24 +107,13 @@ export default {
     async track() {
       const videoEl = this.$refs.video
       if (this.isDestroyed || !videoEl) {
-        return console.log(
-          'this.isDestroyed || !videoEl',
-          this.isDestroyed,
-          !videoEl
-        )
+        return
       }
       if (videoEl.paused) {
         // video is paused in Safari when it becomes hidden
-        console.log('video is paused')
         videoEl.play()
       }
       if (videoEl.paused || videoEl.ended || !this.faceDetectionNet.params) {
-        console.log(
-          'videoEl.paused || videoEl.ended || !this.faceDetectionNet.params',
-          videoEl.paused,
-          videoEl.ended,
-          !this.faceDetectionNet.params
-        )
         return window.requestAnimationFrame(this.track)
       }
 
@@ -154,7 +143,6 @@ export default {
     async run() {
       if (!navigator.mediaDevices) {
         /* eslint-disable-next-line */
-        console.log('no media devices found')
         if (this.$rollbar) {
           this.$rollbar.debug('No media device found')
         }
