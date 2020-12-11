@@ -2,4 +2,4 @@ import Database from './Database'
 import VuePlugin from './plugin'
 
 export default Database
-export { VuePlugin }
+export { VuePlugin, Database }

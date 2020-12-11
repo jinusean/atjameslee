@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import db from '@/database/database'
+import db from '@/database/Database'
 import parseContentDocument from '@/mixins/parseContentDocument'
 import Project from '@/components/pages/projects/Project'
 
