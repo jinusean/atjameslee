@@ -1,5 +1,5 @@
-import database from './database'
+import Database from './Database'
 import VuePlugin from './plugin'
 
-export default database
+export default Database
 export { VuePlugin }
