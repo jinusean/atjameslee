@@ -18,7 +18,9 @@
       <canvas
         id="canvas"
         ref="canvas"
-        class="absolute top-0 left-0 right-0 bottom-0"
+        :width="width"
+        :height="height"
+        class="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
       />
     </div>
   </div>
@@ -163,10 +165,6 @@ export default {
       video.srcObject = await navigator.mediaDevices.getUserMedia({
         video: { frameRate: 30, height, width },
       })
-
-      const canvas = this.$refs.canvas
-      canvas.width = width
-      canvas.height = height
 
       video.play()
     },
