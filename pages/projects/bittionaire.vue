@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import db from '@/database/Database'
 import parseContentDocument from '@/mixins/parseContentDocument'
 import Project from '@/components/pages/projects/Project'
 
@@ -41,7 +40,7 @@ export default {
   },
   computed: {
     project() {
-      return db.findProject('bittionaire')
+      return this.$db.findProject('bittionaire')
     },
     bannerEl() {
       return this.$refs.banner

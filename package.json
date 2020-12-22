@@ -16,6 +16,7 @@
     "@nuxt/http": "^0.6.1",
     "@nuxtjs/pwa": "^3.0.2",
     "@tensorflow/tfjs-core": "^2.7.0",
+    "@vladmandic/face-api": "^0.9.3",
     "core-js": "^3.8.0",
     "dotenv": "^8.2.0",
     "element-ui": "2.4.11",

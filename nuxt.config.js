@@ -23,7 +23,7 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/styles/site.css', '@/assets/styles/main.css'],
 
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+  // Plugins to startTracking before rendering page (https://go.nuxtjs.dev/config-plugins)
   // plugins with `<filename>.client.js` will only be installed on client
   plugins: [
     '@/plugins/plugins.js',

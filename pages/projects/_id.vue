@@ -1,5 +1,5 @@
 <template>
-  <Project :project="project" :document="document" />
+  <Project :project="project" :document="parsedDocument" />
 </template>
 <script>
 import Project from '@/components/pages/projects/Project'

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { getLandmarks, getCenter } from './utils'
+import { inOutSine } from './ease'
 
 const getDistance = (a, b) => {
   const deltaX = a.x - b.x
@@ -27,7 +28,7 @@ const getExtendedPoint = (a, b, extension) => {
   }
 }
 
-const drawLine = (ctx, a, b, color, width) => {
+export const drawLine = (ctx, a, b, color ='black', width=10) => {
   ctx.beginPath()
   ctx.strokeStyle = getColor(color, 1.0)
   ctx.lineWidth = width
@@ -65,7 +66,7 @@ export const drawCircles = (ctx, array, color, radius) => {
 export const getColor = (color, alpha) => {
   const colorStr = color + ''
 
-  if (colorStr.startsWith('rgb')) {
+  if (!colorStr.startsWith('#')) {
     return color
   }
 
@@ -86,7 +87,8 @@ export const getColor = (color, alpha) => {
   )
 }
 /**
- * Returns rotation in radians
+ * Returns rotation in radians.
+ * Positive value means my head is tilted to the left (counter-clockwise)
  * @param a - point a
  * @param b - point b
  * @returns {number} radians
@@ -97,50 +99,138 @@ export const getRotation = (a, b) => {
   return Math.atan(dy / dx)
 }
 
-export const draw = (
-  ctx,
-  landmarks,
-  color,
-  width = 25,
-  height = 100,
-  tip = 0.3
-) => {
+export const getRadians = (degrees) => {
+  return degrees * (Math.PI/180)
+}
+
+export const getDegrees = (radians) => {
+  return radians * (180/Math.PI)
+}
+
+export const drawCrossHair = (ctx, position, rotation=1) => {
+  const { width, height } = ctx.canvas
+  const  { x, y} = position
+  let m = rotation
+  let b = y - (m * x)
+
+  // horizontal line
+  let start = {
+    x: -b / m,
+    y: 0
+  }
+  let end = {
+    x: (height - b) / m,
+    y: height
+  }
+  drawLine(ctx, start, end)
+
+  // vertical line
+  m = -1/m
+  b = y - (m * x)
+  start = {
+    x: -b / m,
+    y: 0
+  }
+  end = {
+    x: (height - b) / m,
+    y: height
+  }
+  drawLine(ctx, start, end)
+}
+
+export const getCanvasEdgeIntersection = (position, ctx, rotation) => {
+  const { height } = ctx.canvas
+  const  { x, y} = position
+  const m = -1/rotation
+  const b = y - (m * x)
+
+  const start = {
+    x: -b / m,
+    y: 0
+  }
+
+  const end = {
+    x: (height - b) / m,
+    y: height
+  }
+
+  return end
+}
+
+export const getEatingPositions = (landmarks, ctx, MOUTH_MAX_OPEN=50) => {
   const {
-    noseBot,
     topLipBot,
-    topLipTop,
     mouthRight,
     mouthLeft,
-    chin,
     botLipTop,
-    botLipBot,
-    center,
     faceLeft,
     faceRight,
   } = getLandmarks(landmarks)
 
   const rotation = getRotation(faceLeft, faceRight)
-
-  // image is mirrored os left = right and vice-versa
   const finishPos = getCenter(mouthLeft, mouthRight)
-  const MOUTH_MAX_OPEN = 50
-  const MAX_DISTANCE = getDistance(finishPos, {
-    x: ctx.canvas.width,
-    y: ctx.canvas.height,
-  })
-  const mouthOpenDistance = Math.min(
+  const startPos = getCanvasEdgeIntersection(finishPos, ctx, rotation)
+  const maxDistance = getDistance(finishPos, startPos)
+  let mouthOpenDistance = Math.min(
     getDistance(botLipTop, topLipBot),
     MOUTH_MAX_OPEN
   )
-  const distanceFromMouthFactor = 1 - logBase(mouthOpenDistance, MOUTH_MAX_OPEN)
-  const distFromMouth = Math.max(0, MAX_DISTANCE * distanceFromMouthFactor)
+
+  const MIN = 10
+  if (mouthOpenDistance < MIN) {
+    mouthOpenDistance = 0
+  } else {
+    mouthOpenDistance -= MIN
+    MOUTH_MAX_OPEN -= MIN
+  }
+
+
+
+  const mouthOpenPercent = (mouthOpenDistance / MOUTH_MAX_OPEN)
+
+
+  console.log(mouthOpenPercent)
+
+  const val = 1 - inOutSine(mouthOpenPercent)
+  const distFromMouth = maxDistance * val
+
+  const currentPos = {
+    x: distFromMouth * Math.sin(-rotation) + finishPos.x,
+    y: -distFromMouth * Math.cos(rotation) + finishPos.y
+  }
+
+  return {
+    startPos,
+    finishPos,
+    currentPos,
+    rotation,
+    maxDistance,
+    mouthOpenDistance,
+    mouthOpenPercent,
+    distFromMouth
+  }
+}
+
+let total = 'Food Distance, Mouth Open\n'
+
+export const drawPepper = (
+  ctx,
+  landmarks,
+  color,
+  width = 25,
+  height = 100,
+  tip = 0.3,
+) => {
+  const {
+    finishPos,
+    rotation,
+    distFromMouth,
+  } = getEatingPositions(landmarks, ctx)
 
   const BALL_RADIUS = width / 2
   const TIP_HEIGHT = height * tip
   const SHAFT_HEIGHT = height - TIP_HEIGHT - BALL_RADIUS
 
-  // const wrapped = new ContextWrap(ctx)
-  // wrapped.wrap()
   ctx.beginPath()
   ctx.fillStyle = 'black'
   ctx.translate(finishPos.x, finishPos.y)
@@ -167,7 +257,6 @@ export const draw = (
     2 * Math.PI
   )
   ctx.fill()
-
   ctx.beginPath()
   ctx.arc(
     BALL_RADIUS,

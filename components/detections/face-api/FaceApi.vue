@@ -4,24 +4,21 @@
       v-if="!isLoaded"
       class="fixed top-0 left-0 z-50 bg-black bg-opacity-75 text-white font-bold text-4xl w-full h-full center-content"
     >
-      <p><span v-if="isVideoPlaying">Still</span> Loading...</p>
+      <p v-if="!isVideoPlayed">Loading...</p>
+      <p v-else>Detecting face...</p>
     </div>
-    <div class="rounded relative -scale-100" style="transform: scaleX(-1)">
+    <!--    transform: scaleX(-1)-->
+    <div class="rounded relative" style="transform: rotateY(180deg)">
       <video
         id="video"
         ref="video"
         muted
         playsinline
         autoplay
+        :class="videoClass"
         @loadedmetadata="onLoadedMetaData"
       ></video>
-      <canvas
-        id="canvas"
-        ref="canvas"
-        :width="width"
-        :height="height"
-        class="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
-      />
+      <canvas id="canvas" ref="canvas" :class="canvasClass" />
     </div>
   </div>
 </template>
@@ -29,7 +26,8 @@
 // This does not work in iOS safari because the video element cannot be autoplayed and
 // video cannot be played while the element is hidden
 
-import * as faceApi from 'face-api.js'
+// import * as faceApi from 'face-api.js'
+import * as faceApi from '@vladmandic/face-api'
 
 const SSD_MOBILENETV1 = 'ssd_mobilenetv1'
 const TINY_FACE_DETECTOR = 'tiny_face_detector'
@@ -61,19 +59,37 @@ export default {
       default: false,
       type: Boolean,
     },
+    width: {
+      default: 640,
+      type: Number,
+    },
+    height: {
+      default: 480,
+      type: Number,
+    },
   },
   data() {
     return {
       isLoaded: false,
-      isVideoPlaying: false,
-
-      height: 480,
-      width: 640,
-
+      isVideoPlayed: false,
       isDestroyed: false,
+      hasBeenPaused: false, // video will get paused if set to hidden in mobile safari
     }
   },
   computed: {
+    videoClass() {
+      if (this.hasBeenPaused) {
+        return ''
+      }
+      return this.isLoaded ? 'hidden' : ''
+    },
+    canvasClass() {
+      // use canvas as overlay if has been paused
+      if (this.hasBeenPaused) {
+        return 'absolute w-full h-full top-0 left-0 right-0 bottom-0'
+      }
+      return !this.isLoaded ? 'hidden' : 'max-w-full h-auto'
+    },
     faceDetectionNet() {
       const net = {
         [SSD_MOBILENETV1]: 'ssdMobilenetv1',
@@ -84,10 +100,11 @@ export default {
     },
   },
   mounted() {
-    this.run()
+    this.startTracking()
   },
-  destroyed() {
+  beforeDestroy() {
     this.isDestroyed = true
+    window.removeEventListener('resize', this.setCanvasDimensions)
   },
   methods: {
     getFaceDetectorOptions() {
@@ -101,21 +118,21 @@ export default {
           })
     },
     onLoadedMetaData() {
+      this.setCanvasDimensions()
       window.requestAnimationFrame(async () => {
         await this.track()
-        this.isVideoPlaying = true
+        this.isVideoPlayed = true
       })
+      window.addEventListener('resize', this.setCanvasDimensions)
     },
     async track() {
       const videoEl = this.$refs.video
       if (this.isDestroyed || !videoEl) {
         return
       }
-      if (videoEl.paused) {
-        // video is paused in Safari when it becomes hidden
-        videoEl.play()
-      }
+
       if (videoEl.paused || videoEl.ended || !this.faceDetectionNet.params) {
+        this.hasBeenPaused = true
         return window.requestAnimationFrame(this.track)
       }
 
@@ -124,10 +141,12 @@ export default {
       const face = await faceApi
         .detectSingleFace(videoEl, this.getFaceDetectorOptions())
         .withFaceLandmarks()
-      ctx.clearRect(0, 0, this.width, this.height)
 
-      if (this.isLoaded) {
-        // ctx.drawImage(videoEl, 0, 0, this.width, this.height)
+      if (this.hasBeenPaused) {
+        // use canvas as overlay if video has been paused
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+      } else {
+        ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height)
       }
 
       if (face) {
@@ -142,7 +161,7 @@ export default {
       this.$emit('track', { ctx, face, faceapi: faceApi })
       window.requestAnimationFrame(this.track)
     },
-    async run() {
+    async startTracking() {
       if (!navigator.mediaDevices) {
         /* eslint-disable-next-line */
         if (this.$rollbar) {
@@ -163,10 +182,23 @@ export default {
       const video = this.$refs.video
       const { height, width } = this
       video.srcObject = await navigator.mediaDevices.getUserMedia({
-        video: { frameRate: 30, height, width },
+        video: { frameRate: 60, width, height },
       })
 
       video.play()
+    },
+    setCanvasDimensions() {
+      // iOS safari canvas does not automatically deal with dimensions
+      const { width, height } = this
+      const { innerWidth, innerHeight } = window
+      const canvas = this.$refs.canvas
+      if (innerWidth > innerHeight) {
+        canvas.width = width
+        canvas.height = height
+      } else {
+        canvas.width = height
+        canvas.height = width
+      }
     },
   },
 }

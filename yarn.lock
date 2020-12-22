@@ -1843,6 +1843,18 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@vladmandic/face-api@^0.9.3":
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/@vladmandic/face-api/-/face-api-0.9.3.tgz#e6dcd94a660f4d0fe362a7fca80e1f02d5f163b3"
+  integrity sha512-67e2xUTH/SywXkGPSdjQwmqdJNPAOPJN/1vLnuUPTL4aENR7AfrMGwvfw2n3N9qMWL1QVTJXo+83rqvL5l2qGw==
+  dependencies:
+    "@vladmandic/pilogger" "^0.2.10"
+
+"@vladmandic/pilogger@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@vladmandic/pilogger/-/pilogger-0.2.10.tgz#dc651f498ad914cedd709775a54da6ad425e104b"
+  integrity sha512-8IXLnLpxg0cxND3HHNso1wTwt+AqS26Q2nTxnX71dnGartycj3t/yAt9VFa8CdfavC2HVwpJcO9Wo8Zz5S/Y+w==
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.2.1.tgz#31624a7a505fb14da1d58023725a4c5f270e6a81"

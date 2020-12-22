@@ -26,7 +26,7 @@
 
 <script>
 import FaceApi from '@/components/detections/face-api/FaceApi'
-import { draw } from '@/components/detections/face-api/draw'
+import { drawPepper } from '@/components/detections/face-api/draw'
 
 export default {
   name: 'EatMePage',
@@ -47,7 +47,7 @@ export default {
       if (!face) {
         return
       }
-      draw(ctx, face.landmarks.positions, 'black')
+      drawPepper(ctx, face.landmarks.positions, 'black')
     },
   },
 }

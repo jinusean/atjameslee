@@ -1,3 +1,18 @@
+- id: wechat-downloads
+  description: Automatically save downloads from WeChat
+  name: WeChat Downloads
+  owner: Personal Project
+  type: Python Mac Application
+  link: https://github.com/jinusean/wechat-downloads
+  images:
+    logo: wechat-downloads-logo.png
+    banner: wechat-downloads-banner.png
+  tags:
+    - Python
+    - macOS
+    - Watchdog
+    - GIL
+
 - id: panas
   description: Track and analyze your mood(s) with a clinical survey
   name: P.A.N.A.S.

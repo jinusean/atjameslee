@@ -55,11 +55,23 @@
             </ul>
           </div>
         </div>
+
+        <div id="projects">
+          <h2>Projects</h2>
+          <div
+            v-for="project in filteredProjects"
+            :key="project.id"
+            class="mb-4"
+          >
+            {{ project.name }}
+            {{ project.description }}
+          </div>
+        </div>
       </div>
 
       <div id="right-content" class="children:mb-6">
         <div id="skills">
-          <h2>Skills</h2>
+          <h2>Technologies</h2>
           <ul v-for="skill in filteredSkills" :key="skill.title" class="mb-4">
             <li class="flex justify-between">
               <h3>{{ skill.title }}</h3>
@@ -138,6 +150,15 @@ export default {
         (skill) => skill.title.toLowerCase() !== 'devops'
       )
     },
+    filteredProjects() {
+      const projects = [
+        'wechat-downloads',
+        'panas',
+        'beauty-quotient',
+        'tagalong',
+      ]
+      return this.projects.filter((project) => projects.includes(project.id))
+    },
     style() {
       const [width, height] = paperSize
         .getSize(this.format, { unit: 'mm' })
@@ -145,7 +166,6 @@ export default {
       return {
         width,
         height,
-        'font-size': '14px',
       }
     },
   },
@@ -166,7 +186,6 @@ export default {
     getSkillDuration(year) {
       const currentYear = new Date().getFullYear()
       const diff = currentYear - parseInt(year)
-      console.log(currentYear, year)
       return diff + '+ years'
     },
   },
@@ -174,6 +193,11 @@ export default {
 </script>
 
 <style scoped>
+#resume {
+  font-family: 'Osaka', serif;
+  font-size: 12px;
+}
+
 a {
   color: inherit !important;
 }
@@ -183,19 +207,16 @@ time {
 }
 
 h1 {
-  letter-spacing: 2px;
+  letter-spacing: 0.33em;
 }
 h2 {
-  letter-spacing: 1.5px;
-  font-weight: 700;
+  letter-spacing: 0.25em;
+  font-weight: 900;
+  color: red;
 }
 
 h3 {
   font-size: 1.1em;
   letter-spacing: 0.5px;
-}
-
-#resume {
-  font-family: 'Osaka', serif;
 }
 </style>

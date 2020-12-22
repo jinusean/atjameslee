@@ -8,6 +8,9 @@ module.exports = {
       minWidth: {
         128: '32rem',
       },
+      boxShadow: {
+        '3xl': '0px 10px 35px 2px rgba(0,0,0,0.45)',
+      },
     },
   },
   variants: {

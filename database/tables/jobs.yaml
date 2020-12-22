@@ -1,0 +1,67 @@
+- company: optimonk
+  link: https://vuejobs.com/jobs/1251-full-stack-engineer
+  details:
+    - vue
+    - node
+    - nosql
+    - sass
+- company: startumfive
+  link: https://vuejobs.com/jobs/1246-front-end-developer
+  salary: 60000
+  details:
+    - vue
+    - data
+    - ci/cd
+    - solution driven dev culture
+    - webpack
+    - jest
+    - cypress
+    - openlayers
+    - mapbox
+    - leaflet
+    - azure piplines
+    - github actions
+    - circle ci
+    - docker
+- company: knack
+  link: https://vuejobs.com/jobs/1244-front-end-engineer
+  details:
+    - backbonejs
+    - webpack
+    - vue
+    - storybook
+    - atomic design
+    - sass
+    - mocha
+    - cypress
+    - ghost inspector
+    - node
+    - mongo
+    - sql
+    - solr
+    - redis
+    - aws
+- company: refurbed
+  link: https://vuejobs.com/jobs/1163-frontend-developer-vue-js-m-f-x
+  salary: 55000
+  details:
+    - vue
+    - spa
+    - tailwind
+    - bootstrap
+    - jest
+    - mocha
+    - typescript
+    - go
+- company: 64Robots
+  link: https://vuejobs.com/jobs/1229-senior-frontend-engineer
+  details:
+    - vue
+    - nuxt
+    - tailwind
+    - jest
+    - webpack
+- company: newco
+  link: https://vuejobs.com/jobs/1228-remote-junior-vuejs-developer
+  details:
+    - bootstrap
