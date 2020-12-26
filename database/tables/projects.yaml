@@ -1,3 +1,15 @@
+- id: facial-recognition
+  description: Integrating AI to the front-end
+  name: Facial Recognition(s).js
+  owner: Personal Project
+  type: JavaScript + Artificial Intelligence
+  images:
+    logo: 'davika.jpg'
+  tags:
+    - Artificial Intelligence
+    - FaceApi
+    - Google MediaPipe Facemesh
+
 - id: wechat-downloads
   description: Automatically save downloads from WeChat
   name: WeChat Downloads

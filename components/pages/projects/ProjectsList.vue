@@ -26,8 +26,8 @@
       </h3>
 
       <p class="mb-2">
-        <span>{{ project.owner }}</span> /
-        <span>{{ project.type }}</span>
+        <span>{{ project.type }}</span> /
+        <span>{{ project.description }}</span>
       </p>
 
       <tags-list :tags="project.tags" />

@@ -1,7 +1,5 @@
 import utils from './utils'
 
-export default {
-  install(Vue, options) {
-    Vue.prototype.$utils = utils
-  },
+export default ({ app }, inject) => {
+  inject('utils', utils)
 }

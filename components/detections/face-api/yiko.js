@@ -1,9 +1,4 @@
-import { getRotation, drawHeart } from '@/components/detections/face-api/draw'
-import {
-  getDistantPoint,
-  getDistance,
-  getRandom,
-} from '@/components/detections/face-api/utils'
+import { getRotation, getExtendedPoint, getDistance, getRandom } from './utils'
 
 export class Yiko {
   constructor(ctx, start, landmarkTarget, image, speed = 10) {
@@ -18,7 +13,7 @@ export class Yiko {
 
   next(landmarks) {
     const target = landmarks[this.landmarkTarget]
-    this.position = getDistantPoint(this.position, target, this.speed)
+    this.position = getExtendedPoint(this.position, target, this.speed)
     this.rotation = getRotation(target, this.position)
     this.isFlipped = this.position.x < target.x
     // check collision
@@ -58,6 +53,7 @@ export class Yikos {
     this.list = []
     this.maxCount = maxCount
     this.image = image
+    this.onCollision = null
   }
 
   add() {
@@ -80,7 +76,9 @@ export class Yikos {
     const newList = []
     for (const yiko of this.list) {
       if (yiko.isCollided) {
-        drawHeart(this.ctx, yiko.position.x, yiko.position.y, 50, 50)
+        if (this.onCollision) {
+          this.onCollision(this.ctx, yiko)
+        }
         continue
       }
 

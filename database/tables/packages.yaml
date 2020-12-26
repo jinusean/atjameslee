@@ -10,7 +10,7 @@
   npm: true
 - id: 'react-photo-uploader'
   subtitle: 'Upload, drop, and take a photo'
-  info: 'First attempt at creating a react component.<br/>Users can upload a file, drag & drop a file, or take a new picture with the camera.<br/>Imported to this Vue project using Vuera.'
+  info: 'Integrated a react component into a Vue project.<br/>Users can upload a file, drag & drop a file, or take a new picture with the camera.'
   gitlab: true
   npm: true
 - id: 'vuex-actions-states'

@@ -19,5 +19,6 @@ module.exports = {
   rules: {
     'vue/no-v-html': 'off',
     'no-case-declarations': 'off',
+    'unicorn/number-literal-case': 'off',
   },
 }
