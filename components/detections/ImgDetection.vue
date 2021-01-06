@@ -1,16 +1,13 @@
 <template>
   <div class="relative inline-block">
-    <img
-      ref="image"
-      :src="src"
-      alt="image"
+    <img ref="image" :src="src" alt="image" v-bind="$attrs" @load="load" />
+
+    <canvas
+      ref="canvas"
+      class="absolute top-0 left-0 w-full h-full"
       :height="height"
       :width="width"
-      :style="imgStyle"
-      @load="load"
     />
-
-    <canvas ref="canvas" class="absolute top-0" />
 
     <div
       v-if="isDetecting"
@@ -71,10 +68,10 @@ export default {
       return this.$refs.image
     },
     height() {
-      return this.$attrs.height || this.image.height
+      return this.$attrs.height
     },
     width() {
-      return this.$attrs.width || this.image.width
+      return this.$attrs.width
     },
     imgStyle() {
       const { width, height } = this
@@ -87,10 +84,11 @@ export default {
       this.isDetecting = true
 
       const { width, height, image, canvas } = this
-      image.width = width
-      image.height = height
-      canvas.width = width
-      canvas.height = height
+
+      // image.width = width
+      // image.height = height
+      // canvas.width = width
+      // canvas.height = height
 
       const isFaceFound = await this.detect(image, canvas)
       this.isFaceNotDetected = !isFaceFound
