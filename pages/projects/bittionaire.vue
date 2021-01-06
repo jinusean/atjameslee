@@ -23,7 +23,7 @@
     </div>
     <br />
 
-    <Project class="" :project="project" :document="document" />
+    <Project class="" :project="project" :document="parsedDocument" />
   </div>
 </template>
 

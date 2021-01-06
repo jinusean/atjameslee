@@ -94,3 +94,6 @@ sw.*
 
 # Local Netlify folder
 .netlify
+
+# used for webstorm only
+webpack.config.js

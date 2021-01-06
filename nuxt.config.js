@@ -42,6 +42,7 @@ export default {
   buildModules: [
     ['@nuxtjs/eslint-module', { emitWarning: true }],
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/svg',
   ],
 
   modules: [
@@ -85,6 +86,12 @@ export default {
       config.node = {
         fs: 'empty',
       }
+    },
+    devMiddleware: {
+      headers: {
+        'Cache-Control': 'no-store',
+        Vary: '*',
+      },
     },
   },
 }

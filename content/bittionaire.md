@@ -20,19 +20,18 @@ Once I had a system of retrieving and storing daily historical prices, it was no
 With these functional trading indicators in hand, I applied them to the coins' historical prices. However, I noticed this was taking a huge amount of time, sometimes even hours depending on how tight I the settings were. In order to alleviate this   
 
 <br /><br />
-<figure class="lg:w-3/4 mx-auto">
-    <img src="/images/bittionaire.png" alt="Bittionaire Bitcoin Table" />
-    <i>Figure 2: Bittionaire Bitcoin Table</i>
+<figure class="lg:w-3/4 mx-auto shadow-3xl p-6">
+    <img src="/images/bittionaire.png" alt="Bittionaire Bitcoin Table"  />
 </figure>
 <br />
 
 <hr class="my-6 hr-star" />
 
-Additionally, I also ported some of the computational logic into a Desktop [Electron.js](https://electronjs.org) project, and applied time in addition to a number of other indicators ([Moving-Averages](https://www.investopedia.com/terms/m/movingaverage.asp) & [RSI](https://www.investopedia.com/terms/r/rsi.asp)). This project distinguished itself from the original project because it was tracked the prices in real-time using [WebSockets](https://en.wikipedia.org/wiki/WebSocket). 
+Additionally, I also ported some of the computational logic into a Desktop [Electron.js](https://electronjs.org) project, and applied time in addition to a number of other indicators ([Moving-Averages](https://www.investopedia.com/terms/m/movingaverage.asp) & [RSI](https://www.investopedia.com/terms/r/rsi.asp)). This project distinguished itself from the original project because it was tracked the prices in real-time using [WebSockets](https://en.wikipedia.org/wiki/WebSocket).
+
 <br /><br />
-<figure class="lg:w-3/4 mx-auto">
+<figure class="lg:w-3/4 mx-auto shadow-3xl p-6">
     <img src="/images/bittionaire-electron.png" alt="Bittionaire Electron Coins Table" />
-    <i>Figure 3: Bittionaire Electron Coins Table</i>
 </figure>
 <br />
  

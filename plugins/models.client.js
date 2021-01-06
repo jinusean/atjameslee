@@ -1,36 +1,40 @@
 import * as faceapi from '@vladmandic/face-api'
-
 import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection'
-// import '@tensorflow/tfjs-backend-cpu'
+import '@tensorflow/tfjs-backend-cpu'
 import '@tensorflow/tfjs-backend-webgl'
 
 class Models {
   constructor() {
     this._facemesh = null
     this._faceapi = null
-    this.facemesh()
-    this.faceapi()
   }
 
   async facemesh() {
     if (!this._facemesh) {
-      this._facemesh = await faceLandmarksDetection.load(
-        faceLandmarksDetection.SupportedPackages.mediapipeFacemesh
-      )
+      this._facemesh = faceLandmarksDetection
+        .load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
+        .then((facemesh) => {
+          this._facemesh = facemesh
+          return facemesh
+        })
     }
     return this._facemesh
   }
 
   async faceapi() {
     if (!this._faceapi) {
-      const weightsPath = '/models/faceapi'
-      this._faceapi = await Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri(weightsPath),
-        faceapi.nets.faceRecognitionNet.loadFromUri(weightsPath),
-        faceapi.nets.ageGenderNet.loadFromUri(weightsPath),
-        faceapi.nets.faceExpressionNet.loadFromUri(weightsPath),
-        faceapi.nets.faceLandmark68Net.loadFromUri(weightsPath),
-      ])
+      this._faceapi = Promise.all(
+        Object.entries(faceapi.nets).map(([name, net]) => {
+          // no need to load tinyYolov2
+          if (name === 'tinyYolov2') {
+            return
+          }
+          return net.loadFromUri('/models/faceapi')
+        })
+      ).then(() => {
+        this._faceapi = faceapi
+        return faceapi
+      })
     }
 
     return this._faceapi
@@ -38,5 +42,8 @@ class Models {
 }
 
 export default ({ app }, inject) => {
-  inject('models', new Models())
+  const models = new Models()
+  models.facemesh()
+  models.faceapi()
+  inject('models', models)
 }

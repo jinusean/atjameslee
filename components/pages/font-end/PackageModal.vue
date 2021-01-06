@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import modal from '@/components/base/modal.vue'
+import modal from '@/components/base/Modal.vue'
 import ReactPhotoUploaderModalBody from '@/components/pages/font-end/ReactPhotoUploaderModalBody'
 import VuexActionsStatesModalBody from '@/components/pages/font-end/VuexActionsStatesModalBody.vue'
 import EslintPluginJinuseanModalBody from '@/components/pages/font-end/EslintPluginJinuseanModalBody.vue'

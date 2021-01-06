@@ -22,9 +22,10 @@ While living and working in the Philippines, I noticed the country did not have 
 </div>
 
 <hr class="my-4"/>
-<figure class="lg:w-3/4 mx-auto">
+<figure class="lg:w-3/4 mx-auto shadow-3xl my-8 p-6">
     <img src="/images/tagalong.png" alt="tagalong.ph"/>
 </figure>
+
 <hr class="my-4"/>
 
 ## Server-Side

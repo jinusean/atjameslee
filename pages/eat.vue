@@ -5,9 +5,8 @@
         <div>
           <p class="text-center mt-4 font-bold text-2xl">Say "Ahh...."</p>
         </div>
-        <FaceApiWebcam
+        <FaceApiVideo
           ref="faceApi"
-          weights-src="/models/faceapi"
           :landmarks="showLandmarks"
           @track="onTrack"
         />
@@ -21,15 +20,15 @@
 </template>
 
 <script>
-import FaceApiWebcam from '@/components/detections/face-api/FaceApiWebcam'
-import { drawPepper } from '@/components/detections/face-api/draw'
+import FaceApiVideo from '@/components/detections/FaceApi/FaceApiVideo'
+import { drawPepper } from '@/components/detections/draw'
 import WebviewSupport from '@/components/detections/WebviewSupport'
 
 export default {
   name: 'EatMePage',
   components: {
     WebviewSupport,
-    FaceApiWebcam,
+    FaceApiVideo,
   },
   data() {
     return {
@@ -37,11 +36,12 @@ export default {
     }
   },
   methods: {
-    onTrack({ face, ctx }) {
-      if (!face) {
+    onTrack({ detections, canvas }) {
+      if (!detections) {
         return
       }
-      drawPepper(ctx, face.landmarks.positions, 'black')
+      const ctx = canvas.getContext('2d')
+      drawPepper(ctx, detections[0].landmarks.positions, 'black')
     },
   },
 }

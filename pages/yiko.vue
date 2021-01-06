@@ -1,16 +1,16 @@
 <template>
   <div class="flex-1 flex items-center justify-center">
     <WebviewSupport>
-      <FaceApi ref="faceApi" weights-src="/weights" @track="onTrack" />
+      <FaceApiVideo ref="faceApi" weights-src="/weights" @track="onTrack" />
     </WebviewSupport>
   </div>
 </template>
 
 <script>
-import FaceApi from '@/components/detections/face-api/FaceApiWebcam'
-import { Yikos } from '@/components/detections/face-api/yiko'
+import FaceApiVideo from '@/components/detections/FaceApi/FaceApiVideo'
+import { Yikos } from '@/components/detections/FaceApi/yiko'
 import WebviewSupport from '@/components/detections/WebviewSupport'
-import { drawHeart } from '@/components/detections/face-api/draw'
+import { drawHeart } from '@/components/detections/draw'
 
 let yikos = null
 
@@ -18,7 +18,7 @@ export default {
   name: 'EatMePage',
   components: {
     WebviewSupport,
-    FaceApi,
+    FaceApiVideo,
   },
   mounted() {
     const image = new Image(80, 95)

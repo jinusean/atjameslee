@@ -8,7 +8,7 @@
         class="border-b-2 border-white"
       />
 
-      <div class="text-white bg-slate">
+      <div class="text-white bg-black bg-opacity-30">
         <div class="container w-container pb-6">
           <profile-img class="mb-8" />
 

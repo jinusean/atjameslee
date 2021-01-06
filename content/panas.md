@@ -20,8 +20,7 @@
   
   <div class="flex flex-col items-center">
     <img class="border-2 max-w-xs" src="/images/panas-start.gif" alt="Track your mood" />
-    <br />
-    <p>
+    <p class="mt-4">
       Track your mood by selecting a rating for each of the 20 emotions. Emotions are displayed in random order for each
       session to eliminate any bias.
     </p>
@@ -32,16 +31,14 @@
 
 <div class="flex flex-col items-center">
   <img class="border-2 max-w-xs" src="/images/panas-history.gif" alt="View previous moods" />
-  <br />
-  <p>Review your previous moods in list format. Tap on a record and see a visual breakdown of the moods' scores.</p>
+  <p class="mt-4">Review your previous moods in list format. Tap on a record and see a visual breakdown of the moods' scores.</p>
 </div>
 
 <hr class="my-6" />
 
 <div class="flex flex-col items-center">
   <img class="border-2 max-w-xs" src="/images/panas-analytics.gif" alt="Get analytics on your moods" />
-  <br />
-  <p> Understand which negative moods are influencing in your life, or check which positive moods need improvement.</p>
+  <p class="mt-4"> Understand which negative moods are influencing in your life, or check which positive moods need improvement.</p>
 </div>
 
 

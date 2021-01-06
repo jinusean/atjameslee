@@ -1,13 +1,13 @@
 <template>
   <div class="flex-1 flex items-center justify-center">
-    <GoogleMesh />
+    <MeshVideo />
   </div>
 </template>
 
 <script>
-import GoogleMesh from '@/components/detections/GoogleMesh'
+import MeshVideo from '@/components/detections/GoogleMesh/MeshVideo'
 export default {
-  components: { GoogleMesh },
+  components: { MeshVideo },
 }
 </script>
 

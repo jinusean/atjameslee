@@ -5,8 +5,10 @@ As the lead front-end developer on this project, I helped make the teams' design
 
 <br/> 
 
+<figure class="lg:w-3/4 mx-auto shadow-3xl my-8">
+    <img src="/images/import-genius-site.png" alt="Import Genius Dashboard"  />
+</figure>
 
-![Import Genius](/images/import-genius-site.png)
 
 <br/>
  One challenge that was especially of concern for this project was improving the perceived/objective loading times due to the long wait times required from extracting so much data from the server. Some of the solutions implemented include, using service-workers to pre-cache assets, and cache xhr calls, using web-workers to store user settings locally in localStorage/indexedDB, and pre-fetching as much relevant data as possible.   
