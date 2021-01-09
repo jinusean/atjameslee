@@ -5,10 +5,9 @@
       muted
       playsinline
       autoplay
-      :height="height"
-      :width="width"
+      v-bind="$attrs"
       :src="src"
-      :style="videoStyle"
+      :style="videoSizedStyle"
       @loadedmetadata="onLoadedmetadata"
     ></video>
     <canvas ref="canvas" class="absolute top-0" />
@@ -34,48 +33,58 @@ export default {
   components: {
     HollowDotsSpinner,
   },
+  inheritAttrs: false,
   props: {
-    width: {
-      default: 640,
-      type: Number,
-    },
-    height: {
-      default: 480,
-      type: Number,
-    },
     src: {
       type: String,
       default: undefined,
-    },
-    camera: {
-      type: Boolean,
-      default: false,
     },
     useOverlay: {
       type: Boolean,
       default: false,
     },
+    srcObject: {
+      type: MediaStream,
+      default: undefined,
+    },
+    videoStyle: {
+      type: String || Object,
+      default: '',
+    },
   },
   data() {
     return {
-      isDestroyed: false,
       isLoaded: false,
+      stream: null,
     }
   },
   computed: {
-    videoStyle() {
-      const { height, width } = this
-      return {
-        height: height + 'px',
-        width: width + 'px',
-        transform: this.camera ? 'scaleX(-1)' : '',
+    videoSizedStyle() {
+      const { height, width } = this.$attrs
+      const str = `height: ${height}px; width: ${width}px`
+      if (!this.videoStyle) {
+        return str
+      }
+      if (typeof this.videoStyle === 'string') {
+        return this.videoStyle + '; ' + str
+      }
+      if (typeof this.videoStyle === 'object') {
+        return {
+          ...this.videoStyle,
+          height: height + 'px',
+          width: width + 'px',
+        }
       }
     },
     dotSize() {
       const maxSize = 40
       const minSize = 10
 
-      const dotSize = this.width / 16
+      const width =
+        this.width || this.$refs.video
+          ? this.$refs.video.getBoundingClientRect().width
+          : 1
+      const dotSize = width / 16
 
       if (dotSize > maxSize) {
         return maxSize
@@ -85,87 +94,37 @@ export default {
       }
       return dotSize
     },
-    video() {
-      return this.$refs.video
-    },
-    canvas() {
-      return this.$refs.canvas
-    },
-    overlay() {
-      return this.$refs.overlay
-    },
   },
   watch: {
-    camera: {
+    srcObject: {
       immediate: true,
-      handler() {
-        this.$nextTick(this.watchCamera)
+      handler(srcObject) {
+        this.$nextTick(() => {
+          this.$refs.video.srcObject = srcObject
+        })
       },
     },
   },
-  beforeDestroy() {
-    this.isDestroyed = true
-    this.closeCamera()
-  },
+  mounted() {},
   methods: {
-    watchCamera() {
-      this.closeCamera()
-
-      if (!this.camera) {
-        return
-      }
-
-      if (navigator.mediaDevices) {
-        return this.openCamera()
-      }
-
-      // No media device found
-      if (this.$rollbar) {
-        this.$rollbar.debug('No media device found')
-        this.$emit('mediadevicenotfound')
-      }
-    },
-    closeCamera() {
-      const { video } = this
-      if (!video) {
-        return
-      }
-      if (video.srcObject) {
-        video.srcObject.getTracks().forEach((track) => track.stop())
-      }
-      video.srcObject = undefined
-    },
-    async openCamera() {
-      this.video.srcObject = await navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: {
-          facingMode: 'user',
-          width: this.width,
-          height: this.height,
-        },
-      })
-    },
-    onLoadedmetadata() {
-      const { video, canvas, overlay } = this
+    async onLoadedmetadata() {
+      const { video, canvas, overlay } = this.$refs
       const videoWidth = video.videoWidth
       const videoHeight = video.videoHeight
       video.width = videoWidth
       video.height = videoHeight
-
       canvas.width = videoWidth
       canvas.height = videoHeight
-
-      const ctx = canvas.getContext('2d')
-      ctx.translate(canvas.width, 0)
-      ctx.scale(-1, 1)
 
       if (overlay) {
         overlay.width = videoWidth
         overlay.height = videoHeight
       }
 
+      if (this.$listeners.loadedmetadata) {
+        await this.$listeners.loadedmetadata({ video, canvas, overlay })
+      }
       this.isLoaded = true
-      this.$emit('loadedmetadata')
     },
   },
 }

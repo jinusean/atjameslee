@@ -7,11 +7,13 @@
         </div>
         <FaceApiVideo
           ref="faceApi"
-          :landmarks="showLandmarks"
-          @track="onTrack"
+          :height="size"
+          :width="size"
+          :options="options"
+          @detect="onTrack"
         />
         <div>
-          <input id="landmarks" v-model="showLandmarks" type="checkbox" />
+          <input id="landmarks" v-model="options.landmarks" type="checkbox" />
           <label for="landmarks">Show landmarks</label>
         </div>
       </div>
@@ -32,7 +34,10 @@ export default {
   },
   data() {
     return {
-      showLandmarks: true,
+      options: {
+        landmarks: true,
+      },
+      size: 320,
     }
   },
   methods: {
@@ -41,7 +46,9 @@ export default {
         return
       }
       const ctx = canvas.getContext('2d')
-      drawPepper(ctx, detections[0].landmarks.positions, 'black')
+      for (const detection of detections) {
+        drawPepper(ctx, detection.landmarks.positions, 'black')
+      }
     },
   },
 }

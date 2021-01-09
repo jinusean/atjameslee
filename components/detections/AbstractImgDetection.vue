@@ -1,13 +1,8 @@
 <template>
   <div class="relative inline-block">
-    <img ref="image" :src="src" alt="image" v-bind="$attrs" @load="load" />
+    <img ref="img" :src="src" alt="image" v-bind="$attrs" @load="load" />
 
-    <canvas
-      ref="canvas"
-      class="absolute top-0 left-0 w-full h-full"
-      :height="height"
-      :width="width"
-    />
+    <canvas ref="canvas" class="absolute top-0 left-0 w-full h-full" />
 
     <div
       v-if="isDetecting"
@@ -40,7 +35,7 @@
 import { SemipolarSpinner } from 'epic-spinners'
 
 export default {
-  name: 'FaceApiUpload',
+  name: 'ImgDetection',
   components: {
     SemipolarSpinner,
   },
@@ -49,23 +44,27 @@ export default {
       type: String,
       default: null,
     },
-    detect: {
-      type: Function,
+    model: {
+      type: String,
       required: true,
+      validate(model) {
+        return ['faceapi', 'facemesh'].includes(model)
+      },
     },
   },
   data() {
     return {
       isDetecting: false,
       isFaceNotDetected: false,
+      detector: null,
     }
   },
   computed: {
     canvas() {
       return this.$refs.canvas
     },
-    image() {
-      return this.$refs.image
+    img() {
+      return this.$refs.img
     },
     height() {
       return this.$attrs.height
@@ -73,26 +72,22 @@ export default {
     width() {
       return this.$attrs.width
     },
-    imgStyle() {
-      const { width, height } = this
-      return { width: width + 'px', height: height + 'px' }
+  },
+  watch: {
+    options() {
+      this.load()
     },
   },
   methods: {
     async load() {
+      const { img: element, canvas } = this
       this.isFaceNotDetected = false
       this.isDetecting = true
+      canvas.width = element.width
+      canvas.height = element.height
 
-      const { width, height, image, canvas } = this
-
-      // image.width = width
-      // image.height = height
-      // canvas.width = width
-      // canvas.height = height
-
-      const isFaceFound = await this.detect(image, canvas)
+      const isFaceFound = await this.$listeners.detect({ element, canvas })
       this.isFaceNotDetected = !isFaceFound
-
       this.isDetecting = false
     },
   },

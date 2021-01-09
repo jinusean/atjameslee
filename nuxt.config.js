@@ -30,7 +30,7 @@ export default {
     '@/plugins/plugins.client.js',
     '@/plugins/plugins.server.js',
     '@/plugins/database',
-    '@/plugins/models.client.js',
+    '@/plugins/faceDetection.client.js',
     '@/plugins/isMobile.client.js',
     '@/plugins/utils',
   ],

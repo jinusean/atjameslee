@@ -2,7 +2,7 @@ import {
   drawIris,
   drawMesh,
   drawTriangulations,
-} from '@/components/detections/GoogleMesh/meshUtils'
+} from '@/components/detections/GoogleMesh/facemeshDrawUtils'
 
 export default {
   props: {

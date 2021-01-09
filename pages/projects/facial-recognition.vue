@@ -3,19 +3,12 @@
     <h1 class="page-heading">{{ project.description }}</h1>
 
     <TagsList v-if="project.tags" :tags="project.tags" />
-    <p class="mt-1">
-      <a
-        target="_blank"
-        href="https://github.com/justadudewhohacks/face-api.js/"
-        class="font-extrabold text-2xl"
-        >FaceApi.js</a
-      >
-      is an open-source JavaScript api built on top of tensorflow.js/core. With
-      tensorflow.js, FaceApi enables users to track a number of
-      facial-recognition features on images, and videos (including webcam).
-    </p>
 
-    <FaceApiSection :height="height" :width="width" />
+    <GoogleMeshSection :image="image" :height="height" :width="width" />
+
+    <!--        <hr class="my-16" />-->
+
+    <!--    <FaceApiSection :image="image" :height="height" :width="width" />-->
 
     <hr />
     <client-only>
@@ -42,7 +35,13 @@ export default {
   },
   data() {
     const size = 320
+    const imgFilename = 'biden.png'
     return {
+      image: {
+        name: imgFilename,
+        src: this.$utils.getAsset('images/' + imgFilename),
+      },
+
       height: size,
       width: size,
     }
@@ -51,26 +50,28 @@ export default {
     project() {
       return this.$db.findProject('facial-recognition')
     },
-    components() {
-      return {
-        FaceApi: {
-          img: FaceApiImg,
-          video: FaceApiVideo,
-          imgSrc: this.$utils.getAsset('images/biden.png'),
-        },
-        // 'Google Facemesh': {
-        //   img: MeshImg,
-        //   video: MeshVideo,
-        //   imgSrc: this.$utils.getAsset('images/trump.png'),
-        // },
-      }
-    },
+
     style() {
       const { width, height } = this
       return {
         width: width + 'px',
         height: height + 'px',
       }
+    },
+  },
+  methods: {
+    onImgChange(files) {
+      const [file] = files
+      const reader = new FileReader()
+
+      reader.onload = (e) => {
+        this.image = {
+          name: file.name,
+          src: e.target.result,
+        }
+      }
+
+      reader.readAsDataURL(file)
     },
   },
 }

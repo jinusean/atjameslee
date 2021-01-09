@@ -1,43 +1,49 @@
 <template>
-  <CanvasVideo
-    ref="canvasVideo"
-    camera
-    v-bind="$attrs"
-    @loadedmetadata="onLoadeddata"
-  />
+  <CanvasWebcam v-bind="$attrs" @loadedmetadata="loadedmetadata" />
 </template>
 
 <script>
-import CanvasVideo from '../../base/CanvasVideo'
-import mixin from './mixin'
+import CanvasWebcam from '@/components/base/CanvasWebcam'
+import CanvasVideo from '@/components/base/CanvasVideo'
+import FaceMesh from '@/components/detections/GoogleMesh/FaceMesh'
 
-let shouldDrawNextFrame = true
 export default {
   name: 'MeshVideo',
   components: {
-    CanvasVideo,
+    CanvasWebcam,
   },
-  mixins: [mixin],
-
-  methods: {
-    async onLoadeddata() {
-      this.$refs.canvasVideo.isLoaded = false
-      await this.$models.facemesh()
-      this.track()
+  props: {
+    camera: {
+      type: Boolean,
+      default: false,
     },
-    track() {
-      if (!this.$refs.canvasVideo) {
-        // component destroyed
-        return
+    options: {
+      default: {},
+      type: Object,
+    },
+  },
+  computed: {
+    videoOptions() {
+      return {
+        ...this.options,
+        mirror: true,
       }
-      const { canvas, video } = this.$refs.canvasVideo
+    },
+  },
+  methods: {
+    async loadedmetadata({ video, canvas }) {
+      this.faceMesh = await FaceMesh.create(video, canvas, this.videoOptions)
+      return new Promise((resolve) => {
+        this.detectVideo(resolve)
+      })
+    },
+    detectVideo(resolve) {
       window.requestAnimationFrame(async () => {
-        if (shouldDrawNextFrame) {
-          await this.detect(video, canvas)
-          this.$refs.canvasVideo.isLoaded = true
+        await this.faceMesh.detectAndDraw()
+        if (resolve) {
+          resolve()
         }
-        shouldDrawNextFrame = !shouldDrawNextFrame
-        this.track()
+        return this.detectVideo()
       })
     },
   },

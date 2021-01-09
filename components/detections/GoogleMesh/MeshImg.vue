@@ -1,21 +1,32 @@
 <template>
-  <ImgDetection :src="src" :detect="detect" v-bind="$attrs" />
+  <ImgDetect ref="imgDetect" v-bind="$attrs" @detect="detect" />
 </template>
-
 <script>
-import ImgDetection from '@/components/detections/ImgDetection'
-import mixin from './mixin'
+import ImgDetect from '@/components/detections/components/ImgDetect'
+import FaceMesh from '@/components/detections/GoogleMesh/FaceMesh'
 
 export default {
   name: 'MeshImg',
-  components: {
-    ImgDetection,
-  },
-  mixins: [mixin],
+  components: { ImgDetect },
   props: {
-    src: {
-      type: String,
-      default: null,
+    options: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+  watch: {
+    options() {
+      this.$refs.imgDetect.load()
+    },
+  },
+  methods: {
+    async detect({ canvas, img }) {
+      if (!this.facemesh) {
+        this.facemesh = await FaceMesh.create(canvas, img, this.options)
+      }
+      return this.facemesh.detectAndDraw()
     },
   },
 }
