@@ -1,5 +1,5 @@
 <template>
-  <FRSection v-model="image">
+  <FRSection ref="section" img="biden.png" model="FaceApi" :options="options">
     <template slot="header">
       <p class="mt-1">
         <a
@@ -13,8 +13,9 @@
         facial-recognition features on images, and videos (including webcam).
       </p>
     </template>
+
     <template slot="options">
-      <div v-for="name in filteredOptionNames" :key="name">
+      <div v-for="(value, name) in options" :key="name">
         <input
           :id="name"
           v-model="options[name]"
@@ -22,32 +23,10 @@
           :name="name"
           type="checkbox"
         />
+
         <label class="cursor-pointer" :for="name">{{
           getOptionName(name)
         }}</label>
-      </div>
-    </template>
-
-    <template slot="content">
-      <div>
-        <h3>Detect on image</h3>
-
-        <FaceApiImg
-          class="shadow-3xl"
-          :src="image.src"
-          :options="options"
-          :width="width"
-        />
-      </div>
-
-      <div>
-        <h3>Detect on video</h3>
-        <FaceApiVideo
-          class="shadow-3xl"
-          :options="videoOptions"
-          :height="height"
-          :width="width"
-        />
       </div>
     </template>
   </FRSection>
@@ -55,25 +34,11 @@
 
 <script>
 import FRSection from '@/components/pages/projects/facial-recognition/FRSection'
-import FaceApiVideo from '@/components/detections/FaceApi/FaceApiVideo'
-import FaceApiImg from '@/components/detections/FaceApi/FaceApiImg'
 
 export default {
   name: 'FaceApiSection',
   components: {
     FRSection,
-    FaceApiImg,
-    FaceApiVideo,
-  },
-  props: {
-    height: {
-      required: true,
-      type: Number,
-    },
-    width: {
-      required: true,
-      type: Number,
-    },
   },
   data() {
     const imgFilename = 'biden.png'
@@ -92,12 +57,9 @@ export default {
       },
     }
   },
-  computed: {
-    filteredOptionNames() {
-      return Object.keys(this.options).filter((name) => name !== 'multiple')
-    },
-    videoOptions() {
-      return { ...this.options, mirror: true }
+  watch: {
+    options() {
+      this.$refs.section.reloadImg()
     },
   },
   methods: {

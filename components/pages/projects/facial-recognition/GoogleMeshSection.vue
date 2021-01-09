@@ -1,5 +1,5 @@
 <template>
-  <FRSection :image="image">
+  <FRSection ref="section" img="trump.png" model="FaceMesh" :options="options">
     <template slot="header">
       <p class="mt-1">
         <a
@@ -38,40 +38,14 @@
           v-model="options[name]"
           class="cursor-pointer"
           :name="name"
-          type="checkbox"
+          :type="name === 'maxFaces' ? 'number' : 'checkbox'"
+          max="10"
+          min="1"
         />
-        <label class="capitalize cursor-pointer" :for="name">{{ name }}</label>
-      </div>
-    </template>
-    <template slot="content">
-      <div>
-        <h3>Detect on an image</h3>
-        <FaceImg
-          :src="image.src"
-          class="shadow-3xl"
-          :width="width"
-          :options="options"
-          model="FaceMesh"
-        />
-      </div>
 
-      <div>
-        <h3>Detect on a video/webcam</h3>
-        <FaceVideo
-          camera
-          model="FaceMesh"
-          class="shadow-3xl"
-          :height="height"
-          :width="width"
-          :options="options"
-        />
-        <!--        <MeshVideo-->
-        <!--          class="shadow-3xl"-->
-        <!--          :height="height"-->
-        <!--          :width="width"-->
-        <!--          :options="options"-->
-        <!--          camera-->
-        <!--        />-->
+        <label class="cursor-pointer" :for="name">{{
+          getOptionName(name)
+        }}</label>
       </div>
     </template>
   </FRSection>
@@ -79,26 +53,10 @@
 
 <script>
 import FRSection from '@/components/pages/projects/facial-recognition/FRSection'
-import MeshImg from '@/components/detections/GoogleMesh/MeshImg'
-import FaceImg from '@/components/detections/components/FaceImg'
-import MeshVideo from '@/components/detections/GoogleMesh/MeshVideo'
 export default {
   name: 'GoogleMeshSection',
   components: {
     FRSection,
-    MeshVideo,
-    MeshImg,
-    FaceImg,
-  },
-  props: {
-    height: {
-      required: true,
-      type: Number,
-    },
-    width: {
-      required: true,
-      type: Number,
-    },
   },
   data() {
     const imgFilename = 'trump.png'
@@ -108,13 +66,18 @@ export default {
         src: this.$utils.getAsset('images/' + imgFilename),
       },
       options: {
+        boundingBox: true,
         triangulate: true,
         iris: true,
-        maxFaces: 10,
+        maxFaces: 1,
       },
     }
   },
+  methods: {
+    getOptionName(name) {
+      name = name.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`)
+      return name[0].toUpperCase() + name.slice(1)
+    },
+  },
 }
 </script>
-
-<style scoped></style>

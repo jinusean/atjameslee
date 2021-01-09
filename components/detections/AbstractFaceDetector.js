@@ -1,7 +1,12 @@
+// _options = {}
+// _element = null
+// _canvas = null
+// _detections = []
+// _drawingBoard = null
+// _mirror = false
+
 class AbstractFaceDetector {
   static isLoaded = false
-  _mirror = false
-  _drawingBoard = null
 
   constructor(...args) {
     for (const arg of args) {
@@ -47,6 +52,14 @@ class AbstractFaceDetector {
     return this._element
   }
 
+  set detections(detections) {
+    this._detections = detections || []
+  }
+
+  get detections() {
+    return this._detections
+  }
+
   setDimensions() {
     const { element, canvas, drawingBoard } = this
 
@@ -54,7 +67,6 @@ class AbstractFaceDetector {
       canvas.height = element.height
       canvas.width = element.width
     }
-
     if (
       drawingBoard.width !== element.width ||
       drawingBoard.height !== element.height
@@ -80,22 +92,40 @@ class AbstractFaceDetector {
     to.getContext('2d').drawImage(from, 0, 0, from.width, from.height)
   }
 
+  async update() {
+    this.setDimensions()
+    const { element, drawingBoard } = this
+    this.drawImage(element, drawingBoard)
+    this.detections = await this.detect()
+  }
+
+  drawDetections() {
+    const { canvas, drawingBoard } = this
+    this.drawImage(drawingBoard, canvas)
+    return this.draw()
+  }
+
+  drawBox(x, y, width, height, lineWidth = 2, color = 'blue') {
+    const ctx = this.canvas.getContext('2d')
+    ctx.beginPath()
+    ctx.rect(x, y, width, height)
+    ctx.lineWidth = lineWidth
+    ctx.strokeStyle = color
+    ctx.stroke()
+  }
+
   detect() {
     throw new Error('detect() is not implemented')
   }
 
-  drawDetections() {
-    throw new Error('drawDetections() is not implemented')
+  draw(detections = this.detections) {
+    throw new Error('draw() is not implemented')
   }
 
   async detectAndDraw() {
-    const { element, canvas, options, drawingBoard } = this
-    const detections = await this.detect(element, options)
-    this.drawImage(drawingBoard, canvas)
-    if (detections) {
-      this.drawDetections(detections, canvas, options)
-    }
-    return detections
+    await this.update()
+    await this.drawDetections()
+    return this.detections
   }
 }
 

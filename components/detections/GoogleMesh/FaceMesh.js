@@ -11,6 +11,7 @@ import defaultOptions from '@/components/detections/FaceApi/default-options'
 
 class FaceMesh extends AbstractFaceDetector {
   static _facemesh = null
+  _model = null
 
   static load() {
     if (!this._facemesh) {
@@ -24,29 +25,42 @@ class FaceMesh extends AbstractFaceDetector {
     return this._facemesh
   }
 
+  loadModel() {
+    if (!this._model) {
+      this._model = faceLandmarksDetection
+        .load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
+        .then((facemesh) => {
+          this._model = facemesh
+          return facemesh
+        })
+    }
+    return this._model
+  }
+
+  constructor(...args) {
+    super(...args)
+    this.loadModel()
+  }
+
   get options() {
     return { ...defaultOptions, ...this._options }
   }
 
-  static get facemesh() {
-    return this._facemesh
-  }
-
   async detect() {
+    const model = await this.loadModel()
     this.setDimensions()
     this.drawImage(this.element, this.drawingBoard)
-    return await FaceMesh.facemesh.estimateFaces({
+    return await model.estimateFaces({
       input: this.drawingBoard,
       ...this.options,
     })
   }
 
-  drawDetections(detections) {
+  draw() {
     const { canvas, options } = this
     const ctx = canvas.getContext('2d')
-
-    detections.forEach((detection) => {
-      const keypoints = detection.scaledMesh
+    for (const detections of this.detections) {
+      const keypoints = detections.scaledMesh
 
       if (options.triangulate) {
         drawTriangulations(ctx, keypoints)
@@ -57,19 +71,17 @@ class FaceMesh extends AbstractFaceDetector {
       if (options.iris) {
         drawIris(ctx, keypoints, options.irisWidth)
       }
-    })
-    return detections
-  }
 
-  // async detectAndDraw() {
-  //   const { element, canvas, options } = this
-  //   const detections = await this.detect(element, options)
-  //   this.drawImage(element, canvas)
-  //   if (detections) {
-  //     this.drawDetections(detections, canvas, options)
-  //   }
-  //   return detections
-  // }
+      if (options.boundingBox) {
+        const { topLeft, bottomRight } = detections.boundingBox
+        // drawBox requires x,y,width,height
+        this.drawBox(
+          ...topLeft,
+          ...bottomRight.map((val, index) => val - topLeft[index])
+        )
+      }
+    }
+  }
 }
 
 export default FaceMesh

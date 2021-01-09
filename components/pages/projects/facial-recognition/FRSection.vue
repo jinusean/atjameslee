@@ -4,52 +4,96 @@
       <slot name="header" />
     </div>
     <div class="sm:flex sm:justify-between">
-      <div class="mb-8 sm:mb-0 sm:order-1 flex-1 flex justify-center">
-        <div class="fixed">
-          <h3 class="mb-2">OPTIONS</h3>
-          <div
-            v-if="image"
-            class="flex items-center space-x-2 cursor-pointer hover:bg-gray-100"
-          >
-            <input
-              id="imgInput"
-              hidden
-              type="file"
-              accept="image/*"
-              @change="onChange"
-            />
-            <SvgIcon icon="photo" />
-            <label
-              for="imgInput"
-              class="cursor-pointer inline-block w-32 truncate"
-              ><code>{{ image.name }}</code></label
+      <div class="mb-8 sm:mb-0 sm:order-1 flex-1 flex justify-center relative">
+        <div>
+          <div class="sticky top-1/4">
+            <h3 class="mb-2">OPTIONS</h3>
+            <div
+              class="flex items-center space-x-2 cursor-pointer hover:bg-gray-100"
             >
-          </div>
+              <input
+                id="imgInput"
+                hidden
+                type="file"
+                accept="image/*"
+                @change="onChange"
+              />
+              <SvgIcon icon="photo" />
+              <label
+                for="imgInput"
+                class="cursor-pointer inline-block w-32 truncate"
+                ><code>{{ image.name }}</code></label
+              >
+            </div>
 
-          <slot name="options" />
+            <slot name="options" />
+          </div>
         </div>
       </div>
 
       <div class="flex flex-col items-center children:mb-8">
-        <slot name="content" />
+        <div>
+          <h3>Detect on image</h3>
+          <FaceImg
+            ref="faceImg"
+            :model="model"
+            class="shadow-3xl"
+            :src="image.src"
+            :options="options"
+            :width="size"
+          />
+        </div>
+
+        <div>
+          <h3>Detect on video</h3>
+          <FaceVideo
+            :model="model"
+            class="shadow-3xl"
+            :options="options"
+            :height="size"
+            :width="size"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import FaceImg from '@/components/detections/components/FaceImg'
+import FaceVideo from '@/components/detections/components/FaceVideo'
 export default {
   name: 'FRSection',
-  model: {
-    prop: 'image',
-    event: 'image',
+  components: {
+    FaceVideo,
+    FaceImg,
   },
   props: {
-    image: {
+    img: {
+      type: String,
+      required: true,
+    },
+    model: {
+      type: String,
+      required: true,
+    },
+    options: {
       type: Object,
-      default: null,
+      required: true,
     },
   },
+  data() {
+    return {
+      image: {
+        name: this.img,
+        src: this.$utils.getAsset('/images/' + this.img),
+      },
+      size: 320,
+    }
+  },
   methods: {
+    reloadImg() {
+      this.$refs.faceImg.reload()
+    },
     onChange({ target }) {
       const { files } = target
       if (!files || files.length < 1) {
@@ -59,11 +103,10 @@ export default {
       const reader = new FileReader()
 
       reader.onload = (e) => {
-        const image = {
+        this.image = {
           name: file.name,
           src: e.target.result,
         }
-        this.$emit('image', image)
       }
 
       reader.readAsDataURL(file)

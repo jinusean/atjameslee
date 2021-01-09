@@ -4,11 +4,9 @@
 
     <TagsList v-if="project.tags" :tags="project.tags" />
 
-    <GoogleMeshSection :image="image" :height="height" :width="width" />
-
-    <!--        <hr class="my-16" />-->
-
-    <!--    <FaceApiSection :image="image" :height="height" :width="width" />-->
+    <GoogleMeshSection />
+    <hr class="my-16" />
+    <FaceApiSection />
 
     <hr />
     <client-only>
@@ -36,15 +34,7 @@ export default {
   data() {
     const size = 320
     const imgFilename = 'biden.png'
-    return {
-      image: {
-        name: imgFilename,
-        src: this.$utils.getAsset('images/' + imgFilename),
-      },
-
-      height: size,
-      width: size,
-    }
+    return {}
   },
   computed: {
     project() {

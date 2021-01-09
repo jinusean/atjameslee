@@ -17,9 +17,9 @@
 
     <transition name="slide-down">
       <div
-        v-if="isFaceNotDetected"
+        v-if="!isFaceDetected"
         class="absolute top-0 w-full px-5 cursor-pointer mt-4"
-        @click="isFaceNotDetected = false"
+        @click="isFaceDetected = false"
       >
         <div
           class="rounded-2xl p-4 bg-black bg-opacity-75 text-white text-center"
@@ -39,6 +39,7 @@ export default {
   components: {
     SemipolarSpinner,
   },
+  inheritAttrs: false,
   props: {
     src: {
       type: String,
@@ -48,8 +49,7 @@ export default {
   data() {
     return {
       isDetecting: false,
-      isFaceNotDetected: false,
-      detector: null,
+      isFaceDetected: true,
     }
   },
   computed: {
@@ -69,12 +69,12 @@ export default {
   methods: {
     async load() {
       const { img, canvas } = this
-      this.isFaceNotDetected = false
+      this.isFaceDetected = true
       this.isDetecting = true
       canvas.width = img.width
       canvas.height = img.height
-      const isFaceFound = await this.detect({ img, canvas })
-      this.isFaceNotDetected = !isFaceFound
+      const detections = await this.detect({ img, canvas })
+      this.isFaceDetected = detections && detections.length > 0
       this.isDetecting = false
     },
     detect({ img, canvas }) {
