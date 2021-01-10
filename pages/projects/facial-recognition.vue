@@ -31,11 +31,6 @@ export default {
     TagsList,
     FaceApiSection,
   },
-  data() {
-    const size = 320
-    const imgFilename = 'biden.png'
-    return {}
-  },
   computed: {
     project() {
       return this.$db.findProject('facial-recognition')

@@ -1,9 +1,12 @@
 module.exports = {
   exposeConfig: true,
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         slate: '#222222',
+        smoke: '#f2f2f2',
+        dark: '#181818',
       },
       minWidth: {
         128: '32rem',
@@ -21,6 +24,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      borderWidth: ['dark'],
       display: ['children'],
       height: ['children'],
       margin: ['children', 'last', 'important'],

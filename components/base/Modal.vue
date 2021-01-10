@@ -16,7 +16,7 @@
       <div
         id="modal-wrapper"
         ref="modalWrapper"
-        class="flex flex-col m-auto bg-white shadow-2xl w-full sm:w-auto h-full sm:h-auto overflow-scroll rounded min-w-0 sm:min-w-128 overscroll-auto max-h-full"
+        class="flex flex-col m-auto bg-white shadow-2xl w-full sm:w-auto h-full sm:h-auto overflow-scroll rounded min-w-0 sm:min-w-128 overscroll-auto max-h-full dark:bg-black dark:border dark:border-white"
       >
         <div
           v-if="$slots.header"

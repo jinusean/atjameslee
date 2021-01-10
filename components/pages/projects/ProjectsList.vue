@@ -2,8 +2,7 @@
   <ul class="w-full mx-auto list-none">
     <li v-for="(project, index) in projects" :key="index">
       <div
-        class="relative flex items-center justify-center w-full h-56 group overflow-hidden mb-2"
-        style="background: #f2f2f2"
+        class="relative flex items-center justify-center w-full h-56 group overflow-hidden mb-2 bg-smoke dark:bg-dark"
       >
         <img
           :src="$utils.getAsset(`/images/${project.images.logo}`, project)"

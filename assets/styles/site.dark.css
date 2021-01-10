@@ -1,0 +1,18 @@
+html.dark,
+html.dark body {
+  background: rgb(24,24,24);
+  color: white;
+}
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  font-weight: bold;
+  color: white;
+}
+
+html.dark input {
+  background-color: rgb(24,24,24);
+}

@@ -2,7 +2,7 @@
   <section class="w-full">
     <CoverPage />
 
-    <div class="bg-white relative">
+    <div class="bg-white relative dark:bg-dark">
       <Parallax
         :src="$utils.getAsset(`/images/nyc-${nycImageNumber}.png`)"
         class="border-b-2 border-white"

@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex" v-html="vHtml"></div>
+  <div class="inline-flex" :class="{ invert }" v-html="vHtml"></div>
 </template>
 <script>
 export default {
@@ -15,11 +15,18 @@ export default {
     },
     growByHeight: {
       type: Boolean,
-      default: true,
+      default: false,
     },
-    em: {
-      type: Number,
-      default: 1, // this number makes the icon fit in line with the text
+    invert: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: String || Number,
+      default: 1,
+      validate(size) {
+        return Number.isInteger(parseInt(size))
+      },
     },
   },
   computed: {
@@ -31,6 +38,9 @@ export default {
         return undefined
       }
     },
+    numSize() {
+      return parseInt(this.size)
+    },
   },
   watch: {
     vHtml: {
@@ -40,6 +50,9 @@ export default {
           this.onIconChange()
         })
       },
+    },
+    $props() {
+      this.onIconChange()
     },
   },
   methods: {
@@ -68,11 +81,11 @@ export default {
         // set width and height relative to font size
         // if growByHeight is true, height set to 1em else width set to 1em and remaining is calculated based on widthToHeight ratio
         if (this.growByHeight) {
-          svgElement.setAttribute('height', `${this.em}em`)
+          svgElement.setAttribute('height', `${this.numSize}em`)
           svgElement.setAttribute('width', `${widthToHeight}em`)
         } else {
-          svgElement.setAttribute('width', `${this.em}em`)
-          svgElement.setAttribute('height', `${1 / widthToHeight}em`)
+          svgElement.setAttribute('width', `${this.numSize}em`)
+          svgElement.setAttribute('height', `${this.numSize / widthToHeight}em`)
         }
         svgElement.classList.add('svgs-class')
       }

@@ -4,7 +4,7 @@
   >
     <nuxt-link
       :to="`#${data.id}`"
-      class="flex justify-center items-center p-4 bg-gray-100 border-b border-gray-200 sm:w-64"
+      class="flex justify-center items-center p-4 bg-gray-100 sm:border-b-0 border-gray-100 sm:w-64 dark:bg-gray-900"
       replace
     >
       <img class="h-32 sm:max-h-full" :src="packageImg" :alt="data.id" />
@@ -15,19 +15,20 @@
         <h3 class="capitalize">{{ title }}</h3>
         <h4 class="font-normal text-sm">{{ data.subtitle }}</h4>
         <hr class="my-2" />
-        <p class="text-gray-800" v-html="data.info"></p>
+        <p class="text-gray-800 dark:text-white" v-html="data.info"></p>
       </div>
     </nuxt-link>
 
     <div
-      class="flex items-center py-4 px-3 bg-gray-200 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-4"
+      class="flex items-center py-4 px-3 bg-gray-200 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-4 dark:bg-gray-800"
     >
       <a
         v-if="data.github"
         :href="`https://github.com/jinusean/${data.id}`"
         target="_blank"
       >
-        <img src="~/assets/logos/github.png" class="w-8" :alt="title" />
+        <SvgIcon icon="github" size="2" :invert="$lumin.isDark" />
+        <!--        <img src="~/assets/logos/github.png" class="w-8" :alt="title" />-->
       </a>
       <a
         v-if="data.gitlab"

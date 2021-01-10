@@ -1,12 +1,17 @@
 <template>
   <div
-    class="w-full border-b overflow-x-scroll bg-white bg-opacity-75 fixed top-0"
+    class="w-full border-b overflow-x-scroll bg-white bg-opacity-75 fixed top-0 dark:bg-dark"
   >
     <nav
       class="h-16 w-container flex justify-center sm:justify-between items-center capitalize min-w-max-content sm:container"
     >
       <nuxt-link to="/" class="hidden sm:block">
-        <img class="h-8" src="/icon.png" alt="james lee" />
+        <SvgIcon
+          :invert="$lumin.isDark"
+          size="4"
+          :grow-by-height="false"
+          icon="icon"
+        />
       </nuxt-link>
 
       <ul class="w-full sm:w-auto flex items-center justify-between space-x-4">

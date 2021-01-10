@@ -21,7 +21,11 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/styles/site.css', '@/assets/styles/main.css'],
+  css: [
+    '@/assets/styles/site.css',
+    '@/assets/styles/site.dark.css',
+    '@/assets/styles/main.css',
+  ],
 
   // Plugins to startTracking before rendering page (https://go.nuxtjs.dev/config-plugins)
   // plugins with `<filename>.client.js` will only be installed on client
@@ -29,10 +33,12 @@ export default {
     '@/plugins/plugins.js',
     '@/plugins/plugins.client.js',
     '@/plugins/plugins.server.js',
+    '@/plugins/components.client.js',
     '@/plugins/database',
     '@/plugins/faceDetection.client.js',
     '@/plugins/isMobile.client.js',
     '@/plugins/utils',
+    '@/plugins/lumin.client.js',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
