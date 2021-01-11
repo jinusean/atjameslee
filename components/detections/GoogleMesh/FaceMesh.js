@@ -6,8 +6,8 @@ import {
   drawMesh,
   drawTriangulations,
 } from '@/components/detections/GoogleMesh/facemeshDrawUtils'
-import AbstractFaceDetector from '@/components/detections/AbstractFaceDetector'
-import defaultOptions from '@/components/detections/FaceApi/default-options'
+import AbstractFaceDetector from '@/components/detections/base/AbstractFaceDetector'
+import defaultOptions from '@/components/detections/FaceApi/faceApiDefaultOptions'
 
 class FaceMesh extends AbstractFaceDetector {
   static _facemesh = null

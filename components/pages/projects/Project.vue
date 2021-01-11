@@ -1,6 +1,6 @@
 <template>
   <div class="container page-container">
-    <figure v-if="!project.hideBanner" class="mb-4 flex justify-center">
+    <figure v-if="!project.hideBanner" class="mb-4">
       <img
         ref="banner"
         :class="project.bannerClass || ''"

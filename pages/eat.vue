@@ -5,11 +5,12 @@
         <div>
           <p class="text-center mt-4 font-bold text-2xl">Say "Ahh...."</p>
         </div>
-        <FaceApiVideo
+        <FaceVideo
           ref="faceApi"
           :height="size"
           :width="size"
           :options="options"
+          model="FaceApi"
           @detect="onTrack"
         />
         <div>
@@ -22,15 +23,15 @@
 </template>
 
 <script>
-import FaceApiVideo from '@/components/detections/FaceApi/FaceApiVideo'
-import { drawPepper } from '@/components/detections/draw'
-import WebviewSupport from '@/components/detections/WebviewSupport'
+import FaceVideo from '@/components/detections/FaceVideo'
+import { drawPepper } from '@/components/detections/FaceApi/draw/drawPepper'
+import WebviewSupport from '@/components/WebviewSupport'
 
 export default {
   name: 'EatMePage',
   components: {
     WebviewSupport,
-    FaceApiVideo,
+    FaceVideo,
   },
   data() {
     return {

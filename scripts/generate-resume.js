@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 require('dotenv').config({})
+const childProcess = require('child_process')
 const path = require('path')
 const puppeteer = require('puppeteer')
 async function main() {
@@ -14,7 +15,7 @@ async function main() {
   const browser = await puppeteer.launch({ headless: true })
   const page = await browser.newPage()
 
-  console.log('Goto:', url)
+  console.log('Going to page:', url)
   await page.goto(url, {
     waitUntil: 'networkidle2',
   })
@@ -30,6 +31,17 @@ async function main() {
     path: resumeFilepath,
   })
   browser.close()
+  return openFile(resumeFilepath)
+}
+
+function openFile(file) {
+  return new Promise((resolve) => {
+    const child = childProcess.spawn('open', [file])
+
+    child.on('exit', function (e, code) {
+      resolve()
+    })
+  })
 }
 
 try {

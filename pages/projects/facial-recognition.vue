@@ -4,9 +4,9 @@
 
     <TagsList v-if="project.tags" :tags="project.tags" />
 
-    <GoogleMeshSection />
-    <hr class="my-16" />
     <FaceApiSection />
+    <hr class="my-16" />
+    <GoogleMeshSection />
 
     <hr />
     <client-only>

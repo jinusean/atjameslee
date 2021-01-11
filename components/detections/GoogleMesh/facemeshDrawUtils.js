@@ -1,5 +1,4 @@
-import { TRIANGULATION } from '@/components/detections/GoogleMesh/triangulation'
-
+import TRIANGULATION from '@/components/detections/GoogleMesh/TRIANGULATION.json'
 const NUM_KEYPOINTS = 468
 const NUM_IRIS_KEYPOINTS = 5
 const GREEN = '#32EEDB'

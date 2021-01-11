@@ -1,6 +1,6 @@
 import * as faceapi from '@vladmandic/face-api'
-import AbstractFaceDetector from '@/components/detections/AbstractFaceDetector'
-import defaultOptions from './default-options'
+import AbstractFaceDetector from '@/components/detections/base/AbstractFaceDetector'
+import defaultOptions from './faceApiDefaultOptions'
 
 class FaceApi extends AbstractFaceDetector {
   get options() {

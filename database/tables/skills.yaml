@@ -1,13 +1,3 @@
-- title: Machine Learning
-  start: 2019
-  technologies:
-    - Tensorflow, Keras
-    - PyTorch
-  skills:
-    - Data Scraping & Processing
-    - Deep Learning
-    - Reinforcement Learning
-
 - title: Front-End
   start: 2015
   technologies:
@@ -35,4 +25,14 @@
     - GitHub, Gitlab
   skills:
     - Agile
+
+- title: Machine Learning
+  start: 2019
+  technologies:
+    - Tensorflow, Keras
+    - PyTorch
+  skills:
+    - Data Scraping & Processing
+    - Deep Learning
+    - Reinforcement Learning
 

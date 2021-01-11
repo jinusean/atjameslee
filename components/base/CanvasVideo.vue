@@ -11,7 +11,6 @@
       @loadedmetadata="onLoadedmetadata"
     ></video>
     <canvas ref="canvas" class="absolute top-0" />
-    <canvas v-if="useOverlay" ref="overlay" class="absolute top-0" />
     <div
       v-if="!isLoaded"
       id="loading-wrapper"
@@ -39,10 +38,7 @@ export default {
       type: String,
       default: undefined,
     },
-    useOverlay: {
-      type: Boolean,
-      default: false,
-    },
+
     srcObject: {
       type: MediaStream,
       default: undefined,
@@ -108,7 +104,7 @@ export default {
   mounted() {},
   methods: {
     async onLoadedmetadata() {
-      const { video, canvas, overlay } = this.$refs
+      const { video, canvas } = this.$refs
       const videoWidth = video.videoWidth
       const videoHeight = video.videoHeight
       video.width = videoWidth
@@ -116,13 +112,8 @@ export default {
       canvas.width = videoWidth
       canvas.height = videoHeight
 
-      if (overlay) {
-        overlay.width = videoWidth
-        overlay.height = videoHeight
-      }
-
       if (this.$listeners.loadedmetadata) {
-        await this.$listeners.loadedmetadata({ video, canvas, overlay })
+        await this.$listeners.loadedmetadata({ video, canvas })
       }
       this.isLoaded = true
     },

@@ -33,7 +33,7 @@ export default {
     '@/plugins/plugins.js',
     '@/plugins/plugins.client.js',
     '@/plugins/plugins.server.js',
-    '@/plugins/components.client.js',
+    '@/plugins/globals.client.js',
     '@/plugins/database',
     '@/plugins/faceDetection.client.js',
     '@/plugins/isMobile.client.js',
@@ -41,7 +41,7 @@ export default {
     '@/plugins/lumin.client.js',
   ],
 
-  // Auto import components (https://go.nuxtjs.dev/config-components)
+  // Auto import base (https://go.nuxtjs.dev/config-components)
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
@@ -86,7 +86,7 @@ export default {
       }
 
       config.watchOptions = {
-        ignored: '/components/EatMe/brfv5_js_tk121020_v5.2.0_trial.js',
+        ignored: '/base/EatMe/brfv5_js_tk121020_v5.2.0_trial.js',
       }
 
       config.node = {

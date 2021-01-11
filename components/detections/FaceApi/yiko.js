@@ -1,4 +1,5 @@
-import { getRotation, getExtendedPoint, getDistance, getRandom } from '../utils'
+import { getRotation, getExtendedPoint, getDistance } from '@/lib/geometry'
+import { getRandom } from '@/lib/probability'
 
 export class Yiko {
   constructor(ctx, start, landmarkTarget, image, speed = 10) {
@@ -56,12 +57,12 @@ export class Yikos {
     this.onCollision = null
   }
 
-  add() {
+  add(landmarks) {
     const { width, height } = this.ctx.canvas
     const x = getRandom(0, width)
     const y = getRandom(0, height)
 
-    const landmarkTarget = getRandom(0, 67)
+    const landmarkTarget = getRandom(0, landmarks.length)
     const yiko = new Yiko(
       this.ctx,
       { x, y },
@@ -90,7 +91,7 @@ export class Yikos {
     this.list = newList
   }
 
-  randomAdd() {
+  randomAdd(landmarks) {
     if (this.list.length >= this.maxCount) {
       return
     }
@@ -99,6 +100,6 @@ export class Yikos {
       return
     }
 
-    this.add()
+    this.add(landmarks)
   }
 }

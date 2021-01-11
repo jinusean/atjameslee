@@ -59,8 +59,8 @@
   </div>
 </template>
 <script>
-import FaceImg from '@/components/detections/components/FaceImg'
-import FaceVideo from '@/components/detections/components/FaceVideo'
+import FaceImg from '@/components/detections/FaceImg'
+import FaceVideo from '@/components/detections/FaceVideo'
 export default {
   name: 'FRSection',
   components: {

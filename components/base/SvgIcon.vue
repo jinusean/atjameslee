@@ -22,7 +22,7 @@ export default {
       default: false,
     },
     size: {
-      type: String || Number,
+      type: [String, Number],
       default: 1,
       validate(size) {
         return Number.isInteger(parseInt(size))
