@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-full border-b overflow-x-scroll bg-white bg-opacity-75 fixed top-0 dark:bg-dark"
-  >
+  <div class="w-full bg-white bg-opacity-75 fixed top-0 dark:bg-dark">
     <nav
       class="h-16 w-container flex justify-center sm:justify-between items-center capitalize min-w-max-content sm:container"
     >

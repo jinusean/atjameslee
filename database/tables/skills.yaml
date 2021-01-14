@@ -4,7 +4,7 @@
     - Vue, Nuxt
     - Tailwind.css, SCSS
     - Webpack
-    - SPA/SSR
+    - SPA/SSR/Pre-Render
   skills:
     - Performance Optimization
 

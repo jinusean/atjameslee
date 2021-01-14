@@ -1,16 +1,23 @@
 <template>
-  <div id="resume" class="p-10 bg-white" :style="style">
+  <div id="resume" class="bg-white" :style="style">
+    <h1>{{ user.name }}</h1>
     <div
-      class="grid gap-x-8 children:mb-8"
-      style="grid-template-columns: 2fr 1fr"
+      class="grid gap-x-8 children:mb-6"
+      style="grid-template-columns: 66% auto"
     >
-      <div id="title">
-        <h1>{{ user.name }}</h1>
-        <p>{{ user.title }}</p>
-        <p>Artificial Intelligence Practitioner</p>
-      </div>
+      <section id="title">
+        <div
+          v-for="title in user.titles"
+          :key="title.name"
+          class="flex justify-between"
+        >
+          <p class="text-black">{{ title.name }}</p>
+          <time>{{ title.time }}</time>
+        </div>
+      </section>
 
-      <div
+      <section
+        id="contact-details"
         class="grid gap-x-4"
         style="grid-template-columns: repeat(2, min-content)"
       >
@@ -22,25 +29,38 @@
             detail.text
           }}</a>
         </template>
-      </div>
+      </section>
 
-      <div id="left-content" class="children:mb-6">
-        <div id="summary">
-          <h2>Summary</h2>
-          <p>{{ user.summary }}</p>
-        </div>
+      <div id="left-content" class="children:mb-4">
+        <section id="summary">
+          <h2>Career Objectives</h2>
+          <div
+            v-for="val in $db.find('objectives')"
+            :key="val.name"
+            class="mb-1"
+          >
+            <div class="flex justify-between">
+              <h4>
+                {{ val.name }}
+              </h4>
+              <time>
+                {{ val.year }}
+              </time>
+            </div>
+            <p>{{ val.text }}</p>
+          </div>
+        </section>
 
-        <div id="experiences">
+        <section id="experiences">
           <h2>Experiences</h2>
           <div
             v-for="experience in filteredExperiences"
             :key="experience.company"
-            class="mb-4"
+            class="mb-2"
           >
             <h3>{{ experience.company }}</h3>
             <div class="flex justify-between">
               <h4 class="">{{ experience.role }}</h4>
-              <!--              <span>&nbsp;&nbsp;</span>-->
               <time>{{ formatDate(experience.dates) }}</time>
             </div>
 
@@ -54,25 +74,33 @@
               </li>
             </ul>
           </div>
-        </div>
+        </section>
 
-        <div id="projects">
+        <section id="projects">
           <h2>Projects</h2>
-          <div
-            v-for="project in filteredProjects"
-            :key="project.id"
-            class="mb-4"
-          >
-            {{ project.name }}
-            {{ project.description }}
-          </div>
-        </div>
+          <ul>
+            <li
+              v-for="project in filteredProjects"
+              :key="project.id"
+              class="mb-1"
+            >
+              <div class="flex justify-between">
+                <h4 class="">{{ project.name }}</h4>
+                <time>{{ project.date }}</time>
+              </div>
+              <p>
+                {{ project.description }} with
+                <span class="italic">{{ project.tags[0] }}</span>
+              </p>
+            </li>
+          </ul>
+        </section>
       </div>
 
-      <div id="right-content" class="children:mb-6">
-        <div id="skills">
+      <div id="right-content" class="children:mb-4">
+        <section id="skills">
           <h2>Technologies</h2>
-          <ul v-for="skill in filteredSkills" :key="skill.title" class="mb-4">
+          <ul v-for="skill in filteredSkills" :key="skill.title" class="mb-2">
             <li class="flex justify-between">
               <h3>{{ skill.title }}</h3>
               <time>{{ getSkillDuration(skill.start) }}</time>
@@ -84,9 +112,9 @@
               {{ skillName }}
             </li>
           </ul>
-        </div>
+        </section>
 
-        <div id="education">
+        <section id="education">
           <h2>Education</h2>
           <ul
             v-for="education in user.education"
@@ -101,8 +129,26 @@
               {{ detail }}
             </li>
           </ul>
-        </div>
+        </section>
+
+        <section id="interests">
+          <h2>Interests</h2>
+          <ul v-for="interest in interests" :key="interest.name" class="mb-4">
+            <li>
+              <h3>{{ interest.name }}</h3>
+            </li>
+            <li v-for="detail in interest.details" :key="detail">
+              {{ detail }}
+            </li>
+          </ul>
+        </section>
       </div>
+    </div>
+
+    <div class="fixed">
+      <span v-for="text in $db.find('glossary')" :key="text" class="glossary">
+        {{ text }}
+      </span>
     </div>
   </div>
 </template>
@@ -121,7 +167,7 @@ export default {
   },
   computed: {
     userDetails() {
-      return ['email', 'phone', 'site', 'repo'].map((name) => {
+      return ['email', 'phone', 'site'].map((name) => {
         const text = this.user[name]
         let href = ''
         switch (name) {
@@ -152,14 +198,15 @@ export default {
     },
     filteredProjects() {
       const projects = [
+        'facial-recognition',
         'wechat-downloads',
         'panas',
-        'beauty-quotient',
         'tagalong',
       ]
       return this.projects.filter((project) => projects.includes(project.id))
     },
     style() {
+      return {}
       const [width, height] = paperSize
         .getSize(this.format, { unit: 'mm' })
         .map((size) => size + 'mm')
@@ -184,7 +231,7 @@ export default {
         .join(' - ')
     },
     getSkillDuration(year) {
-      const currentYear = new Date().getFullYear()
+      const currentYear = new Date().getFullYear() - 1
       const diff = currentYear - parseInt(year)
       return diff + '+ years'
     },
@@ -192,31 +239,54 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+@media print {
+  html,
+  body,
+  #resume {
+    font-family: 'Arial', sans-serif !important;
+  }
+}
 #resume {
-  font-family: 'Osaka', serif;
-  font-size: 12px;
+  font-family: 'Arial', sans-serif;
+  font-size: 10pt;
+  width: 8.5in;
+  height: 11in;
+  overflow: hidden;
 }
 
 a {
   color: inherit !important;
 }
+
 time {
+  font-family: 'Lucida Grande', sans-serif;
   color: midnightblue;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 h1 {
-  letter-spacing: 0.33em;
-}
-h2 {
-  letter-spacing: 0.25em;
+  color: black;
+  font-size: 2em;
   font-weight: 900;
-  color: red;
+  letter-spacing: 0.25em;
+}
+
+h2 {
+  color: indianred;
+  letter-spacing: 0.25em;
+  font-weight: 800;
+  margin-bottom: 0.25em;
 }
 
 h3 {
   font-size: 1.1em;
   letter-spacing: 0.5px;
+}
+
+.glossary {
+  color: transparent;
+  text-shadow: 0 0 0 #fff;
+  font-size: 0.1pt;
 }
 </style>

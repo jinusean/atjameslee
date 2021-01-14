@@ -28,10 +28,9 @@ export default {
   },
   methods: {
     closeCamera() {
-      if (this.stream) {
-        this.stream.getTracks().forEach((track) => track.stop())
-      }
-      this.stream = undefined
+      if (!this.stream) return
+      this.stream.getTracks().forEach((track) => track.stop())
+      this.stream = null
     },
     async openCamera() {
       this.closeCamera()

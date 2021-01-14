@@ -15,13 +15,6 @@ class Database {
 
   _parseTable(tableName, table) {
     switch (tableName) {
-      case 'projects':
-        return table.map((row) => {
-          row.tags.sort((a, b) => {
-            return a.toLowerCase() < b.toLowerCase() ? -1 : 1
-          })
-          return row
-        })
       default:
         return table
     }

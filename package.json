@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint": "yarn lint:js"
+    "lint": "yarn lint:js",
+    "resume": "node scripts/generate-resume.js"
   },
   "dependencies": {
     "@neojp/tailwindcss-important-variant": "^1.0.1",
@@ -26,6 +27,7 @@
     "epic-spinners": "^1.1.0",
     "ismobilejs": "^1.1.1",
     "js-yaml-loader": "^1.2.2",
+    "node-fetch": "^2.6.1",
     "nuxt": "^2.14.6",
     "nuxt-rollbar-module": "^1.1.0",
     "paper-size": "^1.1.0",

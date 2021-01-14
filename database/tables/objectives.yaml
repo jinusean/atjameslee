@@ -1,0 +1,12 @@
+- name: Start
+  text: Studied the fundamentals of computer science with assembly language, C, and Java; while taking courses in data structures algorithms, and databases.
+  year: 2012
+- name: Middle
+  text: Worked as a fullstack developer with a focus on the frontend.
+  year: 2015
+- name: Current(ly)
+  text: Investigating new technologies (AI) for web integration/development.
+  year: now
+- name: Goal
+  text: Work in an high-paced environment where every day is a new learning experience.
+  year: 2021

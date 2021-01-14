@@ -7,7 +7,7 @@
     - Scraped and normalized data from the web into a structured database.
     - Trained a CNN model on 256 classes of Asian foods that was used as the base for a
       transfer-learning model on foods with limited sample images.
-    - Achieved over 94% accuracy with the transfer-learned model on Thai foods.
+    - Achieved over 94% accuracy with on newly trained transfer-learned model.
 - company: Code Ninja
   dates: April 2017 - March 2019
   location: Manila, Phlippines
@@ -15,7 +15,7 @@
   role: Full-Stack Developer
   details:
     - "Lead front-end development for all (2) projects: B2C chat service & Import/Export data visualization"
-    - Ported legacy monolithic-PHP project to Node (Nuxt front-end and Adonis back-end).
+    - Ported legacy monolithic-PHP project to Node (Nuxt + Adonis).
     - Refactored existing codebase by modularizing front-end code and styles to be bundled by Webpack.
     - Isolated back-end and front-end bottlenecks that ultimately reduced initial SPA loading time from 12 to 2 seconds.
 
@@ -32,7 +32,7 @@
   details:
     - "Developed three projects: Client-facing web-app, admin-facing web-app, backend API services."
     - Front-end designed entirely with Bootstrap and CSS.
-    - Boosted site's SEO rankings to first page of Google.
+    - Boosted site's SEO rankings to first page on Google.
 
 - company: Stony Brook University
   dates: January 2014 - December 2014

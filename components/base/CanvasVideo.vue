@@ -7,7 +7,7 @@
       autoplay
       v-bind="$attrs"
       :src="src"
-      :style="videoSizedStyle"
+      :style="videoStyle"
       @loadedmetadata="onLoadedmetadata"
     ></video>
     <canvas ref="canvas" class="absolute top-0" />
@@ -55,23 +55,6 @@ export default {
     }
   },
   computed: {
-    videoSizedStyle() {
-      const { height, width } = this.$attrs
-      const str = `height: ${height}px; width: ${width}px`
-      if (!this.videoStyle) {
-        return str
-      }
-      if (typeof this.videoStyle === 'string') {
-        return this.videoStyle + '; ' + str
-      }
-      if (typeof this.videoStyle === 'object') {
-        return {
-          ...this.videoStyle,
-          height: height + 'px',
-          width: width + 'px',
-        }
-      }
-    },
     dotSize() {
       const maxSize = 40
       const minSize = 10
@@ -101,9 +84,9 @@ export default {
       },
     },
   },
-  mounted() {},
   methods: {
     async onLoadedmetadata() {
+      if (this._isBeingDestroyed) return
       const { video, canvas } = this.$refs
       const videoWidth = video.videoWidth
       const videoHeight = video.videoHeight

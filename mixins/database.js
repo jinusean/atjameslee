@@ -6,6 +6,7 @@ const tables = [
   'skills',
   'tags',
   'user',
+  'interests',
 ]
 
 const computed = tables.reduce((computed, table) => {

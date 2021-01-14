@@ -2,10 +2,12 @@
   description: Bringing AI to the front-end
   name: Facial Recognition(s).js
   owner: Personal Project
+  date: 2020
   type: JavaScript + Artificial Intelligence
   images:
     logo: 'davika.jpg'
   tags:
+    - TensorflowJs
     - Artificial Intelligence
     - FaceApi
     - Google MediaPipe Facemesh
@@ -14,6 +16,7 @@
   description: Automatically save downloads from WeChat
   name: WeChat Downloads
   owner: Personal Project
+  date: 2020
   type: Python Mac Application
   link: https://github.com/jinusean/wechat-downloads
   images:
@@ -26,9 +29,10 @@
     - GIL
 
 - id: panas
-  description: Track and analyze your mood(s) with a clinical survey
+  description: Track and analyze your mood(s) using a clinical survey
   name: P.A.N.A.S.
   owner: Personal Project
+  date: 2019
   type: NativeScript (android & ios) Development
   images:
     logo: panas-logo.png
@@ -76,9 +80,10 @@
     - Google Maps
 
 - id: tagalong
-  description: Philippines' first aggregated news site for in English, Tagalog, and Cebuano
+  description: Philippines' first aggregated news site
   name: Tagalong News
   owner: Personal Project
+  date: 2018
   type: Full-Stack Development
   link: https://tagalong.ph/
   hideTitle: true
@@ -87,13 +92,13 @@
     site: tagalong.png
     logo: tagalong-logo.png
   tags:
+    - Serverless
     - Nuxt
     - Vue
     - CSS Grid
     - MongoDB Atlas
     - Mongoose
     - AWS-Lambda
-    - Serverless
     - Jest
     - Netlify
     - Cloudinary

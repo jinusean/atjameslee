@@ -1,0 +1,14 @@
+- name: Languages
+  details:
+    - "English (native)"
+    - "Korean (fluent)"
+    - "Mandarin (conversational)"
+- name: "Martial Arts"
+  details:
+    - "Kendo (3rd deg.)"
+    - "Muay Thai (amateur)"
+- name: "Reading"
+  details:
+    - "Nutrition"
+    - "Statistics/Probability"
+    - "Economics/Politics"

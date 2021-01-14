@@ -18,4 +18,24 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style>
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #resume,
+  #resume * {
+    visibility: visible;
+  }
+  #resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+</style>

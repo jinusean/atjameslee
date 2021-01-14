@@ -6,7 +6,7 @@
 
     <FaceApiSection />
     <hr class="my-16" />
-    <GoogleMeshSection />
+    <!--    <GoogleMeshSection />-->
 
     <hr />
     <client-only>
