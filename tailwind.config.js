@@ -24,7 +24,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      borderWidth: ['dark'],
+      borderWidth: ['dark', 'hover'],
       display: ['children'],
       height: ['children'],
       margin: ['children', 'last', 'important'],
