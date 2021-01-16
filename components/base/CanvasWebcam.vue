@@ -1,9 +1,8 @@
 <template>
   <CanvasVideo
-    v-bind="$attrs"
     :src-object="stream"
     video-style="transform: scale(-1, 1)"
-    @loadedmetadata="onLoadedmetadata"
+    v-on="$listeners"
   />
 </template>
 
@@ -14,7 +13,6 @@ export default {
   components: {
     CanvasVideo,
   },
-  inheritAttrs: false,
   data() {
     return {
       stream: null,
@@ -28,9 +26,11 @@ export default {
   },
   methods: {
     closeCamera() {
-      if (!this.stream) return
-      this.stream.getTracks().forEach((track) => track.stop())
+      const { stream } = this
+      if (!stream) return
+      stream.getTracks().forEach((track) => track.stop())
       this.stream = null
+      this.$emit('cameraclose', stream)
     },
     async openCamera() {
       this.closeCamera()
@@ -42,11 +42,7 @@ export default {
           height: this.$attrs.height,
         },
       })
-    },
-    onLoadedmetadata(payload) {
-      if (this.$listeners.loadedmetadata) {
-        return this.$listeners.loadedmetadata(payload)
-      }
+      this.$emit('cameraopen', this.stream)
     },
   },
 }

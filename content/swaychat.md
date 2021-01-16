@@ -1,4 +1,4 @@
-Swaychat is a service that allows site owners to chat with their visitors in real-time, and it was the first . 
+Swaychat is a messaging service that allows site owners to chat with their visitors in real-time, and it was the first project I worked on at <b>Code Ninja</b>. 
 <br /><br />
 Chatting is something almost everyone in the world does today. From simple text messages, to high-octane A.I. chat-bots, the world could not function the way it does today without online messaging. The chance to develop one really gave me the chance to understand how this such an integral part of our lives works under the hood.
 <br /><br />

@@ -68,6 +68,8 @@ export default {
   },
   methods: {
     async load(event) {
+      if (this._isDestroyed) return
+
       const { img, canvas } = this.$refs
       this.isFaceDetected = true
       this.isDetecting = true

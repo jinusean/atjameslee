@@ -4,9 +4,14 @@
 
     <TagsList v-if="project.tags" :tags="project.tags" />
 
-    <FaceApiSection />
-    <hr class="my-16" />
-    <!--    <GoogleMeshSection />-->
+    <Tabs v-model="activeTab">
+      <Tab name="FaceApi">
+        <FaceApiSection />
+      </Tab>
+      <Tab name="MediaPipe">
+        <GoogleMeshSection />
+      </Tab>
+    </Tabs>
 
     <hr />
     <client-only>
@@ -24,14 +29,27 @@
 <script>
 import TagsList from '@/components/TagsList/TagsList'
 import FaceApiSection from '@/components/pages/projects/facial-recognition/FaceApiSection'
-
+import GoogleMeshSection from '@/components/pages/projects/facial-recognition/GoogleMeshSection'
+import Tabs from '@/components/base/Tabs'
+import Tab from '@/components/base/Tab'
 export default {
   name: 'ProjectFacialRecognition',
   components: {
     TagsList,
     FaceApiSection,
+    GoogleMeshSection,
+    Tabs,
+    Tab,
+  },
+  data() {
+    return {
+      activeTab: 'FaceApi',
+    }
   },
   computed: {
+    tabs() {
+      return ['FaceApi', 'MediaPipe']
+    },
     project() {
       return this.$db.findProject('facial-recognition')
     },

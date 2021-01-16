@@ -1,10 +1,3 @@
-// _options = {}
-// _element = null
-// _canvas = null
-// _detections = []
-// _drawingBoard = null
-// _mirror = false
-
 class AbstractFaceDetector {
   static isLoaded = false
 
@@ -16,10 +9,10 @@ class AbstractFaceDetector {
         this._element = arg
       } else if (arg instanceof HTMLCanvasElement) {
         this._canvas = arg
-      } else if (arg.constructor && arg.constructor.name === 'Object') {
+      } else if (arg && arg.constructor && arg.constructor.name === 'Object') {
         this._options = arg
       } else {
-        throw new Error('Unknown argument: ' + args)
+        throw new Error('Unknown argument: ' + JSON.stringify(args))
       }
     }
 

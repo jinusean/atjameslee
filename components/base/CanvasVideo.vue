@@ -8,7 +8,7 @@
       v-bind="$attrs"
       :src="src"
       :style="videoStyle"
-      @loadedmetadata="onLoadedmetadata"
+      v-on="$listeners"
     ></video>
     <canvas ref="canvas" class="absolute top-0" />
     <div
@@ -73,6 +73,10 @@ export default {
       }
       return dotSize
     },
+    listeners() {
+      const loadedmetadata = this.onLoadedmetadata
+      return { ...this.$listeners, loadedmetadata }
+    },
   },
   watch: {
     srcObject: {
@@ -85,8 +89,8 @@ export default {
     },
   },
   methods: {
-    async onLoadedmetadata() {
-      if (this._isBeingDestroyed) return
+    async onLoadedmetadata(event) {
+      if (this._isDestroyed) return
       const { video, canvas } = this.$refs
       const videoWidth = video.videoWidth
       const videoHeight = video.videoHeight
@@ -96,7 +100,7 @@ export default {
       canvas.height = videoHeight
 
       if (this.$listeners.loadedmetadata) {
-        await this.$listeners.loadedmetadata({ video, canvas })
+        await this.$listeners.loadedmetadata(event)
       }
       this.isLoaded = true
     },

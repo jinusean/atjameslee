@@ -9,30 +9,32 @@ import {
 import AbstractFaceDetector from '@/components/detections/base/AbstractFaceDetector'
 import defaultOptions from '@/components/detections/FaceApi/faceApiDefaultOptions'
 
+function loadFacemeshModel() {
+  return faceLandmarksDetection.load(
+    faceLandmarksDetection.SupportedPackages.mediapipeFacemesh
+  )
+}
+
 class FaceMesh extends AbstractFaceDetector {
   static _facemesh = null
   _model = null
 
   static load() {
     if (!this._facemesh) {
-      this._facemesh = faceLandmarksDetection
-        .load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
-        .then((facemesh) => {
-          this._facemesh = facemesh
-          return facemesh
-        })
+      this._facemesh = loadFacemeshModel().then((facemesh) => {
+        this._facemesh = facemesh
+        return facemesh
+      })
     }
     return this._facemesh
   }
 
   loadModel() {
     if (!this._model) {
-      this._model = faceLandmarksDetection
-        .load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
-        .then((facemesh) => {
-          this._model = facemesh
-          return facemesh
-        })
+      this._model = loadFacemeshModel().then((facemesh) => {
+        this._model = facemesh
+        return facemesh
+      })
     }
     return this._model
   }
