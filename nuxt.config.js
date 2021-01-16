@@ -1,6 +1,10 @@
+import generate from './configs/generate'
 require('dotenv').config()
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 export default {
+  generate,
   server: {
     port: process.env.PORT,
     host: process.env.HOST,
@@ -81,8 +85,8 @@ export default {
         use: ['js-yaml-loader'],
       })
 
-      if (isClient) {
-        // config.devtool = 'eval'
+      if (isClient && isDev) {
+        config.devtool = 'eval'
       }
 
       config.watchOptions = {
