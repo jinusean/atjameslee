@@ -32,17 +32,17 @@
       </div>
 
       <div class="flex flex-col items-center children:mb-8">
-        <!--        <div>-->
-        <!--          <h3>Detect on image</h3>-->
-        <!--          <FaceImg-->
-        <!--            ref="faceImg"-->
-        <!--            :model="model"-->
-        <!--            class="shadow-3xl"-->
-        <!--            :src="image.src"-->
-        <!--            :options="options"-->
-        <!--            :width="size"-->
-        <!--          />-->
-        <!--        </div>-->
+        <div>
+          <h3>Detect on image</h3>
+          <FaceImg
+            ref="faceImg"
+            :model="model"
+            class="shadow-3xl"
+            :src="image.src"
+            :options="options"
+            :width="size"
+          />
+        </div>
 
         <div>
           <h3>Detect on video</h3>

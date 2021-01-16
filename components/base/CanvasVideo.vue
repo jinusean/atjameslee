@@ -121,7 +121,6 @@ export default {
       event.canvas = canvas
 
       if (this.$listeners.loadedmetadata) {
-        console.log('awaiting...', this.$listeners.loadedmetadata)
         await this.$listeners.loadedmetadata(event)
       }
       this.isLoaded = true

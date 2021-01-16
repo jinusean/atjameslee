@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$parent.activeTab === name">
+  <div v-show="$parent.activeTab === name">
     <slot />
   </div>
 </template>
@@ -14,13 +14,12 @@ export default {
     },
   },
   created() {
-    this.$parent.add(this)
+    this.$parent.add(this.name)
   },
   destroyed() {
     if (!this.$parent) return
-    this.$parent.remove(this)
+    this.$parent.remove(this.name)
   },
-  methods: {},
 }
 </script>
 

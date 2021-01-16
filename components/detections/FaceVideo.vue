@@ -44,24 +44,6 @@ export default {
     },
   },
   methods: {
-    detectVideo() {
-      const { canvas, element } = this.faceModel
-      if (this._isDestroyed || element.paused || element.ended) {
-        console.log(element, element.paused, element.ended)
-        return
-      }
-
-      return new Promise((resolve) => {
-        window.requestAnimationFrame(async () => {
-          const detections = await this.faceModel.detectAndDraw()
-          if (detections) {
-            this.$emit('detect', { canvas, element, detections })
-          }
-          resolve()
-          return this.detectVideo()
-        })
-      })
-    },
     async onLoadedmetadata(event) {
       const { canvas, video } = event
 
@@ -87,6 +69,23 @@ export default {
       }
       this.detectVideo()
       this.$emit('play', event)
+    },
+    detectVideo() {
+      const { canvas, element } = this.faceModel
+      if (this._isDestroyed || element.paused || element.ended) {
+        return
+      }
+
+      return new Promise((resolve) => {
+        window.requestAnimationFrame(async () => {
+          const detections = await this.faceModel.detectAndDraw()
+          if (detections) {
+            this.$emit('detect', { canvas, element, detections })
+          }
+          resolve()
+          return this.detectVideo()
+        })
+      })
     },
   },
 }
