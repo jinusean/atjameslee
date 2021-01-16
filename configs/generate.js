@@ -1,10 +1,10 @@
 const { loadYaml } = require('../lib/serverUtils')
 
-const getProjectRoutes = () => {
+export const generateRoutes = () => {
   const projects = loadYaml('../database/tables/projects.yaml')
   return projects.map((project) => `/projects/${project.id}`)
 }
 
-module.exports.default = {
-  routes: getProjectRoutes(),
+export default {
+  routes: generateRoutes(),
 }
