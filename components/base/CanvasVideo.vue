@@ -8,7 +8,7 @@
       v-bind="$attrs"
       :src="src"
       :style="videoStyle"
-      v-on="$listeners"
+      v-on="listeners"
     ></video>
     <canvas ref="canvas" class="absolute top-0" />
     <div
@@ -75,7 +75,25 @@ export default {
     },
     listeners() {
       const loadedmetadata = this.onLoadedmetadata
-      return { ...this.$listeners, loadedmetadata }
+      const { video, canvas } = this.$refs
+      // attach video and canvas elements to event
+      const listeners = [
+        'play',
+        'pause',
+        'playing',
+        'loadeddata',
+        'ended',
+      ].reduce((listeners, eventName) => {
+        listeners[eventName] = (event) => {
+          event.video = video
+          event.canvas = canvas
+          if (this.$listeners[eventName])
+            return this.$listeners[eventName](event)
+        }
+        return listeners
+      }, {})
+
+      return { ...this.$listeners, ...listeners, loadedmetadata }
     },
   },
   watch: {
@@ -99,7 +117,11 @@ export default {
       canvas.width = videoWidth
       canvas.height = videoHeight
 
+      event.video = video
+      event.canvas = canvas
+
       if (this.$listeners.loadedmetadata) {
+        console.log('awaiting...', this.$listeners.loadedmetadata)
         await this.$listeners.loadedmetadata(event)
       }
       this.isLoaded = true

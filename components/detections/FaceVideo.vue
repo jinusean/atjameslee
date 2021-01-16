@@ -3,9 +3,8 @@
     :is="component"
     ref="child"
     v-bind="$attrs"
-    @play="isPlaying = true"
-    @pause="isPlaying = false"
-    @loadedmetadata="onloadedmetadata"
+    @play="onPlay"
+    @loadedmetadata="onLoadedmetadata"
   />
 </template>
 
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      models: {},
+      faceModel: null,
     }
   },
   computed: {
@@ -46,13 +45,16 @@ export default {
   },
   methods: {
     detectVideo() {
-      if (this._isDestroyed) return
+      const { canvas, element } = this.faceModel
+      if (this._isDestroyed || element.paused || element.ended) {
+        console.log(element, element.paused, element.ended)
+        return
+      }
 
       return new Promise((resolve) => {
         window.requestAnimationFrame(async () => {
           const detections = await this.faceModel.detectAndDraw()
           if (detections) {
-            const { canvas, element } = this.faceModel
             this.$emit('detect', { canvas, element, detections })
           }
           resolve()
@@ -60,37 +62,31 @@ export default {
         })
       })
     },
-    async onloadedmetadata(event) {
-      const { child } = this.$refs
-      if (!child.$el !== event.target) {
-        return console.log(
-          'Ref and child do not match',
-          this.$refs.child,
-          event.target
-        )
-      }
-      const id = this.child._uid
-      if (this.models[id]) return
+    async onLoadedmetadata(event) {
+      const { canvas, video } = event
 
-      const { canvas, video } = child.$refs
-      this.models[id] = await this.loadModel({ canvas, video }, this.options)
-      this.models[id].mirror = this.camera
+      if (this.faceModel) return
 
+      this.faceModel = await this.loadModel({ canvas, video }, this.options)
+      this.faceModel.mirror = this.camera
+
+      await this.faceModel.detect()
       if (this.$listeners.loadedmetadata) {
-        await this.$listeners.loadedmetadata(event)
+        return this.$listeners.loadedmetadata(event)
       }
     },
-    async play({ target }) {
-
-    },
-    async event(e) {
-      // if (e.type !== 'loadedmetadata') return
-      // this.faceModel = await this.loadModel(payload, this.options)
-      // this.faceModel.mirror = this.camera
-      // if (this.$listeners.loadedmetadata) {
-      //   await this.$listeners.loadedmetadata(payload)
-      // }
-      // return this.detectVideo()
+    async onPlay(event) {
+      // wait for model to laod from loadedmetadata
+      if (!this.faceModel) {
+        await new Promise((resolve) => {
+          const unwatch = this.$watch('faceModel', () => {
+            unwatch()
+            resolve()
+          })
+        })
+      }
+      this.detectVideo()
+      this.$emit('play', event)
     },
   },
 }

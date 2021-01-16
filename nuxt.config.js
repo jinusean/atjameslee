@@ -1,6 +1,5 @@
 import generate from './configs/generate'
 require('dotenv').config()
-console.log(generate)
 const isDev = process.env.NODE_ENV !== 'production'
 export default {
   generate,
