@@ -2,7 +2,7 @@
   <div class="container page-container">
     <Modal id="project-id-modal" v-model="isModalOpen" :close-button="true">
       <h1 slot="header">
-        {{ selectedPackageId }}
+        {{ activePackageId }}
       </h1>
       <component :is="component" slot="body" />
     </Modal>
@@ -15,20 +15,16 @@
 
 <script>
 import Modal from '@/components/base/Modal.vue'
-import ReactPhotoUploaderModalBody from '@/components/pages/font-end/ReactPhotoUploaderModalBody'
-import VuexActionsStatesModalBody from '@/components/pages/font-end/VuexActionsStatesModalBody.vue'
-import EslintPluginJinuseanModalBody from '@/components/pages/font-end/EslintPluginJinuseanModalBody.vue'
-import VueDateInputModalBody from '@/components/pages/font-end/VueDateInputModalBody.vue'
 
 import PackageCard from '@/components/pages/font-end/PackageCard.vue'
-import PackageModal from '@/components/pages/font-end/PackageModal'
+import { getModalBody } from '@/components/pages/font-end/packages-modal-bodies'
 
 export default {
   name: 'Packages',
   components: { Modal, PackageCard },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      if (vm.selectedPackageId && !vm.verifyPackageId(vm.selectedPackageId)) {
+      if (vm.activePackageId && !vm.verifyPackageId(vm.activePackageId)) {
         return next({ path: '/packages', replace: true })
       }
       next()
@@ -38,8 +34,8 @@ export default {
   beforeRouteUpdate(to, from, next) {
     if (
       to.path === '/packages' &&
-      this.packageId &&
-      !this.verifyPackageId(this.packageId)
+      this.activePackageId &&
+      !this.verifyPackageId(this.activePackageId)
     ) {
       return next({ path: '/packages', replace: true })
     }
@@ -48,7 +44,7 @@ export default {
   computed: {
     isModalOpen: {
       get() {
-        return !!this.selectedPackageId
+        return !!this.activePackageId
       },
       set(isModalOpen) {
         if (!isModalOpen) {
@@ -59,16 +55,11 @@ export default {
     packages() {
       return this.$db.find('packages')
     },
-    selectedPackageId() {
+    activePackageId() {
       return this.$route.hash.replace('#', '')
     },
     component() {
-      return {
-        'react-photo-uploader': ReactPhotoUploaderModalBody,
-        'vue-date-input': VueDateInputModalBody,
-        'vuex-actions-states': VuexActionsStatesModalBody,
-        'eslint-plugin-jinusean': EslintPluginJinuseanModalBody,
-      }[this.selectedPackageId]
+      return getModalBody(this.activePackageId)
     },
   },
   methods: {
