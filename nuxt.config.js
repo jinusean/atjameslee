@@ -48,6 +48,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/google-analytics',
     ['@nuxtjs/eslint-module', { emitWarning: true }],
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
@@ -97,5 +98,9 @@ export default {
         Vary: '*',
       },
     },
+  },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID,
+    dev: isDev,
   },
 }
