@@ -48,6 +48,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/google-analytics',
     ['@nuxtjs/eslint-module', { emitWarning: true }],
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
@@ -87,10 +88,6 @@ export default {
         config.devtool = 'eval'
       }
 
-      config.watchOptions = {
-        ignored: '/base/EatMe/brfv5_js_tk121020_v5.2.0_trial.js',
-      }
-
       config.node = {
         fs: 'empty',
       }
@@ -101,5 +98,9 @@ export default {
         Vary: '*',
       },
     },
+  },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID,
+    dev: isDev,
   },
 }
