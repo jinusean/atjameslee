@@ -1,21 +1,16 @@
 <template>
   <div>
-    <modal
-      id="project-id-modal"
-      :is-open="!!packageId"
-      :close-button="true"
-      @toggle="onToggle"
-    >
+    <Modal id="project-id-modal" v-bind="$listeners">
       <h1 slot="header">
         {{ packageId }}
       </h1>
       <component :is="component" slot="body" />
-    </modal>
+    </Modal>
   </div>
 </template>
 
 <script>
-import modal from '@/components/base/Modal.vue'
+import Modal from '@/components/base/Modal.vue'
 import ReactPhotoUploaderModalBody from '@/components/pages/font-end/ReactPhotoUploaderModalBody'
 import VuexActionsStatesModalBody from '@/components/pages/font-end/VuexActionsStatesModalBody.vue'
 import EslintPluginJinuseanModalBody from '@/components/pages/font-end/EslintPluginJinuseanModalBody.vue'
@@ -23,7 +18,7 @@ import VueDateInputModalBody from '@/components/pages/font-end/VueDateInputModal
 
 export default {
   name: 'PackageModal',
-  components: { modal },
+  components: { Modal },
   props: {
     packageId: {
       type: String,
@@ -38,14 +33,6 @@ export default {
         'vuex-actions-states': VuexActionsStatesModalBody,
         'eslint-plugin-jinusean': EslintPluginJinuseanModalBody,
       }[this.packageId]
-    },
-  },
-  methods: {
-    onToggle(isOpen) {
-      if (!isOpen) {
-        return this.$emit('close')
-      }
-      this.$emit('open')
     },
   },
 }

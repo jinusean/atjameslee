@@ -7,10 +7,11 @@
     @leave="leave"
   >
     <div
-      v-if="isReallyOpen"
+      v-if="isOpen"
+      id="modal"
       class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full p-0 sm:p-6"
       style="background-color: rgba(0, 0, 0, 0.5)"
-      @keydown.esc="$emit('toggle', false)"
+      @keydown.esc="close"
       @click="handleMaskClick"
     >
       <div
@@ -49,11 +50,11 @@ import Velocity from 'velocity-animate'
 export default {
   name: 'Modal',
   model: {
-    prop: 'isOpen',
-    event: 'toggle',
+    prop: 'active',
+    event: 'change',
   },
   props: {
-    isOpen: {
+    active: {
       type: Boolean,
       default: true,
     },
@@ -77,19 +78,19 @@ export default {
   data() {
     return {
       escListener: undefined,
-      isReallyOpen: false,
+      isOpen: false,
       isClosing: false,
     }
   },
   watch: {
-    isOpen: {
+    active: {
       immediate: true,
-      handler(isOpen) {
-        this.isReallyOpen = this.isOpen
-        const method = isOpen ? 'add' : 'remove'
+      handler(active) {
+        this.isOpen = active
+        const method = active ? 'add' : 'remove'
         document.body.classList[method](this.bodyClass)
 
-        if (isOpen && this.esc) {
+        if (active && this.esc) {
           this.escListener = document.addEventListener('keydown', (event) => {
             if (event.key !== 'Escape') {
               return
@@ -98,7 +99,7 @@ export default {
           })
         }
 
-        if (isOpen && this.esc) {
+        if (active && this.esc) {
           document.removeEventListener('keydown', this.escListener)
         }
       },
@@ -118,7 +119,8 @@ export default {
       this.close()
     },
     close() {
-      this.isReallyOpen = false
+      // change event will be called in 'afterLeave' event
+      this.isOpen = false
     },
     beforeEnter(el, done) {
       Velocity(
@@ -142,7 +144,7 @@ export default {
       )
     },
     afterLeave(el, done) {
-      this.$emit('toggle', false)
+      this.$emit('change', false)
     },
   },
 }
