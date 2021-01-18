@@ -87,10 +87,6 @@ export default {
         config.devtool = 'eval'
       }
 
-      config.watchOptions = {
-        ignored: '/base/EatMe/brfv5_js_tk121020_v5.2.0_trial.js',
-      }
-
       config.node = {
         fs: 'empty',
       }
