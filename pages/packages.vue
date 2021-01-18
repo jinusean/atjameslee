@@ -1,6 +1,11 @@
 <template>
   <div class="container page-container">
-    <Modal id="project-id-modal" v-model="isModalOpen" :close-button="true">
+    <Modal
+      id="project-id-modal"
+      v-model="isModalOpen"
+      :close-button="true"
+      :esc="false"
+    >
       <h1 slot="header">
         {{ activePackageId }}
       </h1>

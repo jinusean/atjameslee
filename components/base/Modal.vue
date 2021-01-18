@@ -1,21 +1,19 @@
 <template>
   <transition
     :duration="duration"
-    @after-leave="afterLeave"
     @before-enter="beforeEnter"
     @enter="enter"
     @leave="leave"
+    @after-leave="afterLeave"
   >
     <div
       v-if="isOpen"
-      id="modal"
+      ref="modal"
       class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full p-0 sm:p-6"
       style="background-color: rgba(0, 0, 0, 0.5)"
       @keydown.esc="close"
-      @click="handleMaskClick"
     >
       <div
-        id="modal-wrapper"
         ref="modalWrapper"
         class="flex flex-col m-auto bg-white shadow-2xl w-full sm:w-auto h-full sm:h-auto overflow-scroll rounded min-w-0 sm:min-w-128 overscroll-auto max-h-full dark:bg-black dark:border dark:border-white"
       >
@@ -29,12 +27,13 @@
           <slot name="body" />
         </div>
 
-        <div v-if="$slots.footer" class="modal-footer">
+        <div v-if="$slots.footer">
           <slot name="footer"></slot>
         </div>
 
         <button
           v-if="closeButton"
+          ref="closeButton"
           class="w-full bg-gray-800 text-white py-4 font-bold hover:opacity-75"
           @click="close"
         >
@@ -46,6 +45,7 @@
 </template>
 <script>
 import Velocity from 'velocity-animate'
+import keycode from 'keycode'
 
 export default {
   name: 'Modal',
@@ -56,15 +56,11 @@ export default {
   props: {
     active: {
       type: Boolean,
-      default: true,
+      required: true,
     },
     bodyClass: {
       type: String,
       default: 'modal-open',
-    },
-    esc: {
-      type: Boolean,
-      default: true,
     },
     closeButton: {
       type: Boolean,
@@ -74,10 +70,17 @@ export default {
       type: Number,
       default: 300,
     },
+    closeEsc: {
+      type: Boolean,
+      default: true,
+    },
+    closeClick: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
-      escListener: undefined,
       isOpen: false,
       isClosing: false,
     }
@@ -90,36 +93,40 @@ export default {
         const method = active ? 'add' : 'remove'
         document.body.classList[method](this.bodyClass)
 
-        if (active && this.esc) {
-          this.escListener = document.addEventListener('keydown', (event) => {
-            if (event.key !== 'Escape') {
-              return
-            }
-            this.close()
-          })
+        if (active && this.closeEsc) {
+          document.body.addEventListener('keydown', this.onKeyDown)
         }
-
-        if (active && this.esc) {
-          document.removeEventListener('keydown', this.escListener)
+        if (active && this.closeClick) {
+          document.body.addEventListener('click', this.onClick)
         }
       },
     },
   },
   beforeDestroy() {
-    document.body.classList.remove(this.bodyClass)
+    this.cleanup()
   },
   methods: {
-    handleMaskClick(event) {
-      if (
-        !this.$refs.modalWrapper ||
-        this.$refs.modalWrapper.contains(event.target)
-      ) {
-        return
+    onKeyDown(event) {
+      if (event.key === 'Escape' || keycode(event) === 'esc') {
+        this.close()
       }
-      this.close()
+    },
+    onClick(event) {
+      if (
+        this.$refs.modalWrapper &&
+        !this.$refs.modalWrapper.contains(event.target)
+      ) {
+        this.close()
+      }
+    },
+    cleanup() {
+      document.body.classList.remove(this.bodyClass)
+      document.body.removeEventListener('keydown', this.onKeyDown)
+      document.body.removeEventListener('click', this.onClick)
     },
     close() {
       // change event will be called in 'afterLeave' event
+      this.cleanup()
       this.isOpen = false
     },
     beforeEnter(el, done) {
