@@ -30,7 +30,8 @@ describe('Modal.vue', () => {
       expectClose(wrapper)
     })
     it('should be open', () => {
-      expectOpen(mountModal({ active: true }))
+      wrapper = mountModal({ active: true })
+      expectOpen(wrapper)
     })
 
     it('should toggle', async () => {

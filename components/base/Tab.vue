@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Tabs from '@/components/base/Tabs'
 export default {
   name: 'Tab',
   props: {
@@ -12,6 +13,11 @@ export default {
       type: String,
       required: true,
     },
+  },
+  beforeCreate() {
+    if (!this.$parent || !this.$parent instanceof Tabs) {
+      throw new Error('Parent must be an instance of Tabs')
+    }
   },
   created() {
     this.$parent.add(this.name)
