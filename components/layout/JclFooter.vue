@@ -3,7 +3,7 @@
     <div
       class="container w-container my-4 flex flex-wrap items-center justify-between"
     >
-      <a class="font-bold" href="mailto:atjameslee@gmail.com"
+      <a class="font-bold mb-4 sm:mb-0" href="mailto:atjameslee@gmail.com"
         >atjameslee@gmail.com</a
       >
       <ul class="flex justify-end m-0 space-x-8">

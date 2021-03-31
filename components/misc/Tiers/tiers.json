@@ -1,0 +1,67 @@
+[
+  {
+    "tier": "s+",
+    "color": "current",
+    "list": [
+      "yui"
+    ]
+  },
+  {
+    "tier": "s",
+    "color": "blue-600",
+    "list": [
+      "wasp",
+      "dolphin",
+      "alligator"
+    ]
+  },
+  {
+    "tier": "a",
+    "color": "green-700",
+    "list": [
+      "crow",
+      "gorilla",
+      "hippo",
+      "octopus",
+      "lion"
+    ]
+  },
+  {
+    "tier": "b",
+    "color": "green-400",
+    "list": [
+      "iguana",
+      "falcoln",
+      "rat",
+      "elephant"
+    ]
+  },
+  {
+    "tier": "c",
+    "color": "yellow-300",
+    "list": [
+      "deer",
+      "turtle",
+      "whale"
+    ]
+  },
+  {
+    "tier": "d",
+    "color": "yellow-600",
+    "list": [
+      "snake",
+      "swan",
+      "starfish",
+      "rhino"
+    ]
+  },
+  {
+    "tier": "f",
+    "color": "red-600",
+    "list": [
+      "frog",
+      "koala",
+      "snail"
+    ]
+  }
+]

@@ -28,7 +28,6 @@
 
   <hr class="my-6" />
 
-
 <div class="flex flex-col items-center">
   <img class="border-2 max-w-xs" src="/images/panas-history.gif" alt="View previous moods" />
   <p class="mt-4">Review your previous moods in list format. Tap on a record and see a visual breakdown of the moods' scores.</p>
@@ -40,7 +39,6 @@
   <img class="border-2 max-w-xs" src="/images/panas-analytics.gif" alt="Get analytics on your moods" />
   <p class="mt-4"> Understand which negative moods are influencing in your life, or check which positive moods need improvement.</p>
 </div>
-
 
   <hr class="my-6" />
 

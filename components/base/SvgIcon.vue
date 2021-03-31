@@ -34,7 +34,6 @@ export default {
       try {
         return require(`@/assets/svgs/${this.icon}.svg?raw`)
       } catch (e) {
-        console.error(e)
         return undefined
       }
     },

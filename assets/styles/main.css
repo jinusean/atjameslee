@@ -74,11 +74,10 @@
   width: 100%;
   text-align: center;
   letter-spacing: 2em;
-  content: "⋇⋇⋇";
+  content: '⋇⋇⋇';
 }
 
-
-.center-content{
+.center-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,8 +85,8 @@
 }
 
 .invert {
-   filter:invert(1)
- }
+  filter: invert(1);
+}
 
 .text-outline {
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;

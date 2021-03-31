@@ -32,13 +32,11 @@
 
 <script>
 import { getRandom } from '@/lib/probability'
-import Cloud from './Cloud'
+// import Cloud from './Cloud'
 
 export default {
   name: 'CloudedSky',
-  components: {
-    Cloud,
-  },
+  components: {},
   props: {
     sky: {
       type: Boolean,
@@ -79,10 +77,12 @@ export default {
       }, this.timerDelay)
     },
     addRandomClouds() {
-      for (const i of Array(getRandom(1, 4)).fill()) {
-        const cloud = this.addCloud()
-        cloud.style.left = getRandom(100, window.innerWidth) + 'px'
-      }
+      Array(getRandom(1, 4))
+        .fill()
+        .forEach(() => {
+          const cloud = this.addCloud()
+          cloud.style.left = getRandom(100, window.innerWidth) + 'px'
+        })
     },
     addCloud() {
       const width = getRandom(30, 300)
@@ -102,21 +102,16 @@ export default {
         width,
       }
       this.clouds.push(cloud)
-      console.log('add cloud', cloud)
       return cloud
     },
     onAnimationEnd(event) {
       const { id } = event.target
       for (let i = 0; i < this.clouds.length; i++) {
         if (this.clouds[i].id === id) {
-          console.log('removing cloud', id)
           return this.clouds.splice(i, 1)
         }
       }
       throw new Error('Could not remove cloud:', event)
-    },
-    clicked(cloud) {
-      console.log('clicked', cloud)
     },
   },
 }

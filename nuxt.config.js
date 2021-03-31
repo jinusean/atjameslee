@@ -37,7 +37,7 @@ export default {
     '@/plugins/plugins.server.js',
     '@/plugins/globals.client.js',
     '@/plugins/database',
-    '@/plugins/faceDetection.client.js',
+    // '@/plugins/faceDetection.client.js',
     '@/plugins/isMobile.client.js',
     '@/plugins/utils',
     '@/plugins/lumin.client.js',
@@ -99,8 +99,10 @@ export default {
       },
     },
   },
-  googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID,
-    dev: isDev,
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID,
+      // dev: isDev,
+    },
   },
 }

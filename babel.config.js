@@ -1,3 +1,6 @@
+/**
+ * This file is used for jest
+ */
 function isBabelLoader(caller) {
   return caller && caller.name === 'babel-loader'
 }
