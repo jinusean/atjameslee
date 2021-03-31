@@ -6,6 +6,8 @@
       <div class="grid gap-4 sm:grid-flow-col">
         <img
           src="@/assets/images/vuex-actions-states-store.png"
+          width="300"
+          height="442"
           alt="src/store/plugins.client.js"
         />
         <p>
@@ -31,6 +33,8 @@
 
       <div class="grid gap-4 sm:grid-flow-col">
         <img
+          width="339"
+          height="191"
           src="@/assets/images/vuex-actions-states-devtools1.png"
           alt="vue-devtools"
         />
@@ -51,6 +55,8 @@
 
       <div class="grid gap-4 sm:grid-flow-col">
         <img
+          width="339"
+          height="191"
           src="@/assets/images/vuex-actions-states-devtools2.png"
           alt="vue-devtools"
         />

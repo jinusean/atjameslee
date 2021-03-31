@@ -206,7 +206,6 @@ export default {
       return this.projects.filter((project) => projects.includes(project.id))
     },
     style() {
-      return {}
       const [width, height] = paperSize
         .getSize(this.format, { unit: 'mm' })
         .map((size) => size + 'mm')

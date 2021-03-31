@@ -7,7 +7,7 @@ class FaceApi extends AbstractFaceDetector {
     return { ...defaultOptions, ...this._options }
   }
 
-  static async load() {
+  static load() {
     if (!FaceApi.isLoaded) {
       FaceApi.isLoaded = Promise.all(
         Object.entries(FaceApi.faceapi.nets).map(([name, net]) => {

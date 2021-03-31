@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: 'Tab',
   props: {
@@ -12,6 +13,15 @@ export default {
       type: String,
       required: true,
     },
+  },
+  beforeCreate() {
+    if (
+      !this.$parent ||
+      !(this.$parent instanceof Vue) ||
+      !(this.$parent.$options.name !== 'Tabs')
+    ) {
+      throw new Error('Parent must be an instance of Tabs')
+    }
   },
   created() {
     this.$parent.add(this.name)

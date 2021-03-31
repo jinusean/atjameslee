@@ -1,4 +1,3 @@
-
 When it comes to mobile messaging in China, WeChat is second to none. There is hardly a mobile phone owner in China that
 does not have a installation of WeChat.
 
@@ -23,15 +22,14 @@ utilizes [Watchdog](https://github.com/gorakhargosh/watchdog) to watch WeChat's 
 files. These files are then automatically saved to a pre-configured user directory, and will be accessible until the
 user deletes them.
 
-
 <p class="p-4 sm:p-8 md:p-12">
 <img src="/images/wechat-downloads-screenshot.png" alt="WeChat Downloads in use" class="shadow-3xl" />
 </p>
 
 ## Development
 
-My initial architecture made use of [tkinter](https://docs.python.org/3/library/tkinter.html) as the GUI and a 
-multi-threaded watcher for file system changes. This attempt was thwarted by none other than the [Python Global Interpreter Lock (GIL)](https://wiki.python.org/moin/GlobalInterpreterLock). Unlike most multi-threading designs that allows concurrent access to a shared memory space: 
+My initial architecture made use of [tkinter](https://docs.python.org/3/library/tkinter.html) as the GUI and a
+multi-threaded watcher for file system changes. This attempt was thwarted by none other than the [Python Global Interpreter Lock (GIL)](https://wiki.python.org/moin/GlobalInterpreterLock). Unlike most multi-threading designs that allows concurrent access to a shared memory space:
 <br/><br/>
 
 > Python's GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once. The GIL prevents race conditions and ensures thread safety. A nice explanation of how the GIL helps in these areas can be found here. In short, this mutex is necessary mainly because CPython's memory management is not thread-safe [2].

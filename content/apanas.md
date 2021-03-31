@@ -1,4 +1,5 @@
-## Positive and Negative Affect Schedule ##
+## Positive and Negative Affect Schedule
+
 <br/>
 Developed by David Watson, Lee Anna Clark, and Auke Tellegen (1988) PANAS is a self-reporting tool that measures a person's current state of mood. There are a total of 10 positive and 10 negative moods that the user will rate, and the total score will reflect which mood is currently more dominant. The point of the scale is understand what the user is feeling at the time, and while it alone is not enough to reveal much about the individual, it can complement other data - such as productivity. 
 <br /><br />  
@@ -17,7 +18,6 @@ I developed this app using NativeScript, a framework that allowed me to create c
     </p>
     </div>
 <hr class="my-6" />
-
 
 <div class="flex justify-between md:justify-center flex-row space-x-12">
     <p class="max-w-xs">
@@ -42,5 +42,6 @@ I developed this app using NativeScript, a framework that allowed me to create c
 <br />
 
 ### References
+
 <br />
 Watson, D., Clark, L. A., & Tellegen, A. (1988). Development and validation of brief measures of positive and negative affect: The PANAS scales. *Journal* of Personality and Social Psychology, 54(6), 1063–1070.

@@ -1,20 +1,16 @@
 <template>
   <div class="jcl-navbar__links-wrapper">
+    <button class="btn-toggler" @click="isDropdownOpen = !isDropdownOpen" />
 
-    <button
-      class="btn-toggler"
-      @click="isDropdownOpen = !isDropdownOpen"/>
-
-    <ul
-      v-if="isDropdownOpen"
-      class="jcl-navbar__links">
+    <ul v-if="isDropdownOpen" class="jcl-navbar__links">
       <nuxt-link
         v-for="(link, index) in links"
         :key="index"
         :class="getLinkClass(link)"
         :to="`/${link === 'about' ? '' : link}`"
         tag="li"
-        class="jcl-navbar__link">
+        class="jcl-navbar__link"
+      >
         {{ link }}
       </nuxt-link>
     </ul>
@@ -22,9 +18,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>

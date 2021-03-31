@@ -1,16 +1,16 @@
-- id: facial-recognition
-  description: Bringing AI to the front-end
-  name: Facial Recognition(s).js
-  owner: Personal Project
-  date: 2020
-  type: JavaScript + Artificial Intelligence
-  images:
-    logo: 'davika.jpg'
-  tags:
-    - TensorflowJs
-    - Artificial Intelligence
-    - FaceApi
-    - Google MediaPipe Facemesh
+#- id: facial-recognition
+#  description: Bringing AI to the front-end
+#  name: Facial Recognition(s).js
+#  owner: Personal Project
+#  date: 2020
+#  type: JavaScript + Artificial Intelligence
+#  images:
+#    logo: 'davika.jpg'
+#  tags:
+#    - TensorflowJs
+#    - Artificial Intelligence
+#    - FaceApi
+#    - Google MediaPipe Facemesh
 
 - id: wechat-downloads
   description: Automatically save downloads from WeChat

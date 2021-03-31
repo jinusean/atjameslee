@@ -1,6 +1,6 @@
 html.dark,
 html.dark body {
-  background: rgb(24,24,24);
+  background: rgb(24, 24, 24);
   color: white;
 }
 html.dark h1,
@@ -14,5 +14,5 @@ html.dark h6 {
 }
 
 html.dark input {
-  background-color: rgb(24,24,24);
+  background-color: rgb(24, 24, 24);
 }

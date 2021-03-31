@@ -6,15 +6,15 @@
 - id: 'eslint-plugin-jinusean'
   subtitle: 'min-attributes-per-line'
   info: "An answer to eslint-config-vue's max-attribute-per-line rule"
-  gitlab: true
+  github: true
   npm: true
 - id: 'react-photo-uploader'
   subtitle: 'Upload, drop, and take a photo'
   info: 'Integrated a react component into a Vue project.<br/>Users can upload a file, drag & drop a file, or take a new picture with the camera.'
-  gitlab: true
+  github: true
   npm: true
 - id: 'vuex-actions-states'
   subtitle: 'Nuxt-module state manager for vuex actions'
   info: "Keep track of your vuex-actions with the <b>$actions</b> plugin.<br/>Eliminates the need for <code>isFetching</code> boolean trackers site-wide."
-  gitlab: true
+  github: true
   npm: true

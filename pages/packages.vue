@@ -1,9 +1,16 @@
 <template>
   <div class="container page-container">
-    <package-modal
-      :package-id="selectedPackageId"
-      @close="$router.replace('/packages')"
-    />
+    <Modal
+      id="project-id-modal"
+      v-model="isModalOpen"
+      :close-button="true"
+      :esc="false"
+    >
+      <h1 slot="header">
+        {{ activePackageId }}
+      </h1>
+      <component :is="component" slot="body" />
+    </Modal>
 
     <h1 class="page-heading">Packages</h1>
 
@@ -12,15 +19,17 @@
 </template>
 
 <script>
+import Modal from '@/components/base/Modal.vue'
+
 import PackageCard from '@/components/pages/font-end/PackageCard.vue'
-import PackageModal from '@/components/pages/font-end/PackageModal'
+import { getModalBody } from '@/components/pages/font-end/packages-modal-bodies'
 
 export default {
   name: 'Packages',
-  components: { PackageModal, PackageCard },
+  components: { Modal, PackageCard },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      if (vm.selectedPackageId && !vm.verifyPackageId(vm.selectedPackageId)) {
+      if (vm.activePackageId && !vm.verifyPackageId(vm.activePackageId)) {
         return next({ path: '/packages', replace: true })
       }
       next()
@@ -30,19 +39,32 @@ export default {
   beforeRouteUpdate(to, from, next) {
     if (
       to.path === '/packages' &&
-      this.packageId &&
-      !this.verifyPackageId(this.packageId)
+      this.activePackageId &&
+      !this.verifyPackageId(this.activePackageId)
     ) {
       return next({ path: '/packages', replace: true })
     }
     next()
   },
   computed: {
+    isModalOpen: {
+      get() {
+        return !!this.activePackageId
+      },
+      set(isModalOpen) {
+        if (!isModalOpen) {
+          this.$router.replace('/packages')
+        }
+      },
+    },
     packages() {
       return this.$db.find('packages')
     },
-    selectedPackageId() {
+    activePackageId() {
       return this.$route.hash.replace('#', '')
+    },
+    component() {
+      return getModalBody(this.activePackageId)
     },
   },
   methods: {

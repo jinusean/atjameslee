@@ -9,7 +9,8 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "resume": "node scripts/generate-resume.js"
+    "resume": "node scripts/generate-resume.js",
+    "test": "jest"
   },
   "dependencies": {
     "@neojp/tailwindcss-important-variant": "^1.0.1",
@@ -28,6 +29,7 @@
     "ismobilejs": "^1.1.1",
     "js-yaml": "^4.0.0",
     "js-yaml-loader": "^1.2.2",
+    "keycode": "^2.2.0",
     "node-fetch": "^2.6.1",
     "nuxt": "^2.14.6",
     "nuxt-rollbar-module": "^1.1.0",

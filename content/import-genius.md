@@ -1,16 +1,13 @@
 Import Genius tracks the world's shipping data and presents it in a filtered, digestable manner.  
 <br/>
 
-As the lead front-end developer on this project, I helped make the teams' designs come to digital life. In addition to making data tables, and integrating Google maps, I was also in charge of making the chart-components for data visualization purpose. I also worked alongside the back-end team to develop RESTful apis, and helped find a number of latency and data-modeling issues. 
+As the lead front-end developer on this project, I helped make the teams' designs come to digital life. In addition to making data tables, and integrating Google maps, I was also in charge of making the chart-components for data visualization purpose. I also worked alongside the back-end team to develop RESTful apis, and helped find a number of latency and data-modeling issues.
 
-<br/> 
+<br/>
 
 <figure class="lg:w-3/4 mx-auto shadow-3xl my-8">
     <img src="/images/import-genius-site.png" alt="Import Genius Dashboard"  />
 </figure>
 
-
 <br/>
- One challenge that was especially of concern for this project was improving the perceived/objective loading times due to the long wait times required from extracting so much data from the server. Some of the solutions implemented include, using service-workers to pre-cache assets, and cache xhr calls, using web-workers to store user settings locally in localStorage/indexedDB, and pre-fetching as much relevant data as possible.   
- 
-   
+ One challenge that was especially of concern for this project was improving the perceived/objective loading times due to the long wait times required from extracting so much data from the server. Some of the solutions implemented include, using service-workers to pre-cache assets, and cache xhr calls, using web-workers to store user settings locally in localStorage/indexedDB, and pre-fetching as much relevant data as possible.
