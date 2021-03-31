@@ -1,3 +1,11 @@
+const tiers = require('./components/misc/Tiers/tiers.json')
+
+const safelist = []
+tiers.forEach((tier) => {
+  safelist.push('bg-' + tier.color)
+  safelist.push('text-' + tier.color)
+})
+
 module.exports = {
   exposeConfig: true,
   darkMode: 'class',
@@ -43,4 +51,10 @@ module.exports = {
     require('@neojp/tailwindcss-important-variant'),
     require('tailwindcss-children'),
   ],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    options: {
+      safelist,
+    },
+  },
 }
