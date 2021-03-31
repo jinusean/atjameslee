@@ -1,6 +1,6 @@
 <template>
   <div class="flex-1">
-    <h1 class="text-center mb-4" style="font-size: 4em">Tier Zoo</h1>
+    <h1 class="text-center text-xl sm:text-9xl">Animal Planet</h1>
     <div class="flex justify-center">
       <Tiers :data="data" />
     </div>
